@@ -56,20 +56,37 @@ public class StuckWin {
      * l'attribut d'état "state"
      */
     void affiche() {
-      System.out.println(" [ ");
-      for (int i = 0;i<state.length;i++)
-      {
-        System.out.println("[ ");
-        for (int u = 0;i<state[i].length;u++)
-        {
 
-          if (state[i][u]=='R' || state[i][u]=='B' || state[i][u]=='.')
-          {
-            System.out.println(state[i][u]);
-          }
+      String [][] Tableau = {
+        {"A 7"},
+        {"A 6","B 7"},
+        {"A 5","B 6","C 7"},
+        {"A 4","B 5","C 6","D 7"},
+        {"B 4","C 5","D 6"},
+        {"B 3","C 4","D 5","E 6"},
+        {"C 3","D 4","E 5",},
+        {"C 2","D 3","E 4","F 5"},
+        {"D 2","E 3","F 4"},
+        {"D 1","E 2","F 3","G 4"},
+        {"E 1","F 2","G 3"},
+        {"F 1","G 2"},
+        {"G 1"}
+      };
+
+      String val;
+      for (int lettre = 0;lettre>Tableau.length;lettre++)
+      {
+        for (int chiffre =0; chiffre >Tableau[lettre].length; chiffre--)
+        {
+          val = Tableau[lettre][chiffre]; 
+          String.valueOf(val);
+          
+
+
         }
-        System.out.println( " ]");
+
       }
+      
       
 
 
