@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.lang.model.util.ElementScanner6;
+
 public class StuckWin {
     static final Scanner input = new Scanner(System.in);
     private static final double BOARD_SIZE = 7;
@@ -82,7 +84,7 @@ public class StuckWin {
           
           if (Tableau[i][j] == "")
           {
-            System.out.print(" ");
+            System.out.print("  ");
           }
           else
           {
@@ -90,8 +92,25 @@ public class StuckWin {
             lettre = Character.getNumericValue(tmp);
             tmp = Tableau[i][j].charAt(1);
             chiffre = Character.getNumericValue(tmp);
+            if(state[lettre][chiffre] == 'R')
+            {
 
-            System.out.print(state[lettre][chiffre]);
+              System.out.print(ConsoleColors.RED_BACKGROUND + (char)(65+lettre) + chiffre + ConsoleColors.RESET);
+
+            }
+            else if(state[lettre][chiffre] == 'B')
+            {
+
+              System.out.print(ConsoleColors.BLUE_BACKGROUND + (char)(65+lettre) + chiffre + ConsoleColors.RESET);
+
+            }
+            else 
+            {
+
+              System.out.print(ConsoleColors.BLACK+ConsoleColors.WHITE_BACKGROUND + (char)(65+lettre) + chiffre + ConsoleColors.RESET);
+
+            }
+            
 
           }
           
@@ -101,6 +120,9 @@ public class StuckWin {
       }
 
 
+
+
+      
 
 
 
