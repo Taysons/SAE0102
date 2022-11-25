@@ -58,38 +58,47 @@ public class StuckWin {
     void affiche() {
 
       String [][] Tableau = {
-        {"A7"},
-        {"A6","B7"},
-        {"A5","B6","C7"},
-        {"A4","B5","C6","D7"},
-        {"B4","C5","D6"},
-        {"B3","C4","D5","E6"},
-        {"C3","D4","E5",},
-        {"C2","D3","E4","F5"},
-        {"D2","E3","F4"},
-        {"D1","E2","F3","G4"},
-        {"E1","F2","G3"},
-        {"F1","G2"},
-        {"G1"}
+        {"","","","07","","",""},
+        {"","","06","","17","",""},
+        {"","05","","16","","27",""},
+        {"04","","15","","26","","37"},
+        {"","14","","25","","36",""},
+        {"13","","24","","35","","46"},
+        {"","23","","34","","45",""},
+        {"22","","33","","44","","55"},
+        {"","32","","43","","54",""},
+        {"31","","42","","53","","64"},
+        {"","41","","52","","63",""},
+        {"","","51","","62","",""},
+        {"","","","61","","",""}
       };
 
-      String val;
-      for (int lettre = 0;lettre>Tableau.length;lettre++)
+      int lettre;
+      int chiffre;
+      char tmp;
+      for (int i = 0; i < Tableau.length;i++)
       {
-        for (int chiffre =0; chiffre >Tableau[lettre].length; chiffre--)
-        {
-          val = Tableau[lettre][chiffre]; 
-          String.valueOf(val);
+        for (int j = 0; j < Tableau[i].length; j++) {
+          
+          if (Tableau[i][j] == "")
+          {
+            System.out.print(" ");
+          }
+          else
+          {
+            tmp = Tableau[i][j].charAt(0);
+            lettre = Character.getNumericValue(tmp);
+            tmp = Tableau[i][j].charAt(1);
+            chiffre = Character.getNumericValue(tmp);
 
+            System.out.print(state[lettre][chiffre]);
 
+          }
+          
 
         }
-
+        System.out.println("");;
       }
-      
-      
-
-
 
 
 
