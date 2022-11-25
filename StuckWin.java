@@ -22,6 +22,7 @@ public class StuckWin {
             {'-', 'B', 'B', 'B', 'B', '-', '-', '-'},
     };
 
+    
     /**
      * Déplace un pion ou simule son déplacement
      * @param couleur couleur du pion à déplacer
@@ -55,7 +56,29 @@ public class StuckWin {
      * l'attribut d'état "state"
      */
     void affiche() {
-      // votre code ici
+      System.out.println(" [ ");
+      for (int i = 0;i<state.length;i++)
+      {
+        System.out.println("[ ");
+        for (int u = 0;i<state[i].length;u++)
+        {
+
+          if (state[i][u]=='R' || state[i][u]=='B' || state[i][u]=='.')
+          {
+            System.out.println(state[i][u]);
+          }
+        }
+        System.out.println( " ]");
+      }
+      
+
+
+
+
+
+
+
+
     }
 
     /**
