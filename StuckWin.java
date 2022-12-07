@@ -59,24 +59,44 @@ public class StuckWin {
    */
   Result deplace(char couleur, String lcSource, String lcDest, ModeMvt mode) {
     // votre code ici. Supprimer la ligne ci-dessous.
-    if (couleur == 'B') {
+    if (couleur == 'B' || couleur == 'R') {
 
-      String Source = TradIdLettre(lcSource);
-      int[] Destination = { lcDest.charAt(0), lcDest.charAt(1) };
+      lcSource = TradIdLettre(lcSource);
+      lcDest = TradIdLettre(lcDest);
+      int[] Destination = { Character.getNumericValue(lcDest.charAt(0)), Character.getNumericValue(lcDest.charAt(1)) };
+     
+      int lettre = Character.getNumericValue(lcSource.charAt(0));
+      int chiffre = Character.getNumericValue(lcSource.charAt(1));
 
-      int lettre = Character.getNumericValue(Source.charAt(0));
-      int chiffre =Character.getNumericValue(Source.charAt(1));
       String[] posDest = possibleDests(couleur, lettre, chiffre);
 
       for (int i = 0;i<posDest.length;i++)
       {
-        System.out.println(posDest[i]);
+        if(!(posDest[i]=="Out" || posDest[i]=="-"))
+        {
+          if(posDest[i].equals(lcDest) )
+          {
+            if(mode==ModeMvt.REAL)
+            {
+              state[lettre][chiffre] = '.';
+              state[Destination[0]][Destination[1]] = couleur;
+            }
+            return Result.OK;
+          }
+          
+          
+        }
+        
       }
+      return Result.TOO_FAR;
       
 
     }
+    else  {
+      return Result.BAD_COLOR;
 
-    return Result.EXIT;
+    }
+    
 
   }
 
@@ -288,6 +308,10 @@ public class StuckWin {
         if ("q".equals(src))
           return;
         status = jeu.deplace(curCouleur, src, dest, ModeMvt.REAL);
+         
+        
+        jeu.affiche();
+         
 
         partie = jeu.finPartie(nextCouleur);
         System.out.println("status : " + status + " partie : " + partie);
