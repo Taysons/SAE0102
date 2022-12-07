@@ -64,39 +64,57 @@ public class StuckWin {
       lcSource = TradIdLettre(lcSource);
       lcDest = TradIdLettre(lcDest);
       int[] Destination = { Character.getNumericValue(lcDest.charAt(0)), Character.getNumericValue(lcDest.charAt(1)) };
-     
+      int[] Source = { Character.getNumericValue(lcSource.charAt(0)), Character.getNumericValue(lcSource.charAt(1)) };
+
       int lettre = Character.getNumericValue(lcSource.charAt(0));
       int chiffre = Character.getNumericValue(lcSource.charAt(1));
 
-      String[] posDest = possibleDests(couleur, lettre, chiffre);
+      String[] posDest = possibleDests(couleur, Source[0], Source[1]);
+      Boolean erreurDest = false;
+      Boolean erreurOut = false;
 
-      for (int i = 0;i<posDest.length;i++)
-      {
-        if(!(posDest[i]=="Out" || posDest[i]=="-"))
-        {
-          if(posDest[i].equals(lcDest) )
-          {
-            if(mode==ModeMvt.REAL)
-            {
-              state[lettre][chiffre] = '.';
-              state[Destination[0]][Destination[1]] = couleur;
-            }
-            return Result.OK;
-          }
-          
-          
-        }
-        
+      char advCouleur;
+      if (couleur == 'B') {
+        advCouleur = 'R';
+      } else {
+        advCouleur = 'B';
       }
-      return Result.TOO_FAR;
-      
 
-    }
-    else  {
+      if (state[Source[0]][Source[1]] != advCouleur)
+        for (int i = 0; i < posDest.length; i++) {
+          if (posDest[i].equals(lcDest)) {
+            if (state[Destination[0]][Destination[1]] == '.') {
+
+              if (mode == ModeMvt.REAL) {
+                state[Source[0]][Source[1]] = '.';
+                state[Destination[0]][Destination[1]] = couleur;
+              }
+              return Result.OK;
+            } else if (state[Destination[0]][Destination[1]] == 'B' || state[Destination[0]][Destination[1]] == 'R') {
+              erreurDest = true;
+            }
+
+          } else if ((state[Destination[0]][Destination[1]] == '-')) {
+            erreurOut = true;
+          }
+
+        }
+      else {
+        return Result.EMPTY_SRC;
+      }
+
+      if (erreurDest) {
+        return Result.DEST_NOT_FREE;
+      } else if (erreurOut) {
+        return Result.EXT_BOARD;
+      } else {
+        return Result.TOO_FAR;
+      }
+
+    } else {
       return Result.BAD_COLOR;
 
     }
-    
 
   }
 
@@ -114,8 +132,8 @@ public class StuckWin {
 
     if (couleur == 'R') {
       String[] posPossible = { "" + idLettre + (idCol - 1),
-                               "" + (idLettre + 1) + (idCol),
-                               "" + (idLettre + 1) + (idCol - 1) };
+          "" + (idLettre + 1) + (idCol),
+          "" + (idLettre + 1) + (idCol - 1) };
 
       for (int i = 0; i < posPossible.length; i++) {
         char tmp = posPossible[i].charAt(0);
@@ -123,12 +141,10 @@ public class StuckWin {
         tmp = posPossible[i].charAt(1);
         int chiffre = Character.getNumericValue(tmp);
 
-        if ((lettre >= 0 && lettre < 7) && (chiffre >= 0 && chiffre < 8)) {
-          if (state[lettre][chiffre] != '.') {
-            posPossible[i] = "-";
-          }
-        } else {
+        if (!((lettre >= 0 && lettre < 7) && (chiffre >= 0 && chiffre < 8))) {
+
           posPossible[i] = "Out";
+
         }
 
       }
@@ -136,8 +152,8 @@ public class StuckWin {
 
     } else if (couleur == 'B') {
       String[] posPossible = { "" + idLettre + (idCol + 1),
-                               "" + (idLettre - 1) + (idCol),
-                               "" + (idLettre - 1) + (idCol + 1) };
+          "" + (idLettre - 1) + (idCol),
+          "" + (idLettre - 1) + (idCol + 1) };
 
       for (int i = 0; i < posPossible.length; i++) {
         char tmp = posPossible[i].charAt(0);
@@ -145,11 +161,7 @@ public class StuckWin {
         tmp = posPossible[i].charAt(1);
         int chiffre = Character.getNumericValue(tmp);
 
-        if ((lettre >= 0 && lettre < 7) && (chiffre >= 0 && chiffre < 8)) {
-          if (state[lettre][chiffre] != '.') {
-            posPossible[i] = "-";
-          }
-        } else {
+        if (!(lettre >= 0 && lettre < 7) && (chiffre >= 0 && chiffre < 8)) {
           posPossible[i] = "Out";
         }
 
@@ -169,7 +181,7 @@ public class StuckWin {
    * @param valeur
    * @return
    */
-  String  TradIdLettre(String valeur) {
+  String TradIdLettre(String valeur) {
     String retour;
     char tmp = valeur.charAt(0);
     char tmp1 = valeur.charAt(1);
@@ -181,13 +193,12 @@ public class StuckWin {
       return retour;
     }
     int val = tmp;
-    tmp = (char)(val - 17);
-    
+    tmp = (char) (val - 17);
+
     retour = "" + tmp + tmp1;
     return retour;
 
   }
-
 
   /**
    * Affiche le plateau de jeu dans la configuration portée par
@@ -308,10 +319,8 @@ public class StuckWin {
         if ("q".equals(src))
           return;
         status = jeu.deplace(curCouleur, src, dest, ModeMvt.REAL);
-         
-        
+
         jeu.affiche();
-         
 
         partie = jeu.finPartie(nextCouleur);
         System.out.println("status : " + status + " partie : " + partie);
