@@ -25,16 +25,16 @@ public class StuckWin {
   final char VIDE = '.';
   // 'B'=bleu 'R'=rouge '.'=vide '-'=n'existe pas
   char[][] state = {
-      { '-', '-', '-', '-', 'R', 'R', 'R', 'R' },
-      { '-', '-', '-', '.', 'R', 'R', 'R', 'R' },
-      { '-', '-', '.', '.', '.', 'R', 'R', 'R' },
-      { '-', 'B', 'B', '.', '.', '.', 'R', 'B' },
-      { '-', 'B', 'B', 'B', '.', '.', 'B', '-' },
-      { '-', 'B', 'B', 'B', 'B', '.', '-', '-' },
-      { '-', 'B', '.', 'R', 'B', '-', '-', '-' },
+          {'-', '-', '-', '-', 'R', 'R', 'R', 'R'},
+          {'-', '-', '-', '.', 'R', 'R', 'R', 'R'},
+          {'-', '-', '.', '.', '.', 'R', 'R', 'R'},
+          {'-', 'B', 'B', '.', '.', '.', 'R', 'R'},
+          {'-', 'B', 'B', 'B', '.', '.', '.', '-'},
+          {'-', 'B', 'B', 'B', 'B', '.', '-', '-'},
+          {'-', 'B', 'B', 'B', 'B', '-', '-', '-'},
   };
 
-  String[][] Tableau = {
+  String[][] tableau = {
       { "", "", "", "07", "", "", "" },
       { "", "", "06", "", "17", "", "" },
       { "", "05", "", "16", "", "27", "" },
@@ -50,8 +50,10 @@ public class StuckWin {
       { "", "", "", "61", "", "", "" }
   };
 
-  String[] PointR = new String[13];
-  String[] PointB = new String[13];
+  String[] pointR = new String[13];
+  String[] pointB = new String[13];
+
+  Random random = new Random();
 
   /**
    * ajoute les points de départ des pions
@@ -60,32 +62,45 @@ public class StuckWin {
    * @return
    */
   void addPosCouleur(char couleur) {
-    
+
     int j = 0;
     if (couleur == 'R') {
-     
+
       for (int i = 0; i < state.length; i++) {
         for (int k = 0; k < state[i].length; k++) {
           if (state[i][k] == couleur) {
 
-            PointR[j] = "" + i + k;
+            pointR[j] = "" + i + k;
             j++;
           }
         }
       }
     } else {
-      
+
       for (int i = 0; i < state.length; i++) {
         for (int k = 0; k < state[i].length; k++) {
           if (state[i][k] == couleur) {
 
-            PointB[j] = "" + i + k;
+            pointB[j] = "" + i + k;
             j++;
           }
         }
       }
 
     }
+  }
+
+  /**
+   *
+   */
+  String getIdToLettre(String id) {
+    int tmp = id.charAt(0);
+    int tmp2 = id.charAt(1);
+    if (tmp < 65) {
+      tmp = tmp + 17;
+    }
+
+    return "" + (char) tmp + (char) tmp2;
   }
 
   /**
@@ -101,41 +116,39 @@ public class StuckWin {
    */
   Result deplace(char couleur, String lcSource, String lcDest, ModeMvt mode) {
     // votre code ici. Supprimer la ligne ci-dessous.
-    if (lcDest.equals("Out"))
-      return Result.EXT_BOARD;
+
     if (couleur == 'B' || couleur == 'R') {
+      int[] source = recupereid(lcSource);
+      int[] destination = recupereid(lcDest);
 
-      lcSource = TradIdLettre(lcSource);
-      lcDest = TradIdLettre(lcDest);
-      int[] Source = recupereid(lcSource);
-      int[] Destination = recupereid(lcDest);
-
-      String[] posDest = possibleDests(couleur, Source[0], Source[1]);
+      String[] posDest = possibleDests(couleur, source[0], source[1]);
       Boolean erreurDest = false;
       Boolean erreurOut = false;
 
-      
+      if (!(verifTaille(source)) || !(verifTaille(destination))) {
+        return Result.EXT_BOARD;
+      }
 
-      if (state[Source[0]][Source[1]] == couleur) {
+      if (state[source[0]][source[1]] == couleur) {
         for (int i = 0; i < posDest.length; i++) {
 
           if (posDest[i].equals(lcDest)) {
-            if (state[Destination[0]][Destination[1]] == '.') {
+            if (state[destination[0]][destination[1]] == VIDE) {
 
               if (mode == ModeMvt.REAL) {
-                state[Source[0]][Source[1]] = '.';
-                state[Destination[0]][Destination[1]] = couleur;
+                state[source[0]][source[1]] = VIDE;
+                state[destination[0]][destination[1]] = couleur;
                 if (couleur == 'R') {
-                  for(int g = 0; g < PointR.length; g++) {
-                    if(PointR[g].equals(lcSource)) {
-                      PointR[g] = lcDest;
+                  for (int g = 0; g < pointR.length; g++) {
+                    if (pointR[g].equals(lcSource)) {
+                      pointR[g] = lcDest;
                       break;
                     }
                   }
                 } else {
-                  for(int g = 0; g < PointR.length; g++) {
-                    if(PointB[g].equals(lcSource)) {
-                      PointB[g] = lcDest;
+                  for (int g = 0; g < pointR.length; g++) {
+                    if (pointB[g].equals(lcSource)) {
+                      pointB[g] = lcDest;
                       break;
                     }
                   }
@@ -143,11 +156,11 @@ public class StuckWin {
               }
               return Result.OK;
 
-            } else if (state[Destination[0]][Destination[1]] == 'B' || state[Destination[0]][Destination[1]] == 'R') {
+            } else if (state[destination[0]][destination[1]] == 'B' || state[destination[0]][destination[1]] == 'R') {
               erreurDest = true;
             }
 
-          } else if ((state[Destination[0]][Destination[1]] == '-')) {
+          } else if ((state[destination[0]][destination[1]] == '-')) {
             erreurOut = true;
           }
 
@@ -156,9 +169,9 @@ public class StuckWin {
         return Result.EMPTY_SRC;
       }
 
-      if (erreurDest) {
+      if (Boolean.TRUE.equals(erreurDest)) {
         return Result.DEST_NOT_FREE;
-      } else if (erreurOut) {
+      } else if (Boolean.TRUE.equals(erreurOut)) {
         return Result.EXT_BOARD;
       } else {
         return Result.TOO_FAR;
@@ -168,6 +181,18 @@ public class StuckWin {
       return Result.BAD_COLOR;
 
     }
+
+  }
+
+  /**
+   * Retour Faux si la position est hors du plateau
+   * 
+   * @param pos
+   * @return
+   */
+  boolean verifTaille(int[] pos) {
+
+    return (pos[0] >= 0 && pos[0] < 7 && pos[1] >= 0 && pos[1] < 8);
 
   }
 
@@ -184,46 +209,20 @@ public class StuckWin {
   String[] possibleDests(char couleur, int idLettre, int idCol) {
 
     if (couleur == 'R') {
-      String[] posPossible = { "" + idLettre + (idCol - 1),
+
+      return new String[] { "" + idLettre + (idCol - 1),
           "" + (idLettre + 1) + (idCol),
           "" + (idLettre + 1) + (idCol - 1) };
 
-      for (int i = 0; i < posPossible.length; i++) {
-        char tmp = posPossible[i].charAt(0);
-        int lettre = Character.getNumericValue(tmp);
-        tmp = posPossible[i].charAt(1);
-        int chiffre = Character.getNumericValue(tmp);
-
-        if (!((lettre >= 0 && lettre < 7) && (chiffre >= 0 && chiffre < 8))) {
-
-          posPossible[i] = "Out";
-
-        }
-
-      }
-      return posPossible;
-
     } else if (couleur == 'B') {
-      String[] posPossible = { "" + idLettre + (idCol + 1),
+
+      return new String[] { "" + idLettre + (idCol + 1),
           "" + (idLettre - 1) + (idCol),
           "" + (idLettre - 1) + (idCol + 1) };
 
-      for (int i = 0; i < posPossible.length; i++) {
-        char tmp = posPossible[i].charAt(0);
-        int lettre = Character.getNumericValue(tmp);
-        tmp = posPossible[i].charAt(1);
-        int chiffre = Character.getNumericValue(tmp);
-
-        if (!(lettre >= 0 && lettre < 7) && (chiffre >= 0 && chiffre < 8)) {
-          posPossible[i] = "Out";
-        }
-
-      }
-      return posPossible;
-
     } else {
-      String posPossible[] = { "False" };
-      return posPossible;
+
+      return new String[] { "False" };
     }
 
   }
@@ -234,20 +233,16 @@ public class StuckWin {
    * @param valeur
    * @return
    */
-  String TradIdLettre(String valeur) {
+  String tradIdLettre(String valeur) {
     String retour;
     // si la valeur = 2 charactere
     char tmp = valeur.charAt(0);
     char tmp1 = valeur.charAt(1);
     tmp = Character.toUpperCase(tmp);
     String valideL = "ABCDEFG";
-    String valideC = "0123456";
 
-    if (!(valideC.contains(String.valueOf(tmp)))) {
-      if (!(valideL.contains(String.valueOf(tmp)))) {
-        retour = "out";
-        return retour;
-      }
+    if (valideL.contains(String.valueOf(tmp))) {
+
       int val = tmp;
       tmp = (char) (val - 17);
     }
@@ -266,15 +261,15 @@ public class StuckWin {
     int lettre;
     int chiffre;
     char tmp;
-    for (int i = 0; i < Tableau.length; i++) {
-      for (int j = 0; j < Tableau[i].length; j++) {
+    for (int i = 0; i < tableau.length; i++) {
+      for (int j = 0; j < tableau[i].length; j++) {
 
-        if (Tableau[i][j].equals("")) {
+        if (tableau[i][j].equals("")) {
           System.out.print("  ");
         } else {
-          tmp = Tableau[i][j].charAt(0);
+          tmp = tableau[i][j].charAt(0);
           lettre = Character.getNumericValue(tmp);
-          tmp = Tableau[i][j].charAt(1);
+          tmp = tableau[i][j].charAt(1);
           chiffre = Character.getNumericValue(tmp);
           if (state[lettre][chiffre] == 'R') {
 
@@ -299,7 +294,7 @@ public class StuckWin {
 
   }
 
-  String[] jouerIAHumain(char couleur) {
+  String[] jouerIAHumain() {
 
     String src = input.next();
     String dst = input.next();
@@ -318,22 +313,24 @@ public class StuckWin {
   String[] jouerIA(char couleur) {
     String src = "";
     String dst = "";
+
     do {
       if (couleur == 'R') {
-        int rand = (int) (Math.random() * PointR.length);
-        src = PointR[rand];
-        int[] Source = { Character.getNumericValue(src.charAt(0)), Character.getNumericValue(src.charAt(1)) };
+        int rand = random.nextInt(pointR.length);
+        src = pointR[rand];
+        int[] source = { Character.getNumericValue(src.charAt(0)), Character.getNumericValue(src.charAt(1)) };
 
-        String[] posPossible = possibleDests(couleur, Source[0], Source[1]);
-        int rand2 = (int) (Math.random() * posPossible.length);
+        String[] posPossible = possibleDests(couleur, source[0], source[1]);
+        int rand2 = random.nextInt(posPossible.length);
         dst = posPossible[rand2];
       } else if (couleur == 'B') {
-        int rand = (int) (Math.random() * PointB.length);
-        int[] Source = { Character.getNumericValue(src.charAt(0)), Character.getNumericValue(src.charAt(1)) };
+        int rand = random.nextInt(pointB.length);
 
-        src = PointB[rand];
-        String[] posPossible = possibleDests(couleur, Source[0], Source[1]);
-        int rand2 = (int) (Math.random() * posPossible.length);
+        src = pointB[rand];
+        int[] source = { Character.getNumericValue(src.charAt(0)), Character.getNumericValue(src.charAt(1)) };
+
+        String[] posPossible = possibleDests(couleur, source[0], source[1]);
+        int rand2 = random.nextInt(posPossible.length);
         dst = posPossible[rand2];
       }
     } while (deplace(couleur, src, dst, ModeMvt.SIMU) != Result.OK);
@@ -356,14 +353,19 @@ public class StuckWin {
         System.out.println("Mouvement " + couleur);
         src = input.next();
         dst = input.next();
-        System.out.println(src + "->" + dst);
+        // mvtIa = jouerIA(couleur);
+        // src = mvtIa[0];
+        // dst = mvtIa[1];
+        System.out.println(getIdToLettre(src) + "->" + getIdToLettre(dst));
         break;
       case 'R':
         System.out.println("Mouvement " + couleur);
         mvtIa = jouerIA(couleur);
         src = mvtIa[0];
         dst = mvtIa[1];
-        System.out.println(src + "->" + dst);
+        getIdToLettre(src);
+        getIdToLettre(dst);
+        System.out.println(getIdToLettre(src) + "->" + getIdToLettre(dst));
         break;
       default:
         break;
@@ -374,9 +376,9 @@ public class StuckWin {
   /**
    * retourne un tableau de String contenant les id possibles pour une position
    * 
-   * @param couleur
+   *
    * @param src
-   * @return
+   * @return int
    */
 
   int[] recupereid(String src) {
@@ -395,11 +397,11 @@ public class StuckWin {
   char finPartie(char couleur) {
 
     if (couleur == 'R') {
-      for (int i = 0; i < PointR.length; i++) {
-        int[] id = recupereid(PointR[i]);
+      for (int i = 0; i < pointR.length; i++) {
+        int[] id = recupereid(pointR[i]);
         String[] possDest = possibleDests(couleur, id[0], id[1]);
         for (int j = 0; j < possDest.length; j++) {
-          if (deplace(couleur, PointR[i], possDest[j], ModeMvt.SIMU) == Result.OK) {
+          if (deplace(couleur, pointR[i], possDest[j], ModeMvt.SIMU) == Result.OK) {
 
             return 'N';
           }
@@ -407,11 +409,11 @@ public class StuckWin {
       }
       return 'R';
     } else {
-      for (int i = 0; i < PointB.length; i++) {
-        int[] id = recupereid(PointB[i]);
+      for (int i = 0; i < pointB.length; i++) {
+        int[] id = recupereid(pointB[i]);
         String[] possDest = possibleDests(couleur, id[0], id[1]);
         for (int j = 0; j < possDest.length; j++) {
-          if (deplace(couleur, PointB[i], possDest[j], ModeMvt.SIMU) == Result.OK) {
+          if (deplace(couleur, pointB[i], possDest[j], ModeMvt.SIMU) == Result.OK) {
             return 'N';
           }
         }
@@ -448,19 +450,21 @@ public class StuckWin {
         dest = reponse[1];
         if ("q".equals(src))
           return;
+        src = jeu.tradIdLettre(src);
+        dest = jeu.tradIdLettre(dest);
         status = jeu.deplace(curCouleur, src, dest, ModeMvt.REAL);
-
-        jeu.affiche();
 
         partie = jeu.finPartie(nextCouleur);
 
         System.out.println("status : " + status + " partie : " + partie);
       } while (status != Result.OK && partie == 'N');
+      
       tmp = curCouleur;
       curCouleur = nextCouleur;
       nextCouleur = tmp;
       cpt++;
     } while (partie == 'N'); // TODO affiche vainqueur
+    jeu.affiche();
     System.out.printf("Victoire : " + partie + " (" + (cpt / 2) + " coups)");
   }
 
