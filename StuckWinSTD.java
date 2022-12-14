@@ -6,11 +6,30 @@ import java.util.Random;
 
 import javax.lang.model.util.ElementScanner6;
 import javax.swing.Renderer;
+import javax.xml.stream.events.StartDocument;
 
-public class StuckWin {
-  /// DEBUT_STD_DRAW
+public class StuckWinSTD {
+  ///DEBUT_STD_DRAW
 
-  /// FIN_STD_DRAW
+  void init()
+  {
+    StdDraw.setCanvasSize(1000,1000);
+    StdDraw.setScale(-SIZE/2,SIZE/2);
+
+    
+  }
+
+void hexagone()
+{
+  StdDraw.setPenColor(StdDraw.BLACK);
+  StdDraw.setPenRadius(0.005);
+  
+}
+
+
+
+
+  ///FIN_STD_DRAW
   static final Scanner input = new Scanner(System.in);
   private static final double BOARD_SIZE = 7;
 
@@ -58,8 +77,7 @@ public class StuckWin {
   Random random = new Random();
 
   /**
-   * permet de recuperer un string pour renvoyer un string en mode Lettre 
-   * Chiffre
+   * permet de recuperer un string pour renvoyer un string en mode Lettre Chiffre
    * 
    * @param id
    * @return
@@ -96,6 +114,7 @@ public class StuckWin {
     }
 
   }
+  
 
   /**
    * permet de modifié les tableaux de point rouge ou bleu
@@ -128,8 +147,7 @@ public class StuckWin {
   }
 
   /**
-   * Traducteur de l'idLettre, entre String valeur forme "E2" 
-   * sortie String "42"
+   * Traducteur de l'idLettre, entre String valeur forme "E2" sortie String "42"
    * 
    * @param valeur
    * @return
@@ -182,8 +200,7 @@ public class StuckWin {
       return Result.DEST_NOT_FREE;
     }
 
-    if (Math.abs(source[0] - destination[0]) > 1
-     || Math.abs(source[1] - destination[1]) > 1) {
+    if (Math.abs(source[0] - destination[0]) > 1 || Math.abs(source[1] - destination[1]) > 1) {
       return Result.TOO_FAR;
     }
 
@@ -209,8 +226,7 @@ public class StuckWin {
    * @param couleur  couleur du pion à jouer
    * @param idLettre id de la ligne du pion à jouer
    * @param idCol    id de la colonne du pion à jouer
-   * @return tableau des trois positions jouables par le pion (redondance 
-   * possible
+   * @return tableau des trois positions jouables par le pion (redondance possible
    *         sur les bords)
    */
   String[] possibleDests(char couleur, int idLettre, int idCol) {
@@ -255,18 +271,15 @@ public class StuckWin {
           chiffre = Character.getNumericValue(tmp);
           if (state[lettre][chiffre] == 'R') {
 
-            System.out.print(ConsoleColors.RED_BACKGROUND + 
-            (char) (65 + lettre) + chiffre + ConsoleColors.RESET);
+            System.out.print(ConsoleColors.RED_BACKGROUND + (char) (65 + lettre) + chiffre + ConsoleColors.RESET);
 
           } else if (state[lettre][chiffre] == 'B') {
 
-            System.out.print(ConsoleColors.BLUE_BACKGROUND + 
-            (char) (65 + lettre) + chiffre + ConsoleColors.RESET);
+            System.out.print(ConsoleColors.BLUE_BACKGROUND + (char) (65 + lettre) + chiffre + ConsoleColors.RESET);
 
           } else {
 
-            System.out.print(ConsoleColors.BLACK + 
-            ConsoleColors.WHITE_BACKGROUND + (char) (65 + lettre) + chiffre
+            System.out.print(ConsoleColors.BLACK + ConsoleColors.WHITE_BACKGROUND + (char) (65 + lettre) + chiffre
                 + ConsoleColors.RESET);
 
           }
@@ -284,7 +297,7 @@ public class StuckWin {
    * 
    * @return
    */
-  String[] jouerIAHumain(char couleur) {
+  String[] jouerIAHumain() {
 
     String src = input.next();
     String dst = input.next();
@@ -307,13 +320,11 @@ public class StuckWin {
 
   /**
    * Joue un tour aleatoire grace a pointR et pointB avec un rand
-   * et retourne un tableau de deux String contenant la position de depart et 
-   * la
+   * et retourne un tableau de deux String contenant la position de depart et la
    * position d'arrivee
    * 
    * @param couleur couleur du pion à jouer
-   * @return tableau contenant la position de départ et la destination du pion 
-   * à
+   * @return tableau contenant la position de départ et la destination du pion à
    *         jouer.
    */
   String[] jouerIA(char couleur) {
@@ -324,8 +335,7 @@ public class StuckWin {
       if (couleur == 'R') {
         int rand = random.nextInt(pointR.length);
         src = pointR[rand];
-        int[] source = { Character.getNumericValue(src.charAt(0)),
-                          Character.getNumericValue(src.charAt(1)) };
+        int[] source = { Character.getNumericValue(src.charAt(0)), Character.getNumericValue(src.charAt(1)) };
 
         String[] posPossible = possibleDests(couleur, source[0], source[1]);
         int rand2 = random.nextInt(posPossible.length);
@@ -334,8 +344,7 @@ public class StuckWin {
         int rand = random.nextInt(pointB.length);
 
         src = pointB[rand];
-        int[] source = { Character.getNumericValue(src.charAt(0)), 
-                          Character.getNumericValue(src.charAt(1)) };
+        int[] source = { Character.getNumericValue(src.charAt(0)), Character.getNumericValue(src.charAt(1)) };
 
         String[] posPossible = possibleDests(couleur, source[0], source[1]);
         int rand2 = random.nextInt(posPossible.length);
@@ -359,14 +368,16 @@ public class StuckWin {
     switch (couleur) {
       case 'B':
         System.out.println("Mouvement " + couleur);
-        mvtIa = jouerIAHumain(couleur);
+        // src = input.next();
+        // dst = input.next();
+        mvtIa = jouerIA(couleur);
         src = mvtIa[0];
         dst = mvtIa[1];
         System.out.println(getIdToLettre(src) + "->" + getIdToLettre(dst));
         break;
       case 'R':
         System.out.println("Mouvement " + couleur);
-        mvtIa = jouerIAHumain(couleur);
+        mvtIa = jouerIA(couleur);
         src = mvtIa[0];
         dst = mvtIa[1];
         getIdToLettre(src);
@@ -421,7 +432,7 @@ public class StuckWin {
 
   public static void main(String[] args) {
 
-    StuckWin jeu = new StuckWin();
+    StuckWinSTD jeu = new StuckWinSTD();
     jeu.addPosCouleur(jeu.pointR, 'R');
     jeu.addPosCouleur(jeu.pointB, 'B');
     String src = "";
