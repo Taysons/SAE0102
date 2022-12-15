@@ -56,17 +56,21 @@ public class StuckWin {
   Random random = new Random();
 
   /**
-   * permet de recuperer un string pour renvoyer un string en mode Lettre Chiffre
-   * Cette fonction sert pour afficher des coordonnées plus lisibles dans le terminal
+   * permet de recuperer un string pour renvoyer un string 
+   * en mode Lettre Chiffre
+   * Cette fonction sert pour afficher 
+   * des coordonnées plus lisibles dans le terminal
    * @param id
    * @return
    */
   String getIdToLettre(String id) {
-    //Renvoie 2 nouveaux int (tmp et tmp2) contenant les valeurs des 2 premiers caractères de l'id
-    //
+    //Renvoie 2 nouveaux int (tmp et tmp2)
+    //contenant les valeurs des 2 premiers caractères de l'id
+    
     int tmp = id.charAt(0);
     int tmp2 = id.charAt(1);
-    // Si tmp est plus petit que 65 (caractère A) alors il le transforme en lettre
+    // Si tmp est plus petit que 65 (caractère A)
+    // alors il le transforme en lettre
     if (tmp < 65) {
       tmp = tmp + 17;
     }
@@ -87,7 +91,8 @@ public class StuckWin {
     // parcours le tableau State pour trouver les pions de la couleur
     for (int i = 0; i < state.length; i++) {
       for (int k = 0; k < state[i].length; k++) {
-        // si la couleur correspond, on ajoute la position dans le tableau de point de la couleur correspondante
+        // si la couleur correspond, on ajoute la position dans 
+        // le tableau de point de la couleur correspondante
         if (state[i][k] == couleur) {
 
           point[j] = "" + i + k;
@@ -167,7 +172,8 @@ public class StuckWin {
    * @return enum {OK, BAD_COLOR, DEST_NOT_FREE, EMPTY_SRC, TOO_FAR, EXT_BOARD,
    *         EXIT} selon le déplacement
    */
-  StuckWinSTD.Result deplace(char couleur, String lcSource, String lcDest, StuckWinSTD.ModeMvt mode) {
+  StuckWinSTD.Result deplace(char couleur, String lcSource,
+                             String lcDest, StuckWinSTD.ModeMvt mode) {
     int[] source = recupereid(lcSource);
     int[] destination = recupereid(lcDest);
     // si la source ou la destination est hors du plateau
@@ -187,14 +193,16 @@ public class StuckWin {
       return StuckWinSTD.Result.DEST_NOT_FREE;
     }
     // si la distance est supérieure à 1
-    if (Math.abs(source[0] - destination[0]) > 1 || Math.abs(source[1] - destination[1]) > 1) {
+    if (Math.abs(source[0] - destination[0]) > 1 
+        || Math.abs(source[1] - destination[1]) > 1) {
       return StuckWinSTD.Result.TOO_FAR;
     }
     // si le mode est réel alors on modifie la position du pion
     if (mode == StuckWinSTD.ModeMvt.REAL) {
       state[source[0]][source[1]] = VIDE;
       state[destination[0]][destination[1]] = couleur;
-      //et on modifie la position du pion dans le tableau pointR ou pointB selon la couleur
+      //et on modifie la position du pion dans
+      // le tableau pointR ou pointB selon la couleur
       if (couleur == 'R') {
         changePointTab(pointR, lcSource, lcDest);
 
@@ -242,7 +250,8 @@ public class StuckWin {
   /**
    * Affiche le plateau de jeu dans la configuration portée par
    * l'attribut d'état "state"
-   * Elle utilise le tableau de string tableau pour afficher les valeurs de "state"
+   * Elle utilise le tableau de string tableau
+   *  pour afficher les valeurs de "state"
    */
   void affiche() {
 
@@ -265,19 +274,22 @@ public class StuckWin {
           // si la valeur est rouge
           if (state[lettre][chiffre] == 'R') {
             // affiche la case en rouge
-            System.out.print(ConsoleColors.RED_BACKGROUND + (char) (65 + lettre) + chiffre + ConsoleColors.RESET);
+            System.out.print(ConsoleColors.RED_BACKGROUND + 
+            (char) (65 + lettre) + chiffre + ConsoleColors.RESET);
 
           }
           // si la valeur est bleue
           else if (state[lettre][chiffre] == 'B') {
             // affiche la case en bleu
-            System.out.print(ConsoleColors.BLUE_BACKGROUND + (char) (65 + lettre) + chiffre + ConsoleColors.RESET);
+            System.out.print(ConsoleColors.BLUE_BACKGROUND + 
+            (char) (65 + lettre) + chiffre + ConsoleColors.RESET);
 
           }
           // si la case est "." (tous les autres cas en soi)
           else {
             // affiche la case en white
-            System.out.print(ConsoleColors.BLACK + ConsoleColors.WHITE_BACKGROUND + (char) (65 + lettre) + chiffre
+            System.out.print(ConsoleColors.BLACK + 
+            ConsoleColors.WHITE_BACKGROUND + (char) (65 + lettre) + chiffre
                     + ConsoleColors.RESET);
 
           }
@@ -311,7 +323,8 @@ public class StuckWin {
 
   int[] recupereid(String src) {
     int[] id = new int[2];
-    // Convertit le caractère Unicode numérique à la position spécifiée dans une chaîne spécifiée en un nombre
+    // Convertit le caractère Unicode numérique à la position 
+    // spécifiée dans une chaîne spécifiée en un nombre
     // à virgule flottante double précision.
     id[0] = Character.getNumericValue(src.charAt(0));
     id[1] = Character.getNumericValue(src.charAt(1));
@@ -337,7 +350,8 @@ public class StuckWin {
         // genere un nombre aleatoire entre 0 et la taille du tableau pointR
         int rand = random.nextInt(pointR.length);
         src = pointR[rand];
-        int[] source = { Character.getNumericValue(src.charAt(0)), Character.getNumericValue(src.charAt(1)) };
+        int[] source = { Character.getNumericValue(src.charAt(0)),
+           Character.getNumericValue(src.charAt(1)) };
 
         // genere un nombre aleatoire entre 0 et la taille du tableau posPossible
         String[] posPossible = possibleDests(couleur, source[0], source[1]);
@@ -349,7 +363,8 @@ public class StuckWin {
         int rand = random.nextInt(pointB.length);
 
         src = pointB[rand];
-        int[] source = { Character.getNumericValue(src.charAt(0)), Character.getNumericValue(src.charAt(1)) };
+        int[] source = { Character.getNumericValue(src.charAt(0)),
+           Character.getNumericValue(src.charAt(1)) };
         // genere un nombre aleatoire entre 0 et la taille du tableau posPossible
         String[] posPossible = possibleDests(couleur, source[0], source[1]);
         int rand2 = random.nextInt(posPossible.length);
@@ -357,7 +372,8 @@ public class StuckWin {
       }
     }
     // tant que le deplacement n'est pas possible
-    while (deplace(couleur, src, dst, StuckWinSTD.ModeMvt.SIMU) != StuckWinSTD.Result.OK);
+    while (deplace(couleur, src, dst, 
+    StuckWinSTD.ModeMvt.SIMU) != StuckWinSTD.Result.OK);
     return new String[] { src, dst };
 
   }
@@ -417,7 +433,8 @@ public class StuckWin {
       // pour chaque destination possible
       for (int j = 0; j < possDest.length; j++) {
         // si le deplacement est possible
-        if (deplace(couleur, tab[i], possDest[j], StuckWinSTD.ModeMvt.SIMU) == StuckWinSTD.Result.OK) {
+        if (deplace(couleur, tab[i], possDest[j],
+         StuckWinSTD.ModeMvt.SIMU) == StuckWinSTD.Result.OK) {
 
           return 'N';
         }
