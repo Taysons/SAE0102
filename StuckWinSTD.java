@@ -13,24 +13,30 @@ public class StuckWinSTD {
 
   void init()
   {
-    StdDraw.setCanvasSize(1000,1000);
+    StdDraw.setCanvasSize(900,900);
     StdDraw.setScale(-SIZE/2,SIZE/2);
-
+    hexagone();
     
   }
 
 // Dessine des hexagones
-void hexagone()
-{
-  StdDraw.setPenColor(StdDraw.BLACK);
-  StdDraw.setPenRadius(0.005);
-  
-}
+  void hexagone()
+  {
+    StdDraw.setPenColor(StdDraw.BLACK);
+    StdDraw.setPenRadius(0.005);
+    int i=1;
+    int j=1;
+    StdDraw.polygon( new double[] {i-0.5, i+0.5, i+1, i+0.5, i-0.5, i-1}, new double[] {j-0.5, j-0.5, j, j+0.5, j+0.5, j} );
+    
+  }
+
+
 
 
 
 
   ///FIN_STD_DRAW
+
   static final Scanner input = new Scanner(System.in);
   private static final double BOARD_SIZE = 7;
 
@@ -47,29 +53,29 @@ void hexagone()
   final char VIDE = '.';
   // 'B'=bleu 'R'=rouge '.'=vide '-'=n'existe pas
   char[][] state = {
-      { '-', '-', '-', '-', 'R', 'R', 'R', 'R' },
-      { '-', '-', '-', '.', 'R', 'R', 'R', 'R' },
-      { '-', '-', '.', '.', '.', 'R', 'R', 'R' },
-      { '-', 'B', 'B', '.', '.', '.', 'R', 'R' },
-      { '-', 'B', 'B', 'B', '.', '.', '.', '-' },
-      { '-', 'B', 'B', 'B', 'B', '.', '-', '-' },
-      { '-', 'B', 'B', 'B', 'B', '-', '-', '-' },
+          { '-', '-', '-', '-', 'R', 'R', 'R', 'R' },
+          { '-', '-', '-', '.', 'R', 'R', 'R', 'R' },
+          { '-', '-', '.', '.', '.', 'R', 'R', 'R' },
+          { '-', 'B', 'B', '.', '.', '.', 'R', 'R' },
+          { '-', 'B', 'B', 'B', '.', '.', '.', '-' },
+          { '-', 'B', 'B', 'B', 'B', '.', '-', '-' },
+          { '-', 'B', 'B', 'B', 'B', '-', '-', '-' },
   };
 
   String[][] tableau = {
-      { "", "", "", "07", "", "", "" },
-      { "", "", "06", "", "17", "", "" },
-      { "", "05", "", "16", "", "27", "" },
-      { "04", "", "15", "", "26", "", "37" },
-      { "", "14", "", "25", "", "36", "" },
-      { "13", "", "24", "", "35", "", "46" },
-      { "", "23", "", "34", "", "45", "" },
-      { "22", "", "33", "", "44", "", "55" },
-      { "", "32", "", "43", "", "54", "" },
-      { "31", "", "42", "", "53", "", "64" },
-      { "", "41", "", "52", "", "63", "" },
-      { "", "", "51", "", "62", "", "" },
-      { "", "", "", "61", "", "", "" }
+          { "", "", "", "07", "", "", "" },
+          { "", "", "06", "", "17", "", "" },
+          { "", "05", "", "16", "", "27", "" },
+          { "04", "", "15", "", "26", "", "37" },
+          { "", "14", "", "25", "", "36", "" },
+          { "13", "", "24", "", "35", "", "46" },
+          { "", "23", "", "34", "", "45", "" },
+          { "22", "", "33", "", "44", "", "55" },
+          { "", "32", "", "43", "", "54", "" },
+          { "31", "", "42", "", "53", "", "64" },
+          { "", "41", "", "52", "", "63", "" },
+          { "", "", "51", "", "62", "", "" },
+          { "", "", "", "61", "", "", "" }
   };
 
   String[] pointR = new String[13];
@@ -79,24 +85,26 @@ void hexagone()
 
   /**
    * permet de recuperer un string pour renvoyer un string en mode Lettre Chiffre
-   * 
+   * Cette fonction sert pour afficher des coordonnées plus lisibles dans le terminal
    * @param id
    * @return
    */
   String getIdToLettre(String id) {
-    //Renvoie 2 nouvelle chaîne (tmp et tmp2) contenant le caractère (ou, plus précisément, le point de code UTF-16) à la position indiquée en argument.
+    //Renvoie 2 nouveaux int (tmp et tmp2) contenant les valeurs des 2 premiers caractères de l'id
+    //
     int tmp = id.charAt(0);
     int tmp2 = id.charAt(1);
+    // Si tmp est plus petit que 65 (caractère A) alors il le transforme en lettre
     if (tmp < 65) {
       tmp = tmp + 17;
     }
-    // retourne la valeur de la lettre pour tmp et tmp2
+    // retourne l'id en format lettre chiffre
     return "" + (char) tmp + (char) tmp2;
   }
 
   /**
    * ajoute les points de départ des pions
-   * 
+   *
    * @param couleur
    * @param point
    * @return
@@ -104,10 +112,10 @@ void hexagone()
   void addPosCouleur(String[] point, char couleur) {
 
     int j = 0;
-    // parcours le tableau
+    // parcours le tableau State pour trouver les pions de la couleur
     for (int i = 0; i < state.length; i++) {
       for (int k = 0; k < state[i].length; k++) {
-        // si la couleur correspond, on ajoute la position dans le tableau
+        // si la couleur correspond, on ajoute la position dans le tableau de point de la couleur correspondante
         if (state[i][k] == couleur) {
 
           point[j] = "" + i + k;
@@ -117,13 +125,13 @@ void hexagone()
     }
 
   }
-  
+
 
   /**
-   * permet de modifié les tableaux de point rouge ou bleu
-   * si la source correspond, cela modifiera la destination dans dans la liste
-   * 
-   * @param tab
+   * permet de modifier les tableaux de point rouge ou bleu
+   * si la source correspond, cela modifiera la destination dans la liste
+   *
+   * @param point
    * @param source
    * @param dest
    */
@@ -131,7 +139,7 @@ void hexagone()
   void changePointTab(String[] point, String source, String dest) {
     // parcours le tableau
     for (int i = 0; i < point.length; i++) {
-      // si la source correspond, on modifie la destination
+      // si la source correspond, on modifie la valeur par la destination
       if (point[i].equals(source)) {
         point[i] = dest;
         break;
@@ -141,30 +149,31 @@ void hexagone()
 
   /**
    * Retour Faux si la position est hors du plateau
-   * 
+   *
    * @param pos
    * @return
    */
   boolean verifTaille(int[] pos) {
 
-    return (pos[0] >= 0 && pos[0] < 7 && pos[1] >= 0 && pos[1] < 8);
+    return (pos[0] >= 0 && pos[0] < BOARD_SIZE && pos[1] >= 0 && pos[1] < SIZE);
 
   }
 
   /**
    * Traducteur de l'idLettre, entre String valeur forme "E2" sortie String "42"
-   * 
+   *
    * @param valeur
    * @return
    */
   String tradIdLettre(String valeur) {
     String retour;
-    // si la valeur = 2 charactere
+
     char tmp = valeur.charAt(0);
     char tmp1 = valeur.charAt(1);
     tmp = Character.toUpperCase(tmp);
     String valideL = "ABCDEFG";
-    // si la valeur est dans le tableau valideL
+    // si le premier charactère est dans le tableau valideL
+    // alors on retourne la valeur en int correspondante
     if (valideL.contains(String.valueOf(tmp))) {
       int val = tmp;
       tmp = (char) (val - 17);
@@ -177,7 +186,7 @@ void hexagone()
 
   /**
    * Déplace un pion ou simule son déplacement
-   * 
+   *
    * @param couleur  couleur du pion à déplacer
    * @param lcSource case source Lc
    * @param lcDest   case destination Lc
@@ -192,26 +201,28 @@ void hexagone()
     // si la source ou la destination est hors du plateau
     if (!verifTaille(source) || !verifTaille(destination))
       return Result.EXT_BOARD;
-    // si la destination est -
-    if (state[destination[0]][destination[1]] == '-')
-      return Result.EXT_BOARD;
-    // si la source est vide
+    // si la source dans State est vide
     if (state[source[0]][source[1]] == VIDE)
       return Result.EMPTY_SRC;
-    // si la couleur ne correspond pas
+    // si la destination dans State est '-'
+    if (state[destination[0]][destination[1]] == '-')
+      return Result.EXT_BOARD;
+    // si la couleur dans State ne correspond pas
     if (state[source[0]][source[1]] != couleur)
       return Result.BAD_COLOR;
-    // si la destination n'est pas vide
+    // si la destination dans State n'est pas vide
     if (state[destination[0]][destination[1]] != VIDE) {
       return Result.DEST_NOT_FREE;
     }
-    // si la distance est supérieur à 1
+    // si la distance est supérieure à 1
     if (Math.abs(source[0] - destination[0]) > 1 || Math.abs(source[1] - destination[1]) > 1) {
       return Result.TOO_FAR;
     }
+    // si le mode est réel alors on modifie la position du pion
     if (mode == ModeMvt.REAL) {
       state[source[0]][source[1]] = VIDE;
       state[destination[0]][destination[1]] = couleur;
+      //et on modifie la position du pion dans le tableau pointR ou pointB selon la couleur
       if (couleur == 'R') {
         changePointTab(pointR, lcSource, lcDest);
 
@@ -227,7 +238,7 @@ void hexagone()
   /**
    * Construit les trois chaînes représentant les positions accessibles
    * à partir de la position de départ [idLettre][idCol].
-   * 
+   *
    * @param couleur  couleur du pion à jouer
    * @param idLettre id de la ligne du pion à jouer
    * @param idCol    id de la colonne du pion à jouer
@@ -237,17 +248,17 @@ void hexagone()
   String[] possibleDests(char couleur, int idLettre, int idCol) {
     // si la couleur est rouge
     if (couleur == 'R') {
-      // retourne les 3 positions
+      // retourne les 3 positions possibles
       return new String[] { "" + idLettre + (idCol - 1),
-          "" + (idLettre + 1) + (idCol),
-          "" + (idLettre + 1) + (idCol - 1) };
+              "" + (idLettre + 1) + (idCol),
+              "" + (idLettre + 1) + (idCol - 1) };
 
-    // si la couleur est bleu
+      // si la couleur est bleue
     } else if (couleur == 'B') {
-      // retourne les 3 positions
+      // retourne les 3 positions possibles
       return new String[] { "" + idLettre + (idCol + 1),
-          "" + (idLettre - 1) + (idCol),
-          "" + (idLettre - 1) + (idCol + 1) };
+              "" + (idLettre - 1) + (idCol),
+              "" + (idLettre - 1) + (idCol + 1) };
 
     } else {
       // sinon retourne false
@@ -259,42 +270,43 @@ void hexagone()
   /**
    * Affiche le plateau de jeu dans la configuration portée par
    * l'attribut d'état "state"
+   * Elle utilise le tableau de string tableau pour afficher les valeurs de "state"
    */
   void affiche() {
 
     int lettre;
     int chiffre;
     char tmp;
-    // pour chaque ligne
+    // pour chaque ligne de tableau
     for (int i = 0; i < tableau.length; i++) {
-      // pour chaque colonne
+      // pour chaque colonne de tableau
       for (int j = 0; j < tableau[i].length; j++) {
         // si la case est vide
         if (tableau[i][j].equals("")) {
           System.out.print("  ");
-        } 
+        }
         else {
           tmp = tableau[i][j].charAt(0);
           lettre = Character.getNumericValue(tmp);
           tmp = tableau[i][j].charAt(1);
           chiffre = Character.getNumericValue(tmp);
-          // si la case est rouge
+          // si la valeur est rouge
           if (state[lettre][chiffre] == 'R') {
-            // affiche la case en rouge 
+            // affiche la case en rouge
             System.out.print(ConsoleColors.RED_BACKGROUND + (char) (65 + lettre) + chiffre + ConsoleColors.RESET);
 
-          } 
-          // si la case est bleu
+          }
+          // si la valeur est bleue
           else if (state[lettre][chiffre] == 'B') {
             // affiche la case en bleu
             System.out.print(ConsoleColors.BLUE_BACKGROUND + (char) (65 + lettre) + chiffre + ConsoleColors.RESET);
 
-          } 
-          // si la case est vide ou incorect
+          }
+          // si la case est "." (tous les autres cas en soi)
           else {
-            // affiche la case en noir
+            // affiche la case en white
             System.out.print(ConsoleColors.BLACK + ConsoleColors.WHITE_BACKGROUND + (char) (65 + lettre) + chiffre
-                + ConsoleColors.RESET);
+                    + ConsoleColors.RESET);
 
           }
 
@@ -308,7 +320,7 @@ void hexagone()
 
   /**
    * Fonction qui permet de remplacer la fonction joueIA en mode humain
-   * 
+   *
    * @return
    */
   String[] jouerIAHumain() {
@@ -327,17 +339,18 @@ void hexagone()
 
   int[] recupereid(String src) {
     int[] id = new int[2];
-    // Convertit le caractère Unicode numérique à la position spécifiée dans une chaîne spécifiée en un nombre à virgule flottante double précision.
+    // Convertit le caractère Unicode numérique à la position spécifiée dans une chaîne spécifiée en un nombre
+    // à virgule flottante double précision.
     id[0] = Character.getNumericValue(src.charAt(0));
     id[1] = Character.getNumericValue(src.charAt(1));
     return id;
   }
 
   /**
-   * Joue un tour aleatoire grace a pointR et pointB avec un rand
-   * et retourne un tableau de deux String contenant la position de depart et la
+   * Joue un tour aleatoire grace à pointR et pointB avec un rand
+   * et retourne un tableau de deux Strings contenant la position de depart et la
    * position d'arrivee
-   * 
+   *
    * @param couleur couleur du pion à jouer
    * @return tableau contenant la position de départ et la destination du pion à
    *         jouer.
@@ -358,11 +371,11 @@ void hexagone()
         String[] posPossible = possibleDests(couleur, source[0], source[1]);
         int rand2 = random.nextInt(posPossible.length);
         dst = posPossible[rand2];
-      // si la couleur est bleu
+        // si la couleur est bleue
       } else if (couleur == 'B') {
         // genere un nombre aleatoire entre 0 et la taille du tableau pointB
         int rand = random.nextInt(pointB.length);
-      
+
         src = pointB[rand];
         int[] source = { Character.getNumericValue(src.charAt(0)), Character.getNumericValue(src.charAt(1)) };
         // genere un nombre aleatoire entre 0 et la taille du tableau posPossible
@@ -371,7 +384,7 @@ void hexagone()
         dst = posPossible[rand2];
       }
     }
-    // tant que le deplacement n'est pas possible  
+    // tant que le deplacement n'est pas possible
     while (deplace(couleur, src, dst, ModeMvt.SIMU) != Result.OK);
     return new String[] { src, dst };
 
@@ -379,9 +392,9 @@ void hexagone()
 
   /**
    * gère le jeu en fonction du joueur/couleur
-   * 
+   *
    * @param couleur
-   * @return tableau de deux chaînes {source,destination} du pion à jouer
+   * @return tableau de deux chaînes {source, destination} du pion à jouer
    */
   String[] jouer(char couleur) {
     String src = "";
@@ -416,9 +429,9 @@ void hexagone()
    * Fonction qui verifie la liste de points de rouge ou bleu
    * si un des points a la possibilite de se déplacer alors il renvoie 'N'
    * Sinon il renvoie la couleur pour dire qui gagnera
-   * 
-   * (fonction utilisé dans la fonction finPartie)
-   * 
+   *
+   * (fonction utilisée dans la fonction finPartie)
+   *
    * @param tab
    * @param couleur
    * @return
@@ -426,7 +439,7 @@ void hexagone()
   char verifPointTab(String[] tab, char couleur) {
     // pour chaque point de la liste
     for (int i = 0; i < tab.length; i++) {
-      // on recupere les coordonnees du point
+      // on récupère les coordonnees du point
       int[] id = recupereid(tab[i]);
       String[] possDest = possibleDests(couleur, id[0], id[1]);
       // pour chaque destination possible
@@ -442,8 +455,8 @@ void hexagone()
   }
 
   /**
-   * retourne 'R' ou 'B' si vainqueur, 'N' si partie pas finie
-   * 
+   * retourne 'R' ou 'B' si vainqueur, 'N' si parti pas fini
+   *
    * @param couleur
    * @return
    */
@@ -451,8 +464,8 @@ void hexagone()
     // si la couleur est rouge
     if (couleur == 'R') {
       return verifPointTab(pointR, couleur);
-    } 
-    // si la couleur est bleu
+    }
+    // si la couleur est bleue
     else {
       return verifPointTab(pointB, couleur);
     }
@@ -461,6 +474,7 @@ void hexagone()
   public static void main(String[] args) {
 
     StuckWinSTD jeu = new StuckWinSTD();
+    //jeu.init();
     jeu.addPosCouleur(jeu.pointR, 'R');
     jeu.addPosCouleur(jeu.pointB, 'B');
     String src = "";
