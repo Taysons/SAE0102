@@ -19,6 +19,7 @@ public class StuckWinSTD {
     
   }
 
+// Dessine des hexagones
 void hexagone()
 {
   StdDraw.setPenColor(StdDraw.BLACK);
@@ -83,12 +84,13 @@ void hexagone()
    * @return
    */
   String getIdToLettre(String id) {
+    //Renvoie 2 nouvelle chaîne (tmp et tmp2) contenant le caractère (ou, plus précisément, le point de code UTF-16) à la position indiquée en argument.
     int tmp = id.charAt(0);
     int tmp2 = id.charAt(1);
     if (tmp < 65) {
       tmp = tmp + 17;
     }
-
+    // retourne la valeur de la lettre pour tmp et tmp2
     return "" + (char) tmp + (char) tmp2;
   }
 
@@ -102,9 +104,10 @@ void hexagone()
   void addPosCouleur(String[] point, char couleur) {
 
     int j = 0;
-
+    // parcours le tableau
     for (int i = 0; i < state.length; i++) {
       for (int k = 0; k < state[i].length; k++) {
+        // si la couleur correspond, on ajoute la position dans le tableau
         if (state[i][k] == couleur) {
 
           point[j] = "" + i + k;
@@ -126,7 +129,9 @@ void hexagone()
    */
 
   void changePointTab(String[] point, String source, String dest) {
+    // parcours le tableau
     for (int i = 0; i < point.length; i++) {
+      // si la source correspond, on modifie la destination
       if (point[i].equals(source)) {
         point[i] = dest;
         break;
@@ -159,13 +164,12 @@ void hexagone()
     char tmp1 = valeur.charAt(1);
     tmp = Character.toUpperCase(tmp);
     String valideL = "ABCDEFG";
-
+    // si la valeur est dans le tableau valideL
     if (valideL.contains(String.valueOf(tmp))) {
-
       int val = tmp;
       tmp = (char) (val - 17);
     }
-
+    // retourne la valeur de tmp et tmp1
     retour = "" + tmp + tmp1;
     return retour;
 
@@ -183,27 +187,28 @@ void hexagone()
    *         EXIT} selon le déplacement
    */
   Result deplace(char couleur, String lcSource, String lcDest, ModeMvt mode) {
-    // votre code ici. Supprimer la ligne ci-dessous.
     int[] source = recupereid(lcSource);
     int[] destination = recupereid(lcDest);
+    // si la source ou la destination est hors du plateau
     if (!verifTaille(source) || !verifTaille(destination))
       return Result.EXT_BOARD;
+    // si la destination est -
     if (state[destination[0]][destination[1]] == '-')
       return Result.EXT_BOARD;
+    // si la source est vide
     if (state[source[0]][source[1]] == VIDE)
       return Result.EMPTY_SRC;
-
+    // si la couleur ne correspond pas
     if (state[source[0]][source[1]] != couleur)
       return Result.BAD_COLOR;
-
+    // si la destination n'est pas vide
     if (state[destination[0]][destination[1]] != VIDE) {
       return Result.DEST_NOT_FREE;
     }
-
+    // si la distance est supérieur à 1
     if (Math.abs(source[0] - destination[0]) > 1 || Math.abs(source[1] - destination[1]) > 1) {
       return Result.TOO_FAR;
     }
-
     if (mode == ModeMvt.REAL) {
       state[source[0]][source[1]] = VIDE;
       state[destination[0]][destination[1]] = couleur;
@@ -230,21 +235,22 @@ void hexagone()
    *         sur les bords)
    */
   String[] possibleDests(char couleur, int idLettre, int idCol) {
-
+    // si la couleur est rouge
     if (couleur == 'R') {
-
+      // retourne les 3 positions
       return new String[] { "" + idLettre + (idCol - 1),
           "" + (idLettre + 1) + (idCol),
           "" + (idLettre + 1) + (idCol - 1) };
 
+    // si la couleur est bleu
     } else if (couleur == 'B') {
-
+      // retourne les 3 positions
       return new String[] { "" + idLettre + (idCol + 1),
           "" + (idLettre - 1) + (idCol),
           "" + (idLettre - 1) + (idCol + 1) };
 
     } else {
-
+      // sinon retourne false
       return new String[] { "False" };
     }
 
@@ -259,26 +265,34 @@ void hexagone()
     int lettre;
     int chiffre;
     char tmp;
+    // pour chaque ligne
     for (int i = 0; i < tableau.length; i++) {
+      // pour chaque colonne
       for (int j = 0; j < tableau[i].length; j++) {
-
+        // si la case est vide
         if (tableau[i][j].equals("")) {
           System.out.print("  ");
-        } else {
+        } 
+        else {
           tmp = tableau[i][j].charAt(0);
           lettre = Character.getNumericValue(tmp);
           tmp = tableau[i][j].charAt(1);
           chiffre = Character.getNumericValue(tmp);
+          // si la case est rouge
           if (state[lettre][chiffre] == 'R') {
-
+            // affiche la case en rouge 
             System.out.print(ConsoleColors.RED_BACKGROUND + (char) (65 + lettre) + chiffre + ConsoleColors.RESET);
 
-          } else if (state[lettre][chiffre] == 'B') {
-
+          } 
+          // si la case est bleu
+          else if (state[lettre][chiffre] == 'B') {
+            // affiche la case en bleu
             System.out.print(ConsoleColors.BLUE_BACKGROUND + (char) (65 + lettre) + chiffre + ConsoleColors.RESET);
 
-          } else {
-
+          } 
+          // si la case est vide ou incorect
+          else {
+            // affiche la case en noir
             System.out.print(ConsoleColors.BLACK + ConsoleColors.WHITE_BACKGROUND + (char) (65 + lettre) + chiffre
                 + ConsoleColors.RESET);
 
@@ -313,6 +327,7 @@ void hexagone()
 
   int[] recupereid(String src) {
     int[] id = new int[2];
+    // Convertit le caractère Unicode numérique à la position spécifiée dans une chaîne spécifiée en un nombre à virgule flottante double précision.
     id[0] = Character.getNumericValue(src.charAt(0));
     id[1] = Character.getNumericValue(src.charAt(1));
     return id;
@@ -332,25 +347,32 @@ void hexagone()
     String dst = "";
 
     do {
+      // si la couleur est rouge
       if (couleur == 'R') {
+        // genere un nombre aleatoire entre 0 et la taille du tableau pointR
         int rand = random.nextInt(pointR.length);
         src = pointR[rand];
         int[] source = { Character.getNumericValue(src.charAt(0)), Character.getNumericValue(src.charAt(1)) };
 
+        // genere un nombre aleatoire entre 0 et la taille du tableau posPossible
         String[] posPossible = possibleDests(couleur, source[0], source[1]);
         int rand2 = random.nextInt(posPossible.length);
         dst = posPossible[rand2];
+      // si la couleur est bleu
       } else if (couleur == 'B') {
+        // genere un nombre aleatoire entre 0 et la taille du tableau pointB
         int rand = random.nextInt(pointB.length);
-
+      
         src = pointB[rand];
         int[] source = { Character.getNumericValue(src.charAt(0)), Character.getNumericValue(src.charAt(1)) };
-
+        // genere un nombre aleatoire entre 0 et la taille du tableau posPossible
         String[] posPossible = possibleDests(couleur, source[0], source[1]);
         int rand2 = random.nextInt(posPossible.length);
         dst = posPossible[rand2];
       }
-    } while (deplace(couleur, src, dst, ModeMvt.SIMU) != Result.OK);
+    }
+    // tant que le deplacement n'est pas possible  
+    while (deplace(couleur, src, dst, ModeMvt.SIMU) != Result.OK);
     return new String[] { src, dst };
 
   }
@@ -402,10 +424,14 @@ void hexagone()
    * @return
    */
   char verifPointTab(String[] tab, char couleur) {
+    // pour chaque point de la liste
     for (int i = 0; i < tab.length; i++) {
+      // on recupere les coordonnees du point
       int[] id = recupereid(tab[i]);
       String[] possDest = possibleDests(couleur, id[0], id[1]);
+      // pour chaque destination possible
       for (int j = 0; j < possDest.length; j++) {
+        // si le deplacement est possible
         if (deplace(couleur, tab[i], possDest[j], ModeMvt.SIMU) == Result.OK) {
 
           return 'N';
@@ -422,10 +448,12 @@ void hexagone()
    * @return
    */
   char finPartie(char couleur) {
-
+    // si la couleur est rouge
     if (couleur == 'R') {
       return verifPointTab(pointR, couleur);
-    } else {
+    } 
+    // si la couleur est bleu
+    else {
       return verifPointTab(pointB, couleur);
     }
   }
