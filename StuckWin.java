@@ -17,7 +17,7 @@ public class StuckWin {
   }
 
   enum ModeMvt {
-    REAL, SIMU
+    REAL, SIMU, RETOUR, nbrPionJouable
   }
 
   final char[] joueurs = { 'B', 'R' };
@@ -33,6 +33,15 @@ public class StuckWin {
       { '-', 'B', 'B', 'B', 'B', '.', '-', '-' },
       { '-', 'B', 'B', 'B', 'B', '-', '-', '-' },
   };
+  // char[][] state = {
+  // { '-', '-', '-', '-', 'R', 'R', 'R', '.' },
+  // { '-', '-', '-', '.', 'R', 'R', 'R', 'R' },
+  // { '-', '-', '.', 'R', '.', 'R', 'R', 'R' },
+  // { '-', 'B', 'B', 'B', 'B', '.', 'R', 'R' },
+  // { '-', 'B', 'B', '.', '.', 'B', 'B', '-' },
+  // { '-', '.', 'B', 'B', 'B', '.', '-', '-' },
+  // { '-', '.', '.', 'B', 'B', '-', '-', '-' },
+  // };
 
   String[][] tableau = {
       { "", "", "", "07", "", "", "" },
@@ -64,8 +73,8 @@ public class StuckWin {
   String getIdToLettre(String id) {
 
     if (id.length() < 2 || id.length() > 2) {
-        return "Erreur id";
-      }
+      return "Erreur id";
+    }
     // Renvoie 2 nouveaux int (tmp et tmp2)
     // contenant les valeurs des 2 premiers caractères de l'id
     int tmp = id.charAt(0);
@@ -197,14 +206,19 @@ public class StuckWin {
     if (state[destination[0]][destination[1]] != VIDE) {
       return Result.DEST_NOT_FREE;
     }
+    if (source == destination) {
+      return Result.DEST_NOT_FREE;
+    }
     // si la distance entre la Source et la destination dans State
     // est supérieure à 1
-    if (Math.abs(source[0] - destination[0]) > 1
-        || Math.abs(source[1] - destination[1]) > 1) {
+
+    if ((Math.abs(source[0] - destination[0]) > 1
+        || Math.abs(source[1] - destination[1]) > 1)
+        && mode != ModeMvt.RETOUR) {
       return Result.TOO_FAR;
     }
     // si le mode est réel alors on modifie la position du pion
-    if (mode == ModeMvt.REAL) {
+    if (mode != ModeMvt.SIMU) {
       state[source[0]][source[1]] = VIDE;
       state[destination[0]][destination[1]] = couleur;
       // et on modifie la position du pion dans le tableau
@@ -325,8 +339,7 @@ public class StuckWin {
     // Convertit le caractère Unicode numérique à la
     // position spécifiée dans une chaîne spécifiée en un nombre
     // à virgule flottante double précision.
-    if (src.length() < 2 || src.length() > 2)
-    {
+    if (src.length() < 2 || src.length() > 2) {
       id[0] = 0;
       id[1] = 0;
       return id;
@@ -345,7 +358,7 @@ public class StuckWin {
    * @return tableau contenant la position de départ et la destination du pion à
    *         jouer.
    */
-  String[] jouerIA(char couleur) {
+  String[] jouerIAaleatoire(char couleur) {
     String src = "";
     String dst = "";
 
@@ -364,6 +377,7 @@ public class StuckWin {
         // genere un nombre aleatoire entre 0 et la taille du tableau posPossible
         int rand2 = random.nextInt(posPossible.length);
         dst = posPossible[rand2];
+
       } else if (couleur == 'B') {
         int rand = random.nextInt(pointB.length);
 
@@ -378,15 +392,243 @@ public class StuckWin {
       }
       // tant que le deplacement n'est pas possible
     } while (deplace(couleur, src, dst, ModeMvt.SIMU) != Result.OK);
+
     return new String[] { src, dst };
 
+  }
+
+  /**
+   * Joue un tour aleatoire grace à pointR et pointB avec un rand
+   * et retourne un tableau de deux Strings contenant la position de depart
+   * et la position d'arrivee
+   * 
+   * @param couleur couleur du pion à jouer
+   * @return tableau contenant la position de départ et la destination du pion à
+   *         jouer.
+   */
+  String[] jouerIA(char couleur) {
+    String src = "";
+    String dst = "";
+    ArrayList<Integer> nbrsJetonJouableC = new ArrayList<>();
+    ArrayList<Integer> nbrsJetonJouableNonC = new ArrayList<>();
+    ArrayList<String> infoPosition = new ArrayList<>();
+    String[] point;
+    String[] pointAdv;
+    String[] TabPointCClone;
+    String[] TabPointCAdvClone;
+    char Ncouleur;
+
+    if (couleur == 'R') {
+      Ncouleur = 'B';
+      point = pointR;
+      pointAdv = pointB;
+      TabPointCClone = point.clone();
+      TabPointCAdvClone = pointAdv.clone();
+    } else {
+      Ncouleur = 'R';
+      point = pointB;
+      pointAdv = pointR;
+      TabPointCClone = point.clone();
+      TabPointCAdvClone = pointAdv.clone();
+    }
+
+    test(couleur, Ncouleur, point, pointAdv, TabPointCClone, TabPointCAdvClone, nbrsJetonJouableC, nbrsJetonJouableNonC,
+        infoPosition);
+    System.out.println("partie 'for' fini");
+    System.out.println("");
+    System.out.println(" src  |  dst  |  PointC  |  PointAdv  |  Difference");
+
+    for (int i = 0; i < infoPosition.size(); i++) {
+      String src2 = infoPosition.get(i).charAt(0) + "" + infoPosition.get(i).charAt(1);
+      String dst2 = infoPosition.get(i).charAt(2) + "" + infoPosition.get(i).charAt(3);
+      System.out.print(getIdToLettre(src2) + " | " + getIdToLettre(dst2) + " | ");
+      System.out.print(nbrsJetonJouableC.get(i) + " | ");
+      System.out.print(nbrsJetonJouableNonC.get(i) + " | ");
+      System.out.println((nbrsJetonJouableNonC.get(i)) - (nbrsJetonJouableC.get(i)));
+    }
+
+    triBulle(nbrsJetonJouableC, nbrsJetonJouableNonC, infoPosition);
+    
+    System.out.println("");
+    System.out.println("TriBulle");
+    for (int i = 0; i < infoPosition.size(); i++) {
+      String src2 = infoPosition.get(i).charAt(0) + "" + infoPosition.get(i).charAt(1);
+      String dst2 = infoPosition.get(i).charAt(2) + "" + infoPosition.get(i).charAt(3);
+      System.out.print(getIdToLettre(src2) + " | " + getIdToLettre(dst2) + " | ");
+      System.out.print(nbrsJetonJouableC.get(i) + " | ");
+      System.out.print(nbrsJetonJouableNonC.get(i) + " | ");
+      System.out.println((nbrsJetonJouableNonC.get(i)) - (nbrsJetonJouableC.get(i)));
+    }
+
+    triBulle2(nbrsJetonJouableC, nbrsJetonJouableNonC, infoPosition);
+    
+    System.out.println("");
+    System.out.println("TriBulle2");
+    for (int i = 0; i < infoPosition.size(); i++) {
+      String src2 = infoPosition.get(i).charAt(0) + "" + infoPosition.get(i).charAt(1);
+      String dst2 = infoPosition.get(i).charAt(2) + "" + infoPosition.get(i).charAt(3);
+      System.out.print(getIdToLettre(src2) + " | " + getIdToLettre(dst2) + " | ");
+      System.out.print(nbrsJetonJouableC.get(i) + " | ");
+      System.out.print(nbrsJetonJouableNonC.get(i) + " | ");
+      System.out.println((nbrsJetonJouableNonC.get(i)) - (nbrsJetonJouableC.get(i)));
+    }
+
+    src = infoPosition.get(0).charAt(0) + "" + infoPosition.get(0).charAt(1);
+    dst = infoPosition.get(0).charAt(2) + "" + infoPosition.get(0).charAt(3);
+    return new String[] { src, dst };
+
+  }
+
+  /**
+   * 
+   * @param pointC
+   * @param pointAdv
+   * @param infoPosition
+   */
+  void triBulle(ArrayList<Integer> pointC,
+      ArrayList<Integer> pointAdv,
+      ArrayList<String> infoPosition) {
+    int taille = infoPosition.size();
+    int tmp;
+    int limite;
+    for (limite = -1; limite <= taille - 2; limite++) {
+
+      for (int i = taille - 1; i > limite + 1; i--) {
+        if (pointC.get(i) < pointC.get(i - 1)) {
+          tmp = pointC.get(i);
+          pointC.set(i, pointC.get(i - 1));
+          pointC.set(i - 1, tmp);
+
+          tmp = pointAdv.get(i);
+          pointAdv.set(i, pointAdv.get(i - 1));
+          pointAdv.set(i - 1, tmp);
+
+          String tmp2 = infoPosition.get(i);
+          infoPosition.set(i, infoPosition.get(i - 1));
+          infoPosition.set(i - 1, tmp2);
+
+        }
+      }
+
+    }
+
+    int val = pointC.get(0);
+    for (int i = taille - 1; i > 0; i--)
+    {
+      if (pointC.get(i) != val)
+      {
+        pointAdv.remove(i);
+        pointC.remove(i);
+        infoPosition.remove(i);
+      }
+    }
+
+  }
+
+  /**
+   * 
+   * @param pointC
+   * @param pointAdv
+   * @param infoPosition
+   */
+  void triBulle2(ArrayList<Integer> pointC,
+      ArrayList<Integer> pointAdv,
+      ArrayList<String> infoPosition) {
+    int taille = infoPosition.size();
+    int tmp;
+    int limite;
+
+
+    
+
+
+
+    for (limite = -1; limite <= taille - 2; limite++) {
+
+      for (int i = taille - 1; i > limite + 1; i--) {
+
+        
+        if ((pointC.get(i) - pointAdv.get(i)) < (pointC.get(i-1) - pointAdv.get(i-1))) {
+          tmp = pointC.get(i);
+          pointC.set(i, pointC.get(i - 1));
+          pointC.set(i - 1, tmp);
+
+          tmp = pointAdv.get(i);
+          pointAdv.set(i, pointAdv.get(i - 1));
+          pointAdv.set(i - 1, tmp);
+
+          String tmp2 = infoPosition.get(i);
+          infoPosition.set(i, infoPosition.get(i - 1));
+          infoPosition.set(i - 1, tmp2);
+
+        }
+      }
+
+    }
+
+
+    int val = (pointC.get(0) - pointAdv.get(0));
+    for (int i = taille - 1; i > 0; i--)
+    {
+      if ((pointC.get(i) - pointAdv.get(i)) != val)
+      {
+        pointAdv.remove(i);
+        pointC.remove(i);
+        infoPosition.remove(i);
+      }
+    }
+  }
+
+  /**
+   * 
+   * @param couleur
+   * @param Ncouleur
+   * @param point
+   * @param pointAdv
+   * @param TabPointCClone
+   * @param TabPointCAdvClone
+   * @param nbrsJetonJouableC
+   * @param nbrsJetonJouableNonC
+   * @param infoPosition
+   */
+  void test(char couleur,
+      char Ncouleur,
+      String[] point,
+      String[] pointAdv,
+      String[] TabPointCClone,
+      String[] TabPointCAdvClone,
+      ArrayList<Integer> nbrsJetonJouableC,
+      ArrayList<Integer> nbrsJetonJouableNonC,
+      ArrayList<String> infoPosition) {
+
+    /// fonction a sortir pour recursivité
+    for (int i = 0; i < point.length; i++) {
+
+      int[] id = recupereid(point[i]);
+
+      String[] possible = possibleDests(couleur, id[0], id[1]);
+      for (int j = 0; j < possible.length; j++) {
+
+        if (deplace(couleur, point[i], possible[j], ModeMvt.REAL) == Result.OK) {
+
+          nbrsJetonJouableC.add(Integer.valueOf(GetVerifPointTab(point, couleur, ModeMvt.RETOUR)));
+          nbrsJetonJouableNonC.add(Integer.valueOf(GetVerifPointTab(pointAdv, Ncouleur, ModeMvt.RETOUR)));
+
+          point = TabPointCClone.clone();
+          pointAdv = TabPointCAdvClone.clone();
+          deplace(couleur, possible[j], point[i], ModeMvt.RETOUR);
+          infoPosition.add(point[i] + "" + possible[j]);
+        }
+
+      }
+    }
   }
 
   /**
    * gère le jeu en fonction du joueur/couleur
    * 
    * @param couleur
-    * @return tableau de deux chaînes {source, destination} du pion à jouer
+   * @return tableau de deux chaînes {source, destination} du pion à jouer
    */
   String[] jouer(char couleur) {
     String src = "";
@@ -395,20 +637,20 @@ public class StuckWin {
     switch (couleur) {
       case 'B':
         System.out.println("Mouvement " + couleur);
-        src = input.next();
-        dst = input.next();
-        // mvtIa = jouerIA(couleur);
-        // src = mvtIa[0];
-        // dst = mvtIa[1];
+        mvtIa = jouerIA(couleur);
+        src = mvtIa[0];
+        dst = mvtIa[1];
+        // src = input.next();
+        // dst = input.next();
         System.out.println(getIdToLettre(src) + "->" + getIdToLettre(dst));
         break;
       case 'R':
         System.out.println("Mouvement " + couleur);
-        mvtIa = jouerIA(couleur);
+        mvtIa = jouerIAaleatoire(couleur);
         src = mvtIa[0];
         dst = mvtIa[1];
-        getIdToLettre(src);
-        getIdToLettre(dst);
+        // src = input.next();
+        // dst = input.next();
         System.out.println(getIdToLettre(src) + "->" + getIdToLettre(dst));
         break;
       default:
@@ -418,31 +660,36 @@ public class StuckWin {
   }
 
   /**
-   * Fonction qui verifie la liste de points de rouge ou bleu
-   * si un des points a la possibilite de se déplacer alors il renvoie 'N'
-   * Sinon il renvoie la couleur pour dire qui gagnera
    * 
-   * (fonction utilisée dans la fonction finPartie)
+   * Fonction qui renvoie la valeur du nombre de jeton jouable
+   * 
+   * (fonction utilisée dans la fonction finPartie et IA)
    * 
    * @param tab
    * @param couleur
    * @return
    */
-  char verifPointTab(String[] tab, char couleur) {
+  int GetVerifPointTab(String[] tab, char couleur, ModeMvt mode) {
+    int indentation = 0;
     // pour chaque point de la liste
+
     for (int i = 0; i < tab.length; i++) {
       // on récupère les coordonnees du point
+
       int[] id = recupereid(tab[i]);
       String[] possDest = possibleDests(couleur, id[0], id[1]);
       for (int j = 0; j < possDest.length; j++) {
         if (deplace(couleur, tab[i], possDest[j],
             ModeMvt.SIMU) == Result.OK) {
-
-          return 'N';
+          indentation++;
+          if (mode == ModeMvt.nbrPionJouable)
+            break;
         }
+
       }
+
     }
-    return couleur;
+    return indentation;
   }
 
   /**
@@ -452,12 +699,17 @@ public class StuckWin {
    * @return
    */
   char finPartie(char couleur) {
-
+    int indentation = 0;
     if (couleur == 'R') {
-      return verifPointTab(pointR, couleur);
+      indentation = GetVerifPointTab(pointR, couleur, ModeMvt.nbrPionJouable);
     } else {
-      return verifPointTab(pointB, couleur);
+      indentation = GetVerifPointTab(pointB, couleur, ModeMvt.nbrPionJouable);
     }
+    if (indentation > 0) {
+      System.out.println("Il y a " + indentation + " pion de couleur " + couleur + " jouable");
+      return 'N';
+    }
+    return couleur;
   }
 
   public static void main(String[] args) {
