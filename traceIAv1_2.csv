@@ -1,0 +1,1398 @@
+      [41mA7[0m      
+    [41mA6[0m  [41mB7[0m    
+  [41mA5[0m  [41mB6[0m  [41mC7[0m  
+[41mA4[0m  [41mB5[0m  [41mC6[0m  [41mD7[0m
+  [41mB4[0m  [41mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [0;30m[47mC4[0m  [0;30m[47mD5[0m  [0;30m[47mE6[0m
+  [0;30m[47mC3[0m  [0;30m[47mD4[0m  [0;30m[47mE5[0m  
+[0;30m[47mC2[0m  [0;30m[47mD3[0m  [0;30m[47mE4[0m  [0;30m[47mF5[0m
+  [44mD2[0m  [44mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [44mG4[0m
+  [44mE1[0m  [44mF2[0m  [44mG3[0m  
+    [44mF1[0m  [44mG2[0m    
+      [44mG1[0m      
+Mouvement B
+partie 'for' fini
+
+ src  |  dst  |  PointC  |  PointAdv  |  Difference
+D1 | C2 | 14 | 13 | -1
+D2 | D3 | 11 | 13 | 2
+D2 | C2 | 12 | 13 | 1
+D2 | C3 | 13 | 12 | -1
+E2 | D3 | 13 | 13 | 0
+E3 | E4 | 11 | 13 | 2
+E3 | D3 | 11 | 13 | 2
+E3 | D4 | 13 | 12 | -1
+F3 | E4 | 13 | 13 | 0
+F4 | F5 | 12 | 13 | 1
+F4 | E4 | 11 | 13 | 2
+F4 | E5 | 13 | 12 | -1
+G4 | F5 | 12 | 13 | 1
+
+TriBulle
+D2 | D3 | 11 | 13 | 2
+E3 | E4 | 11 | 13 | 2
+E3 | D3 | 11 | 13 | 2
+F4 | E4 | 11 | 13 | 2
+
+TriBulle2
+D2 | D3 | 11 | 13 | 2
+E3 | E4 | 11 | 13 | 2
+E3 | D3 | 11 | 13 | 2
+F4 | E4 | 11 | 13 | 2
+E3->D3
+Il y a 7 pion de couleur R jouable
+status : OK partie : N
+      [41mA7[0m      
+    [41mA6[0m  [41mB7[0m    
+  [41mA5[0m  [41mB6[0m  [41mC7[0m  
+[41mA4[0m  [41mB5[0m  [41mC6[0m  [41mD7[0m
+  [41mB4[0m  [41mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [0;30m[47mC4[0m  [0;30m[47mD5[0m  [0;30m[47mE6[0m
+  [0;30m[47mC3[0m  [0;30m[47mD4[0m  [0;30m[47mE5[0m  
+[0;30m[47mC2[0m  [44mD3[0m  [0;30m[47mE4[0m  [0;30m[47mF5[0m
+  [44mD2[0m  [0;30m[47mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [44mG4[0m
+  [44mE1[0m  [44mF2[0m  [44mG3[0m  
+    [44mF1[0m  [44mG2[0m    
+      [44mG1[0m      
+Mouvement R
+B4->C3
+Il y a 8 pion de couleur B jouable
+status : OK partie : N
+      [41mA7[0m      
+    [41mA6[0m  [41mB7[0m    
+  [41mA5[0m  [41mB6[0m  [41mC7[0m  
+[41mA4[0m  [41mB5[0m  [41mC6[0m  [41mD7[0m
+  [0;30m[47mB4[0m  [41mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [0;30m[47mC4[0m  [0;30m[47mD5[0m  [0;30m[47mE6[0m
+  [41mC3[0m  [0;30m[47mD4[0m  [0;30m[47mE5[0m  
+[0;30m[47mC2[0m  [44mD3[0m  [0;30m[47mE4[0m  [0;30m[47mF5[0m
+  [44mD2[0m  [0;30m[47mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [44mG4[0m
+  [44mE1[0m  [44mF2[0m  [44mG3[0m  
+    [44mF1[0m  [44mG2[0m    
+      [44mG1[0m      
+Mouvement B
+partie 'for' fini
+
+ src  |  dst  |  PointC  |  PointAdv  |  Difference
+D1 | C2 | 12 | 13 | 1
+D2 | C2 | 13 | 14 | 1
+E2 | E3 | 12 | 14 | 2
+D3 | D4 | 12 | 14 | 2
+D3 | C4 | 12 | 13 | 1
+F2 | E3 | 12 | 14 | 2
+F3 | E3 | 11 | 14 | 3
+F3 | E4 | 12 | 14 | 2
+F4 | F5 | 11 | 14 | 3
+F4 | E4 | 11 | 14 | 3
+F4 | E5 | 12 | 13 | 1
+G4 | F5 | 11 | 14 | 3
+
+TriBulle
+F3 | E3 | 11 | 14 | 3
+F4 | F5 | 11 | 14 | 3
+F4 | E4 | 11 | 14 | 3
+G4 | F5 | 11 | 14 | 3
+
+TriBulle2
+F3 | E3 | 11 | 14 | 3
+F4 | F5 | 11 | 14 | 3
+F4 | E4 | 11 | 14 | 3
+G4 | F5 | 11 | 14 | 3
+F3->E3
+Il y a 8 pion de couleur R jouable
+status : OK partie : N
+      [41mA7[0m      
+    [41mA6[0m  [41mB7[0m    
+  [41mA5[0m  [41mB6[0m  [41mC7[0m  
+[41mA4[0m  [41mB5[0m  [41mC6[0m  [41mD7[0m
+  [0;30m[47mB4[0m  [41mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [0;30m[47mC4[0m  [0;30m[47mD5[0m  [0;30m[47mE6[0m
+  [41mC3[0m  [0;30m[47mD4[0m  [0;30m[47mE5[0m  
+[0;30m[47mC2[0m  [44mD3[0m  [0;30m[47mE4[0m  [0;30m[47mF5[0m
+  [44mD2[0m  [44mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [0;30m[47mF3[0m  [44mG4[0m
+  [44mE1[0m  [44mF2[0m  [44mG3[0m  
+    [44mF1[0m  [44mG2[0m    
+      [44mG1[0m      
+Mouvement R
+C5->C4
+Il y a 9 pion de couleur B jouable
+status : OK partie : N
+      [41mA7[0m      
+    [41mA6[0m  [41mB7[0m    
+  [41mA5[0m  [41mB6[0m  [41mC7[0m  
+[41mA4[0m  [41mB5[0m  [41mC6[0m  [41mD7[0m
+  [0;30m[47mB4[0m  [0;30m[47mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [41mC4[0m  [0;30m[47mD5[0m  [0;30m[47mE6[0m
+  [41mC3[0m  [0;30m[47mD4[0m  [0;30m[47mE5[0m  
+[0;30m[47mC2[0m  [44mD3[0m  [0;30m[47mE4[0m  [0;30m[47mF5[0m
+  [44mD2[0m  [44mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [0;30m[47mF3[0m  [44mG4[0m
+  [44mE1[0m  [44mF2[0m  [44mG3[0m  
+    [44mF1[0m  [44mG2[0m    
+      [44mG1[0m      
+Mouvement B
+partie 'for' fini
+
+ src  |  dst  |  PointC  |  PointAdv  |  Difference
+D1 | C2 | 12 | 13 | 1
+D2 | C2 | 13 | 14 | 1
+D3 | D4 | 13 | 15 | 2
+F2 | F3 | 12 | 14 | 2
+E3 | E4 | 11 | 14 | 3
+E3 | D4 | 11 | 13 | 2
+F4 | F5 | 10 | 14 | 4
+F4 | E4 | 10 | 14 | 4
+F4 | E5 | 11 | 13 | 2
+G2 | F3 | 10 | 14 | 4
+G3 | F3 | 10 | 14 | 4
+G4 | F5 | 11 | 14 | 3
+
+TriBulle
+F4 | F5 | 10 | 14 | 4
+F4 | E4 | 10 | 14 | 4
+G2 | F3 | 10 | 14 | 4
+G3 | F3 | 10 | 14 | 4
+
+TriBulle2
+F4 | F5 | 10 | 14 | 4
+F4 | E4 | 10 | 14 | 4
+G2 | F3 | 10 | 14 | 4
+G3 | F3 | 10 | 14 | 4
+F4->F5
+Il y a 9 pion de couleur R jouable
+status : OK partie : N
+      [41mA7[0m      
+    [41mA6[0m  [41mB7[0m    
+  [41mA5[0m  [41mB6[0m  [41mC7[0m  
+[41mA4[0m  [41mB5[0m  [41mC6[0m  [41mD7[0m
+  [0;30m[47mB4[0m  [0;30m[47mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [41mC4[0m  [0;30m[47mD5[0m  [0;30m[47mE6[0m
+  [41mC3[0m  [0;30m[47mD4[0m  [0;30m[47mE5[0m  
+[0;30m[47mC2[0m  [44mD3[0m  [0;30m[47mE4[0m  [44mF5[0m
+  [44mD2[0m  [44mE3[0m  [0;30m[47mF4[0m  
+[44mD1[0m  [44mE2[0m  [0;30m[47mF3[0m  [44mG4[0m
+  [44mE1[0m  [44mF2[0m  [44mG3[0m  
+    [44mF1[0m  [44mG2[0m    
+      [44mG1[0m      
+Mouvement R
+A4->B4
+Il y a 9 pion de couleur B jouable
+status : OK partie : N
+      [41mA7[0m      
+    [41mA6[0m  [41mB7[0m    
+  [41mA5[0m  [41mB6[0m  [41mC7[0m  
+[0;30m[47mA4[0m  [41mB5[0m  [41mC6[0m  [41mD7[0m
+  [41mB4[0m  [0;30m[47mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [41mC4[0m  [0;30m[47mD5[0m  [0;30m[47mE6[0m
+  [41mC3[0m  [0;30m[47mD4[0m  [0;30m[47mE5[0m  
+[0;30m[47mC2[0m  [44mD3[0m  [0;30m[47mE4[0m  [44mF5[0m
+  [44mD2[0m  [44mE3[0m  [0;30m[47mF4[0m  
+[44mD1[0m  [44mE2[0m  [0;30m[47mF3[0m  [44mG4[0m
+  [44mE1[0m  [44mF2[0m  [44mG3[0m  
+    [44mF1[0m  [44mG2[0m    
+      [44mG1[0m      
+Mouvement B
+partie 'for' fini
+
+ src  |  dst  |  PointC  |  PointAdv  |  Difference
+D1 | C2 | 12 | 11 | -1
+D2 | C2 | 13 | 12 | -1
+D3 | D4 | 13 | 13 | 0
+F2 | F3 | 12 | 12 | 0
+E3 | E4 | 12 | 12 | 0
+E3 | D4 | 11 | 11 | 0
+F5 | E5 | 11 | 11 | 0
+F5 | E6 | 11 | 10 | -1
+G2 | F3 | 10 | 12 | 2
+G3 | F3 | 9 | 12 | 3
+G3 | F4 | 10 | 12 | 2
+G4 | F4 | 11 | 12 | 1
+
+TriBulle
+G3 | F3 | 9 | 12 | 3
+
+TriBulle2
+G3 | F3 | 9 | 12 | 3
+G3->F3
+Il y a 9 pion de couleur R jouable
+status : OK partie : N
+      [41mA7[0m      
+    [41mA6[0m  [41mB7[0m    
+  [41mA5[0m  [41mB6[0m  [41mC7[0m  
+[0;30m[47mA4[0m  [41mB5[0m  [41mC6[0m  [41mD7[0m
+  [41mB4[0m  [0;30m[47mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [41mC4[0m  [0;30m[47mD5[0m  [0;30m[47mE6[0m
+  [41mC3[0m  [0;30m[47mD4[0m  [0;30m[47mE5[0m  
+[0;30m[47mC2[0m  [44mD3[0m  [0;30m[47mE4[0m  [44mF5[0m
+  [44mD2[0m  [44mE3[0m  [0;30m[47mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [44mG4[0m
+  [44mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
+    [44mF1[0m  [44mG2[0m    
+      [44mG1[0m      
+Mouvement R
+B5->C5
+Il y a 8 pion de couleur B jouable
+status : OK partie : N
+      [41mA7[0m      
+    [41mA6[0m  [41mB7[0m    
+  [41mA5[0m  [41mB6[0m  [41mC7[0m  
+[0;30m[47mA4[0m  [0;30m[47mB5[0m  [41mC6[0m  [41mD7[0m
+  [41mB4[0m  [41mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [41mC4[0m  [0;30m[47mD5[0m  [0;30m[47mE6[0m
+  [41mC3[0m  [0;30m[47mD4[0m  [0;30m[47mE5[0m  
+[0;30m[47mC2[0m  [44mD3[0m  [0;30m[47mE4[0m  [44mF5[0m
+  [44mD2[0m  [44mE3[0m  [0;30m[47mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [44mG4[0m
+  [44mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
+    [44mF1[0m  [44mG2[0m    
+      [44mG1[0m      
+Mouvement B
+partie 'for' fini
+
+ src  |  dst  |  PointC  |  PointAdv  |  Difference
+D1 | C2 | 11 | 13 | 2
+D2 | C2 | 12 | 14 | 2
+D3 | D4 | 12 | 14 | 2
+E3 | E4 | 11 | 14 | 3
+E3 | D4 | 11 | 12 | 1
+F5 | E5 | 10 | 13 | 3
+F5 | E6 | 10 | 12 | 2
+G2 | G3 | 11 | 14 | 3
+F3 | F4 | 10 | 14 | 4
+F3 | E4 | 10 | 14 | 4
+G4 | F4 | 9 | 14 | 5
+
+TriBulle
+G4 | F4 | 9 | 14 | 5
+
+TriBulle2
+G4 | F4 | 9 | 14 | 5
+G4->F4
+Il y a 10 pion de couleur R jouable
+status : OK partie : N
+      [41mA7[0m      
+    [41mA6[0m  [41mB7[0m    
+  [41mA5[0m  [41mB6[0m  [41mC7[0m  
+[0;30m[47mA4[0m  [0;30m[47mB5[0m  [41mC6[0m  [41mD7[0m
+  [41mB4[0m  [41mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [41mC4[0m  [0;30m[47mD5[0m  [0;30m[47mE6[0m
+  [41mC3[0m  [0;30m[47mD4[0m  [0;30m[47mE5[0m  
+[0;30m[47mC2[0m  [44mD3[0m  [0;30m[47mE4[0m  [44mF5[0m
+  [44mD2[0m  [44mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
+    [44mF1[0m  [44mG2[0m    
+      [44mG1[0m      
+Mouvement R
+C5->D5
+Il y a 8 pion de couleur B jouable
+status : OK partie : N
+      [41mA7[0m      
+    [41mA6[0m  [41mB7[0m    
+  [41mA5[0m  [41mB6[0m  [41mC7[0m  
+[0;30m[47mA4[0m  [0;30m[47mB5[0m  [41mC6[0m  [41mD7[0m
+  [41mB4[0m  [0;30m[47mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [41mC4[0m  [41mD5[0m  [0;30m[47mE6[0m
+  [41mC3[0m  [0;30m[47mD4[0m  [0;30m[47mE5[0m  
+[0;30m[47mC2[0m  [44mD3[0m  [0;30m[47mE4[0m  [44mF5[0m
+  [44mD2[0m  [44mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
+    [44mF1[0m  [44mG2[0m    
+      [44mG1[0m      
+Mouvement B
+partie 'for' fini
+
+ src  |  dst  |  PointC  |  PointAdv  |  Difference
+D1 | C2 | 11 | 14 | 3
+D2 | C2 | 12 | 15 | 3
+D3 | D4 | 12 | 15 | 3
+E3 | E4 | 10 | 14 | 4
+E3 | D4 | 11 | 13 | 2
+F5 | E5 | 9 | 13 | 4
+F5 | E6 | 10 | 13 | 3
+G2 | G3 | 11 | 15 | 4
+F3 | E4 | 10 | 14 | 4
+F4 | E4 | 8 | 14 | 6
+F4 | E5 | 9 | 13 | 4
+
+TriBulle
+F4 | E4 | 8 | 14 | 6
+
+TriBulle2
+F4 | E4 | 8 | 14 | 6
+F4->E4
+Il y a 10 pion de couleur R jouable
+status : OK partie : N
+      [41mA7[0m      
+    [41mA6[0m  [41mB7[0m    
+  [41mA5[0m  [41mB6[0m  [41mC7[0m  
+[0;30m[47mA4[0m  [0;30m[47mB5[0m  [41mC6[0m  [41mD7[0m
+  [41mB4[0m  [0;30m[47mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [41mC4[0m  [41mD5[0m  [0;30m[47mE6[0m
+  [41mC3[0m  [0;30m[47mD4[0m  [0;30m[47mE5[0m  
+[0;30m[47mC2[0m  [44mD3[0m  [44mE4[0m  [44mF5[0m
+  [44mD2[0m  [44mE3[0m  [0;30m[47mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
+    [44mF1[0m  [44mG2[0m    
+      [44mG1[0m      
+Mouvement R
+C3->C2
+Il y a 7 pion de couleur B jouable
+status : OK partie : N
+      [41mA7[0m      
+    [41mA6[0m  [41mB7[0m    
+  [41mA5[0m  [41mB6[0m  [41mC7[0m  
+[0;30m[47mA4[0m  [0;30m[47mB5[0m  [41mC6[0m  [41mD7[0m
+  [41mB4[0m  [0;30m[47mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [41mC4[0m  [41mD5[0m  [0;30m[47mE6[0m
+  [0;30m[47mC3[0m  [0;30m[47mD4[0m  [0;30m[47mE5[0m  
+[41mC2[0m  [44mD3[0m  [44mE4[0m  [44mF5[0m
+  [44mD2[0m  [44mE3[0m  [0;30m[47mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
+    [44mF1[0m  [44mG2[0m    
+      [44mG1[0m      
+Mouvement B
+partie 'for' fini
+
+ src  |  dst  |  PointC  |  PointAdv  |  Difference
+D2 | C3 | 12 | 14 | 2
+D3 | D4 | 9 | 14 | 5
+D3 | C3 | 10 | 14 | 4
+E3 | D4 | 10 | 13 | 3
+F5 | E5 | 7 | 13 | 6
+F5 | E6 | 8 | 13 | 5
+G2 | G3 | 10 | 15 | 5
+F3 | F4 | 11 | 15 | 4
+E4 | E5 | 9 | 14 | 5
+E4 | D4 | 8 | 14 | 6
+
+TriBulle
+F5 | E5 | 7 | 13 | 6
+
+TriBulle2
+F5 | E5 | 7 | 13 | 6
+F5->E5
+Il y a 9 pion de couleur R jouable
+status : OK partie : N
+      [41mA7[0m      
+    [41mA6[0m  [41mB7[0m    
+  [41mA5[0m  [41mB6[0m  [41mC7[0m  
+[0;30m[47mA4[0m  [0;30m[47mB5[0m  [41mC6[0m  [41mD7[0m
+  [41mB4[0m  [0;30m[47mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [41mC4[0m  [41mD5[0m  [0;30m[47mE6[0m
+  [0;30m[47mC3[0m  [0;30m[47mD4[0m  [44mE5[0m  
+[41mC2[0m  [44mD3[0m  [44mE4[0m  [0;30m[47mF5[0m
+  [44mD2[0m  [44mE3[0m  [0;30m[47mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
+    [44mF1[0m  [44mG2[0m    
+      [44mG1[0m      
+Mouvement R
+D7->E6
+Il y a 6 pion de couleur B jouable
+status : OK partie : N
+      [41mA7[0m      
+    [41mA6[0m  [41mB7[0m    
+  [41mA5[0m  [41mB6[0m  [41mC7[0m  
+[0;30m[47mA4[0m  [0;30m[47mB5[0m  [41mC6[0m  [0;30m[47mD7[0m
+  [41mB4[0m  [0;30m[47mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [41mC4[0m  [41mD5[0m  [41mE6[0m
+  [0;30m[47mC3[0m  [0;30m[47mD4[0m  [44mE5[0m  
+[41mC2[0m  [44mD3[0m  [44mE4[0m  [0;30m[47mF5[0m
+  [44mD2[0m  [44mE3[0m  [0;30m[47mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
+    [44mF1[0m  [44mG2[0m    
+      [44mG1[0m      
+Mouvement B
+partie 'for' fini
+
+ src  |  dst  |  PointC  |  PointAdv  |  Difference
+D2 | C3 | 9 | 12 | 3
+D3 | D4 | 6 | 12 | 6
+D3 | C3 | 7 | 12 | 5
+E3 | D4 | 7 | 11 | 4
+G2 | G3 | 7 | 13 | 6
+F3 | F4 | 8 | 13 | 5
+E4 | D4 | 6 | 12 | 6
+
+TriBulle
+D3 | D4 | 6 | 12 | 6
+E4 | D4 | 6 | 12 | 6
+
+TriBulle2
+D3 | D4 | 6 | 12 | 6
+E4 | D4 | 6 | 12 | 6
+D3->D4
+Il y a 8 pion de couleur R jouable
+status : OK partie : N
+      [41mA7[0m      
+    [41mA6[0m  [41mB7[0m    
+  [41mA5[0m  [41mB6[0m  [41mC7[0m  
+[0;30m[47mA4[0m  [0;30m[47mB5[0m  [41mC6[0m  [0;30m[47mD7[0m
+  [41mB4[0m  [0;30m[47mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [41mC4[0m  [41mD5[0m  [41mE6[0m
+  [0;30m[47mC3[0m  [44mD4[0m  [44mE5[0m  
+[41mC2[0m  [0;30m[47mD3[0m  [44mE4[0m  [0;30m[47mF5[0m
+  [44mD2[0m  [44mE3[0m  [0;30m[47mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
+    [44mF1[0m  [44mG2[0m    
+      [44mG1[0m      
+Mouvement R
+B6->B5
+Il y a 6 pion de couleur B jouable
+status : OK partie : N
+      [41mA7[0m      
+    [41mA6[0m  [41mB7[0m    
+  [41mA5[0m  [0;30m[47mB6[0m  [41mC7[0m  
+[0;30m[47mA4[0m  [41mB5[0m  [41mC6[0m  [0;30m[47mD7[0m
+  [41mB4[0m  [0;30m[47mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [41mC4[0m  [41mD5[0m  [41mE6[0m
+  [0;30m[47mC3[0m  [44mD4[0m  [44mE5[0m  
+[41mC2[0m  [0;30m[47mD3[0m  [44mE4[0m  [0;30m[47mF5[0m
+  [44mD2[0m  [44mE3[0m  [0;30m[47mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
+    [44mF1[0m  [44mG2[0m    
+      [44mG1[0m      
+Mouvement B
+partie 'for' fini
+
+ src  |  dst  |  PointC  |  PointAdv  |  Difference
+D2 | D3 | 7 | 12 | 5
+D2 | C3 | 8 | 11 | 3
+E2 | D3 | 7 | 11 | 4
+D4 | C5 | 8 | 12 | 4
+E3 | D3 | 7 | 11 | 4
+G2 | G3 | 7 | 12 | 5
+F3 | F4 | 8 | 12 | 4
+
+TriBulle
+D2 | D3 | 7 | 12 | 5
+E2 | D3 | 7 | 11 | 4
+E3 | D3 | 7 | 11 | 4
+G2 | G3 | 7 | 12 | 5
+
+TriBulle2
+D2 | D3 | 7 | 12 | 5
+G2 | G3 | 7 | 12 | 5
+G2->G3
+Il y a 10 pion de couleur R jouable
+status : OK partie : N
+      [41mA7[0m      
+    [41mA6[0m  [41mB7[0m    
+  [41mA5[0m  [0;30m[47mB6[0m  [41mC7[0m  
+[0;30m[47mA4[0m  [41mB5[0m  [41mC6[0m  [0;30m[47mD7[0m
+  [41mB4[0m  [0;30m[47mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [41mC4[0m  [41mD5[0m  [41mE6[0m
+  [0;30m[47mC3[0m  [44mD4[0m  [44mE5[0m  
+[41mC2[0m  [0;30m[47mD3[0m  [44mE4[0m  [0;30m[47mF5[0m
+  [44mD2[0m  [44mE3[0m  [0;30m[47mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [44mF2[0m  [44mG3[0m  
+    [44mF1[0m  [0;30m[47mG2[0m    
+      [44mG1[0m      
+Mouvement R
+A6->B6
+Il y a 7 pion de couleur B jouable
+status : OK partie : N
+      [41mA7[0m      
+    [0;30m[47mA6[0m  [41mB7[0m    
+  [41mA5[0m  [41mB6[0m  [41mC7[0m  
+[0;30m[47mA4[0m  [41mB5[0m  [41mC6[0m  [0;30m[47mD7[0m
+  [41mB4[0m  [0;30m[47mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [41mC4[0m  [41mD5[0m  [41mE6[0m
+  [0;30m[47mC3[0m  [44mD4[0m  [44mE5[0m  
+[41mC2[0m  [0;30m[47mD3[0m  [44mE4[0m  [0;30m[47mF5[0m
+  [44mD2[0m  [44mE3[0m  [0;30m[47mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [44mF2[0m  [44mG3[0m  
+    [44mF1[0m  [0;30m[47mG2[0m    
+      [44mG1[0m      
+Mouvement B
+partie 'for' fini
+
+ src  |  dst  |  PointC  |  PointAdv  |  Difference
+D2 | D3 | 9 | 11 | 2
+D2 | C3 | 10 | 10 | 0
+E2 | D3 | 9 | 10 | 1
+D4 | C5 | 10 | 10 | 0
+E3 | D3 | 9 | 10 | 1
+G1 | G2 | 8 | 11 | 3
+G3 | G4 | 7 | 11 | 4
+G3 | F4 | 6 | 11 | 5
+F3 | F4 | 9 | 11 | 2
+
+TriBulle
+G3 | F4 | 6 | 11 | 5
+
+TriBulle2
+G3 | F4 | 6 | 11 | 5
+G3->F4
+Il y a 9 pion de couleur R jouable
+status : OK partie : N
+      [41mA7[0m      
+    [0;30m[47mA6[0m  [41mB7[0m    
+  [41mA5[0m  [41mB6[0m  [41mC7[0m  
+[0;30m[47mA4[0m  [41mB5[0m  [41mC6[0m  [0;30m[47mD7[0m
+  [41mB4[0m  [0;30m[47mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [41mC4[0m  [41mD5[0m  [41mE6[0m
+  [0;30m[47mC3[0m  [44mD4[0m  [44mE5[0m  
+[41mC2[0m  [0;30m[47mD3[0m  [44mE4[0m  [0;30m[47mF5[0m
+  [44mD2[0m  [44mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
+    [44mF1[0m  [0;30m[47mG2[0m    
+      [44mG1[0m      
+Mouvement R
+B6->C5
+Il y a 5 pion de couleur B jouable
+status : OK partie : N
+      [41mA7[0m      
+    [0;30m[47mA6[0m  [41mB7[0m    
+  [41mA5[0m  [0;30m[47mB6[0m  [41mC7[0m  
+[0;30m[47mA4[0m  [41mB5[0m  [41mC6[0m  [0;30m[47mD7[0m
+  [41mB4[0m  [41mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [41mC4[0m  [41mD5[0m  [41mE6[0m
+  [0;30m[47mC3[0m  [44mD4[0m  [44mE5[0m  
+[41mC2[0m  [0;30m[47mD3[0m  [44mE4[0m  [0;30m[47mF5[0m
+  [44mD2[0m  [44mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
+    [44mF1[0m  [0;30m[47mG2[0m    
+      [44mG1[0m      
+Mouvement B
+partie 'for' fini
+
+ src  |  dst  |  PointC  |  PointAdv  |  Difference
+D2 | D3 | 6 | 10 | 4
+D2 | C3 | 7 | 9 | 2
+E2 | D3 | 6 | 9 | 3
+E3 | D3 | 6 | 9 | 3
+G1 | G2 | 5 | 10 | 5
+F4 | F5 | 6 | 9 | 3
+
+TriBulle
+G1 | G2 | 5 | 10 | 5
+
+TriBulle2
+G1 | G2 | 5 | 10 | 5
+G1->G2
+Il y a 7 pion de couleur R jouable
+status : OK partie : N
+      [41mA7[0m      
+    [0;30m[47mA6[0m  [41mB7[0m    
+  [41mA5[0m  [0;30m[47mB6[0m  [41mC7[0m  
+[0;30m[47mA4[0m  [41mB5[0m  [41mC6[0m  [0;30m[47mD7[0m
+  [41mB4[0m  [41mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [41mC4[0m  [41mD5[0m  [41mE6[0m
+  [0;30m[47mC3[0m  [44mD4[0m  [44mE5[0m  
+[41mC2[0m  [0;30m[47mD3[0m  [44mE4[0m  [0;30m[47mF5[0m
+  [44mD2[0m  [44mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
+    [44mF1[0m  [44mG2[0m    
+      [0;30m[47mG1[0m      
+Mouvement R
+A7->B6
+Il y a 5 pion de couleur B jouable
+status : OK partie : N
+      [0;30m[47mA7[0m      
+    [0;30m[47mA6[0m  [41mB7[0m    
+  [41mA5[0m  [41mB6[0m  [41mC7[0m  
+[0;30m[47mA4[0m  [41mB5[0m  [41mC6[0m  [0;30m[47mD7[0m
+  [41mB4[0m  [41mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [41mC4[0m  [41mD5[0m  [41mE6[0m
+  [0;30m[47mC3[0m  [44mD4[0m  [44mE5[0m  
+[41mC2[0m  [0;30m[47mD3[0m  [44mE4[0m  [0;30m[47mF5[0m
+  [44mD2[0m  [44mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
+    [44mF1[0m  [44mG2[0m    
+      [0;30m[47mG1[0m      
+Mouvement B
+partie 'for' fini
+
+ src  |  dst  |  PointC  |  PointAdv  |  Difference
+D2 | D3 | 6 | 7 | 1
+D2 | C3 | 7 | 6 | -1
+E2 | D3 | 6 | 6 | 0
+E3 | D3 | 6 | 6 | 0
+G2 | G3 | 5 | 7 | 2
+F4 | F5 | 6 | 6 | 0
+
+TriBulle
+G2 | G3 | 5 | 7 | 2
+
+TriBulle2
+G2 | G3 | 5 | 7 | 2
+G2->G3
+Il y a 5 pion de couleur R jouable
+status : OK partie : N
+      [0;30m[47mA7[0m      
+    [0;30m[47mA6[0m  [41mB7[0m    
+  [41mA5[0m  [41mB6[0m  [41mC7[0m  
+[0;30m[47mA4[0m  [41mB5[0m  [41mC6[0m  [0;30m[47mD7[0m
+  [41mB4[0m  [41mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [41mC4[0m  [41mD5[0m  [41mE6[0m
+  [0;30m[47mC3[0m  [44mD4[0m  [44mE5[0m  
+[41mC2[0m  [0;30m[47mD3[0m  [44mE4[0m  [0;30m[47mF5[0m
+  [44mD2[0m  [44mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [44mF2[0m  [44mG3[0m  
+    [44mF1[0m  [0;30m[47mG2[0m    
+      [0;30m[47mG1[0m      
+Mouvement R
+C4->D3
+Il y a 4 pion de couleur B jouable
+status : OK partie : N
+      [0;30m[47mA7[0m      
+    [0;30m[47mA6[0m  [41mB7[0m    
+  [41mA5[0m  [41mB6[0m  [41mC7[0m  
+[0;30m[47mA4[0m  [41mB5[0m  [41mC6[0m  [0;30m[47mD7[0m
+  [41mB4[0m  [41mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [0;30m[47mC4[0m  [41mD5[0m  [41mE6[0m
+  [0;30m[47mC3[0m  [44mD4[0m  [44mE5[0m  
+[41mC2[0m  [41mD3[0m  [44mE4[0m  [0;30m[47mF5[0m
+  [44mD2[0m  [44mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [44mF2[0m  [44mG3[0m  
+    [44mF1[0m  [0;30m[47mG2[0m    
+      [0;30m[47mG1[0m      
+Mouvement B
+partie 'for' fini
+
+ src  |  dst  |  PointC  |  PointAdv  |  Difference
+D2 | C3 | 8 | 9 | 1
+D4 | C4 | 5 | 7 | 2
+G3 | G4 | 3 | 8 | 5
+F4 | F5 | 5 | 7 | 2
+
+TriBulle
+G3 | G4 | 3 | 8 | 5
+
+TriBulle2
+G3 | G4 | 3 | 8 | 5
+G3->G4
+Il y a 6 pion de couleur R jouable
+status : OK partie : N
+      [0;30m[47mA7[0m      
+    [0;30m[47mA6[0m  [41mB7[0m    
+  [41mA5[0m  [41mB6[0m  [41mC7[0m  
+[0;30m[47mA4[0m  [41mB5[0m  [41mC6[0m  [0;30m[47mD7[0m
+  [41mB4[0m  [41mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [0;30m[47mC4[0m  [41mD5[0m  [41mE6[0m
+  [0;30m[47mC3[0m  [44mD4[0m  [44mE5[0m  
+[41mC2[0m  [41mD3[0m  [44mE4[0m  [0;30m[47mF5[0m
+  [44mD2[0m  [44mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [44mG4[0m
+  [44mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
+    [44mF1[0m  [0;30m[47mG2[0m    
+      [0;30m[47mG1[0m      
+Mouvement R
+C5->C4
+Il y a 4 pion de couleur B jouable
+status : OK partie : N
+      [0;30m[47mA7[0m      
+    [0;30m[47mA6[0m  [41mB7[0m    
+  [41mA5[0m  [41mB6[0m  [41mC7[0m  
+[0;30m[47mA4[0m  [41mB5[0m  [41mC6[0m  [0;30m[47mD7[0m
+  [41mB4[0m  [0;30m[47mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [41mC4[0m  [41mD5[0m  [41mE6[0m
+  [0;30m[47mC3[0m  [44mD4[0m  [44mE5[0m  
+[41mC2[0m  [41mD3[0m  [44mE4[0m  [0;30m[47mF5[0m
+  [44mD2[0m  [44mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [44mG4[0m
+  [44mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
+    [44mF1[0m  [0;30m[47mG2[0m    
+      [0;30m[47mG1[0m      
+Mouvement B
+partie 'for' fini
+
+ src  |  dst  |  PointC  |  PointAdv  |  Difference
+D2 | C3 | 7 | 9 | 2
+D4 | C5 | 5 | 8 | 3
+G4 | F5 | 2 | 8 | 6
+F4 | F5 | 4 | 8 | 4
+
+TriBulle
+G4 | F5 | 2 | 8 | 6
+
+TriBulle2
+G4 | F5 | 2 | 8 | 6
+G4->F5
+Il y a 7 pion de couleur R jouable
+status : OK partie : N
+      [0;30m[47mA7[0m      
+    [0;30m[47mA6[0m  [41mB7[0m    
+  [41mA5[0m  [41mB6[0m  [41mC7[0m  
+[0;30m[47mA4[0m  [41mB5[0m  [41mC6[0m  [0;30m[47mD7[0m
+  [41mB4[0m  [0;30m[47mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [41mC4[0m  [41mD5[0m  [41mE6[0m
+  [0;30m[47mC3[0m  [44mD4[0m  [44mE5[0m  
+[41mC2[0m  [41mD3[0m  [44mE4[0m  [44mF5[0m
+  [44mD2[0m  [44mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
+    [44mF1[0m  [0;30m[47mG2[0m    
+      [0;30m[47mG1[0m      
+Mouvement R
+C7->D7
+Il y a 2 pion de couleur B jouable
+status : OK partie : N
+      [0;30m[47mA7[0m      
+    [0;30m[47mA6[0m  [41mB7[0m    
+  [41mA5[0m  [41mB6[0m  [0;30m[47mC7[0m  
+[0;30m[47mA4[0m  [41mB5[0m  [41mC6[0m  [41mD7[0m
+  [41mB4[0m  [0;30m[47mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [41mC4[0m  [41mD5[0m  [41mE6[0m
+  [0;30m[47mC3[0m  [44mD4[0m  [44mE5[0m  
+[41mC2[0m  [41mD3[0m  [44mE4[0m  [44mF5[0m
+  [44mD2[0m  [44mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
+    [44mF1[0m  [0;30m[47mG2[0m    
+      [0;30m[47mG1[0m      
+Mouvement B
+partie 'for' fini
+
+ src  |  dst  |  PointC  |  PointAdv  |  Difference
+D2 | C3 | 5 | 8 | 3
+D4 | C5 | 3 | 7 | 4
+
+TriBulle
+D4 | C5 | 3 | 7 | 4
+
+TriBulle2
+D4 | C5 | 3 | 7 | 4
+D4->C5
+Il y a 5 pion de couleur R jouable
+status : OK partie : N
+      [0;30m[47mA7[0m      
+    [0;30m[47mA6[0m  [41mB7[0m    
+  [41mA5[0m  [41mB6[0m  [0;30m[47mC7[0m  
+[0;30m[47mA4[0m  [41mB5[0m  [41mC6[0m  [41mD7[0m
+  [41mB4[0m  [44mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [41mC4[0m  [41mD5[0m  [41mE6[0m
+  [0;30m[47mC3[0m  [0;30m[47mD4[0m  [44mE5[0m  
+[41mC2[0m  [41mD3[0m  [44mE4[0m  [44mF5[0m
+  [44mD2[0m  [44mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
+    [44mF1[0m  [0;30m[47mG2[0m    
+      [0;30m[47mG1[0m      
+Mouvement R
+D5->D4
+Il y a 3 pion de couleur B jouable
+status : OK partie : N
+      [0;30m[47mA7[0m      
+    [0;30m[47mA6[0m  [41mB7[0m    
+  [41mA5[0m  [41mB6[0m  [0;30m[47mC7[0m  
+[0;30m[47mA4[0m  [41mB5[0m  [41mC6[0m  [41mD7[0m
+  [41mB4[0m  [44mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [41mC4[0m  [0;30m[47mD5[0m  [41mE6[0m
+  [0;30m[47mC3[0m  [41mD4[0m  [44mE5[0m  
+[41mC2[0m  [41mD3[0m  [44mE4[0m  [44mF5[0m
+  [44mD2[0m  [44mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
+    [44mF1[0m  [0;30m[47mG2[0m    
+      [0;30m[47mG1[0m      
+Mouvement B
+partie 'for' fini
+
+ src  |  dst  |  PointC  |  PointAdv  |  Difference
+D2 | C3 | 6 | 7 | 1
+E5 | D5 | 4 | 7 | 3
+E4 | D5 | 4 | 6 | 2
+
+TriBulle
+E5 | D5 | 4 | 7 | 3
+E4 | D5 | 4 | 6 | 2
+
+TriBulle2
+E5 | D5 | 4 | 7 | 3
+E5->D5
+Il y a 6 pion de couleur R jouable
+status : OK partie : N
+      [0;30m[47mA7[0m      
+    [0;30m[47mA6[0m  [41mB7[0m    
+  [41mA5[0m  [41mB6[0m  [0;30m[47mC7[0m  
+[0;30m[47mA4[0m  [41mB5[0m  [41mC6[0m  [41mD7[0m
+  [41mB4[0m  [44mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [41mC4[0m  [44mD5[0m  [41mE6[0m
+  [0;30m[47mC3[0m  [41mD4[0m  [0;30m[47mE5[0m  
+[41mC2[0m  [41mD3[0m  [44mE4[0m  [44mF5[0m
+  [44mD2[0m  [44mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
+    [44mF1[0m  [0;30m[47mG2[0m    
+      [0;30m[47mG1[0m      
+Mouvement R
+A5->A4
+Il y a 4 pion de couleur B jouable
+status : OK partie : N
+      [0;30m[47mA7[0m      
+    [0;30m[47mA6[0m  [41mB7[0m    
+  [0;30m[47mA5[0m  [41mB6[0m  [0;30m[47mC7[0m  
+[41mA4[0m  [41mB5[0m  [41mC6[0m  [41mD7[0m
+  [41mB4[0m  [44mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [41mC4[0m  [44mD5[0m  [41mE6[0m
+  [0;30m[47mC3[0m  [41mD4[0m  [0;30m[47mE5[0m  
+[41mC2[0m  [41mD3[0m  [44mE4[0m  [44mF5[0m
+  [44mD2[0m  [44mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
+    [44mF1[0m  [0;30m[47mG2[0m    
+      [0;30m[47mG1[0m      
+Mouvement B
+partie 'for' fini
+
+ src  |  dst  |  PointC  |  PointAdv  |  Difference
+D2 | C3 | 7 | 7 | 0
+F5 | E5 | 2 | 6 | 4
+F4 | E5 | 2 | 5 | 3
+E4 | E5 | 4 | 6 | 2
+
+TriBulle
+F5 | E5 | 2 | 6 | 4
+F4 | E5 | 2 | 5 | 3
+
+TriBulle2
+F5 | E5 | 2 | 6 | 4
+F5->E5
+Il y a 5 pion de couleur R jouable
+status : OK partie : N
+      [0;30m[47mA7[0m      
+    [0;30m[47mA6[0m  [41mB7[0m    
+  [0;30m[47mA5[0m  [41mB6[0m  [0;30m[47mC7[0m  
+[41mA4[0m  [41mB5[0m  [41mC6[0m  [41mD7[0m
+  [41mB4[0m  [44mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [41mC4[0m  [44mD5[0m  [41mE6[0m
+  [0;30m[47mC3[0m  [41mD4[0m  [44mE5[0m  
+[41mC2[0m  [41mD3[0m  [44mE4[0m  [0;30m[47mF5[0m
+  [44mD2[0m  [44mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
+    [44mF1[0m  [0;30m[47mG2[0m    
+      [0;30m[47mG1[0m      
+Mouvement R
+E6->F5
+Il y a 2 pion de couleur B jouable
+status : OK partie : N
+      [0;30m[47mA7[0m      
+    [0;30m[47mA6[0m  [41mB7[0m    
+  [0;30m[47mA5[0m  [41mB6[0m  [0;30m[47mC7[0m  
+[41mA4[0m  [41mB5[0m  [41mC6[0m  [41mD7[0m
+  [41mB4[0m  [44mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [41mC4[0m  [44mD5[0m  [0;30m[47mE6[0m
+  [0;30m[47mC3[0m  [41mD4[0m  [44mE5[0m  
+[41mC2[0m  [41mD3[0m  [44mE4[0m  [41mF5[0m
+  [44mD2[0m  [44mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
+    [44mF1[0m  [0;30m[47mG2[0m    
+      [0;30m[47mG1[0m      
+Mouvement B
+partie 'for' fini
+
+ src  |  dst  |  PointC  |  PointAdv  |  Difference
+D2 | C3 | 5 | 8 | 3
+E5 | E6 | 3 | 7 | 4
+
+TriBulle
+E5 | E6 | 3 | 7 | 4
+
+TriBulle2
+E5 | E6 | 3 | 7 | 4
+E5->E6
+Il y a 6 pion de couleur R jouable
+status : OK partie : N
+      [0;30m[47mA7[0m      
+    [0;30m[47mA6[0m  [41mB7[0m    
+  [0;30m[47mA5[0m  [41mB6[0m  [0;30m[47mC7[0m  
+[41mA4[0m  [41mB5[0m  [41mC6[0m  [41mD7[0m
+  [41mB4[0m  [44mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [41mC4[0m  [44mD5[0m  [44mE6[0m
+  [0;30m[47mC3[0m  [41mD4[0m  [0;30m[47mE5[0m  
+[41mC2[0m  [41mD3[0m  [44mE4[0m  [41mF5[0m
+  [44mD2[0m  [44mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
+    [44mF1[0m  [0;30m[47mG2[0m    
+      [0;30m[47mG1[0m      
+Mouvement R
+B4->B3
+Il y a 3 pion de couleur B jouable
+status : OK partie : N
+      [0;30m[47mA7[0m      
+    [0;30m[47mA6[0m  [41mB7[0m    
+  [0;30m[47mA5[0m  [41mB6[0m  [0;30m[47mC7[0m  
+[41mA4[0m  [41mB5[0m  [41mC6[0m  [41mD7[0m
+  [0;30m[47mB4[0m  [44mC5[0m  [41mD6[0m  
+[41mB3[0m  [41mC4[0m  [44mD5[0m  [44mE6[0m
+  [0;30m[47mC3[0m  [41mD4[0m  [0;30m[47mE5[0m  
+[41mC2[0m  [41mD3[0m  [44mE4[0m  [41mF5[0m
+  [44mD2[0m  [44mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
+    [44mF1[0m  [0;30m[47mG2[0m    
+      [0;30m[47mG1[0m      
+Mouvement B
+partie 'for' fini
+
+ src  |  dst  |  PointC  |  PointAdv  |  Difference
+D2 | C3 | 6 | 7 | 1
+F4 | E5 | 2 | 7 | 5
+E4 | E5 | 4 | 7 | 3
+
+TriBulle
+F4 | E5 | 2 | 7 | 5
+
+TriBulle2
+F4 | E5 | 2 | 7 | 5
+F4->E5
+Il y a 6 pion de couleur R jouable
+status : OK partie : N
+      [0;30m[47mA7[0m      
+    [0;30m[47mA6[0m  [41mB7[0m    
+  [0;30m[47mA5[0m  [41mB6[0m  [0;30m[47mC7[0m  
+[41mA4[0m  [41mB5[0m  [41mC6[0m  [41mD7[0m
+  [0;30m[47mB4[0m  [44mC5[0m  [41mD6[0m  
+[41mB3[0m  [41mC4[0m  [44mD5[0m  [44mE6[0m
+  [0;30m[47mC3[0m  [41mD4[0m  [44mE5[0m  
+[41mC2[0m  [41mD3[0m  [44mE4[0m  [41mF5[0m
+  [44mD2[0m  [44mE3[0m  [0;30m[47mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
+    [44mF1[0m  [0;30m[47mG2[0m    
+      [0;30m[47mG1[0m      
+Mouvement R
+B3->C3
+Il y a 1 pion de couleur B jouable
+status : OK partie : N
+      [0;30m[47mA7[0m      
+    [0;30m[47mA6[0m  [41mB7[0m    
+  [0;30m[47mA5[0m  [41mB6[0m  [0;30m[47mC7[0m  
+[41mA4[0m  [41mB5[0m  [41mC6[0m  [41mD7[0m
+  [0;30m[47mB4[0m  [44mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [41mC4[0m  [44mD5[0m  [44mE6[0m
+  [41mC3[0m  [41mD4[0m  [44mE5[0m  
+[41mC2[0m  [41mD3[0m  [44mE4[0m  [41mF5[0m
+  [44mD2[0m  [44mE3[0m  [0;30m[47mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
+    [44mF1[0m  [0;30m[47mG2[0m    
+      [0;30m[47mG1[0m      
+Mouvement B
+partie 'for' fini
+
+ src  |  dst  |  PointC  |  PointAdv  |  Difference
+F3 | F4 | 1 | 5 | 4
+
+TriBulle
+F3 | F4 | 1 | 5 | 4
+
+TriBulle2
+F3 | F4 | 1 | 5 | 4
+F3->F4
+Il y a 4 pion de couleur R jouable
+status : OK partie : N
+      [0;30m[47mA7[0m      
+    [0;30m[47mA6[0m  [41mB7[0m    
+  [0;30m[47mA5[0m  [41mB6[0m  [0;30m[47mC7[0m  
+[41mA4[0m  [41mB5[0m  [41mC6[0m  [41mD7[0m
+  [0;30m[47mB4[0m  [44mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [41mC4[0m  [44mD5[0m  [44mE6[0m
+  [41mC3[0m  [41mD4[0m  [44mE5[0m  
+[41mC2[0m  [41mD3[0m  [44mE4[0m  [41mF5[0m
+  [44mD2[0m  [44mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [0;30m[47mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
+    [44mF1[0m  [0;30m[47mG2[0m    
+      [0;30m[47mG1[0m      
+Mouvement R
+B7->C7
+Il y a 1 pion de couleur B jouable
+status : OK partie : N
+      [0;30m[47mA7[0m      
+    [0;30m[47mA6[0m  [0;30m[47mB7[0m    
+  [0;30m[47mA5[0m  [41mB6[0m  [41mC7[0m  
+[41mA4[0m  [41mB5[0m  [41mC6[0m  [41mD7[0m
+  [0;30m[47mB4[0m  [44mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [41mC4[0m  [44mD5[0m  [44mE6[0m
+  [41mC3[0m  [41mD4[0m  [44mE5[0m  
+[41mC2[0m  [41mD3[0m  [44mE4[0m  [41mF5[0m
+  [44mD2[0m  [44mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [0;30m[47mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
+    [44mF1[0m  [0;30m[47mG2[0m    
+      [0;30m[47mG1[0m      
+Mouvement B
+partie 'for' fini
+
+ src  |  dst  |  PointC  |  PointAdv  |  Difference
+F2 | F3 | 1 | 4 | 3
+
+TriBulle
+F2 | F3 | 1 | 4 | 3
+
+TriBulle2
+F2 | F3 | 1 | 4 | 3
+F2->F3
+Il y a 3 pion de couleur R jouable
+status : OK partie : N
+      [0;30m[47mA7[0m      
+    [0;30m[47mA6[0m  [0;30m[47mB7[0m    
+  [0;30m[47mA5[0m  [41mB6[0m  [41mC7[0m  
+[41mA4[0m  [41mB5[0m  [41mC6[0m  [41mD7[0m
+  [0;30m[47mB4[0m  [44mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [41mC4[0m  [44mD5[0m  [44mE6[0m
+  [41mC3[0m  [41mD4[0m  [44mE5[0m  
+[41mC2[0m  [41mD3[0m  [44mE4[0m  [41mF5[0m
+  [44mD2[0m  [44mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [0;30m[47mF2[0m  [0;30m[47mG3[0m  
+    [44mF1[0m  [0;30m[47mG2[0m    
+      [0;30m[47mG1[0m      
+Mouvement R
+B5->B4
+Il y a 2 pion de couleur B jouable
+status : OK partie : N
+      [0;30m[47mA7[0m      
+    [0;30m[47mA6[0m  [0;30m[47mB7[0m    
+  [0;30m[47mA5[0m  [41mB6[0m  [41mC7[0m  
+[41mA4[0m  [0;30m[47mB5[0m  [41mC6[0m  [41mD7[0m
+  [41mB4[0m  [44mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [41mC4[0m  [44mD5[0m  [44mE6[0m
+  [41mC3[0m  [41mD4[0m  [44mE5[0m  
+[41mC2[0m  [41mD3[0m  [44mE4[0m  [41mF5[0m
+  [44mD2[0m  [44mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [0;30m[47mF2[0m  [0;30m[47mG3[0m  
+    [44mF1[0m  [0;30m[47mG2[0m    
+      [0;30m[47mG1[0m      
+Mouvement B
+partie 'for' fini
+
+ src  |  dst  |  PointC  |  PointAdv  |  Difference
+C5 | B5 | 4 | 5 | 1
+F1 | F2 | 1 | 4 | 3
+
+TriBulle
+F1 | F2 | 1 | 4 | 3
+
+TriBulle2
+F1 | F2 | 1 | 4 | 3
+F1->F2
+Il y a 4 pion de couleur R jouable
+status : OK partie : N
+      [0;30m[47mA7[0m      
+    [0;30m[47mA6[0m  [0;30m[47mB7[0m    
+  [0;30m[47mA5[0m  [41mB6[0m  [41mC7[0m  
+[41mA4[0m  [0;30m[47mB5[0m  [41mC6[0m  [41mD7[0m
+  [41mB4[0m  [44mC5[0m  [41mD6[0m  
+[0;30m[47mB3[0m  [41mC4[0m  [44mD5[0m  [44mE6[0m
+  [41mC3[0m  [41mD4[0m  [44mE5[0m  
+[41mC2[0m  [41mD3[0m  [44mE4[0m  [41mF5[0m
+  [44mD2[0m  [44mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
+    [0;30m[47mF1[0m  [0;30m[47mG2[0m    
+      [0;30m[47mG1[0m      
+Mouvement R
+B4->B3
+Il y a 1 pion de couleur B jouable
+status : OK partie : N
+      [0;30m[47mA7[0m      
+    [0;30m[47mA6[0m  [0;30m[47mB7[0m    
+  [0;30m[47mA5[0m  [41mB6[0m  [41mC7[0m  
+[41mA4[0m  [0;30m[47mB5[0m  [41mC6[0m  [41mD7[0m
+  [0;30m[47mB4[0m  [44mC5[0m  [41mD6[0m  
+[41mB3[0m  [41mC4[0m  [44mD5[0m  [44mE6[0m
+  [41mC3[0m  [41mD4[0m  [44mE5[0m  
+[41mC2[0m  [41mD3[0m  [44mE4[0m  [41mF5[0m
+  [44mD2[0m  [44mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
+    [0;30m[47mF1[0m  [0;30m[47mG2[0m    
+      [0;30m[47mG1[0m      
+Mouvement B
+partie 'for' fini
+
+ src  |  dst  |  PointC  |  PointAdv  |  Difference
+C5 | B5 | 3 | 4 | 1
+
+TriBulle
+C5 | B5 | 3 | 4 | 1
+
+TriBulle2
+C5 | B5 | 3 | 4 | 1
+C5->B5
+Il y a 4 pion de couleur R jouable
+status : OK partie : N
+      [0;30m[47mA7[0m      
+    [0;30m[47mA6[0m  [0;30m[47mB7[0m    
+  [0;30m[47mA5[0m  [41mB6[0m  [41mC7[0m  
+[41mA4[0m  [44mB5[0m  [41mC6[0m  [41mD7[0m
+  [0;30m[47mB4[0m  [0;30m[47mC5[0m  [41mD6[0m  
+[41mB3[0m  [41mC4[0m  [44mD5[0m  [44mE6[0m
+  [41mC3[0m  [41mD4[0m  [44mE5[0m  
+[41mC2[0m  [41mD3[0m  [44mE4[0m  [41mF5[0m
+  [44mD2[0m  [44mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
+    [0;30m[47mF1[0m  [0;30m[47mG2[0m    
+      [0;30m[47mG1[0m      
+Mouvement R
+F5->G4
+Il y a 3 pion de couleur B jouable
+status : OK partie : N
+      [0;30m[47mA7[0m      
+    [0;30m[47mA6[0m  [0;30m[47mB7[0m    
+  [0;30m[47mA5[0m  [41mB6[0m  [41mC7[0m  
+[41mA4[0m  [44mB5[0m  [41mC6[0m  [41mD7[0m
+  [0;30m[47mB4[0m  [0;30m[47mC5[0m  [41mD6[0m  
+[41mB3[0m  [41mC4[0m  [44mD5[0m  [44mE6[0m
+  [41mC3[0m  [41mD4[0m  [44mE5[0m  
+[41mC2[0m  [41mD3[0m  [44mE4[0m  [0;30m[47mF5[0m
+  [44mD2[0m  [44mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [41mG4[0m
+  [44mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
+    [0;30m[47mF1[0m  [0;30m[47mG2[0m    
+      [0;30m[47mG1[0m      
+Mouvement B
+partie 'for' fini
+
+ src  |  dst  |  PointC  |  PointAdv  |  Difference
+B5 | A5 | 3 | 5 | 2
+B5 | A6 | 2 | 5 | 3
+D5 | C5 | 5 | 4 | -1
+F4 | F5 | 4 | 4 | 0
+
+TriBulle
+B5 | A6 | 2 | 5 | 3
+
+TriBulle2
+B5 | A6 | 2 | 5 | 3
+B5->A6
+Il y a 4 pion de couleur R jouable
+status : OK partie : N
+      [0;30m[47mA7[0m      
+    [44mA6[0m  [0;30m[47mB7[0m    
+  [0;30m[47mA5[0m  [41mB6[0m  [41mC7[0m  
+[41mA4[0m  [0;30m[47mB5[0m  [41mC6[0m  [41mD7[0m
+  [0;30m[47mB4[0m  [0;30m[47mC5[0m  [41mD6[0m  
+[41mB3[0m  [41mC4[0m  [44mD5[0m  [44mE6[0m
+  [41mC3[0m  [41mD4[0m  [44mE5[0m  
+[41mC2[0m  [41mD3[0m  [44mE4[0m  [0;30m[47mF5[0m
+  [44mD2[0m  [44mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [41mG4[0m
+  [44mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
+    [0;30m[47mF1[0m  [0;30m[47mG2[0m    
+      [0;30m[47mG1[0m      
+Mouvement R
+B6->B5
+Il y a 3 pion de couleur B jouable
+status : OK partie : N
+      [0;30m[47mA7[0m      
+    [44mA6[0m  [0;30m[47mB7[0m    
+  [0;30m[47mA5[0m  [0;30m[47mB6[0m  [41mC7[0m  
+[41mA4[0m  [41mB5[0m  [41mC6[0m  [41mD7[0m
+  [0;30m[47mB4[0m  [0;30m[47mC5[0m  [41mD6[0m  
+[41mB3[0m  [41mC4[0m  [44mD5[0m  [44mE6[0m
+  [41mC3[0m  [41mD4[0m  [44mE5[0m  
+[41mC2[0m  [41mD3[0m  [44mE4[0m  [0;30m[47mF5[0m
+  [44mD2[0m  [44mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [41mG4[0m
+  [44mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
+    [0;30m[47mF1[0m  [0;30m[47mG2[0m    
+      [0;30m[47mG1[0m      
+Mouvement B
+partie 'for' fini
+
+ src  |  dst  |  PointC  |  PointAdv  |  Difference
+A6 | A7 | 2 | 5 | 3
+D5 | C5 | 4 | 5 | 1
+F4 | F5 | 3 | 5 | 2
+
+TriBulle
+A6 | A7 | 2 | 5 | 3
+
+TriBulle2
+A6 | A7 | 2 | 5 | 3
+A6->A7
+Il y a 4 pion de couleur R jouable
+status : OK partie : N
+      [44mA7[0m      
+    [0;30m[47mA6[0m  [0;30m[47mB7[0m    
+  [0;30m[47mA5[0m  [0;30m[47mB6[0m  [41mC7[0m  
+[41mA4[0m  [41mB5[0m  [41mC6[0m  [41mD7[0m
+  [0;30m[47mB4[0m  [0;30m[47mC5[0m  [41mD6[0m  
+[41mB3[0m  [41mC4[0m  [44mD5[0m  [44mE6[0m
+  [41mC3[0m  [41mD4[0m  [44mE5[0m  
+[41mC2[0m  [41mD3[0m  [44mE4[0m  [0;30m[47mF5[0m
+  [44mD2[0m  [44mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [41mG4[0m
+  [44mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
+    [0;30m[47mF1[0m  [0;30m[47mG2[0m    
+      [0;30m[47mG1[0m      
+Mouvement R
+G4->G3
+Il y a 2 pion de couleur B jouable
+status : OK partie : N
+      [44mA7[0m      
+    [0;30m[47mA6[0m  [0;30m[47mB7[0m    
+  [0;30m[47mA5[0m  [0;30m[47mB6[0m  [41mC7[0m  
+[41mA4[0m  [41mB5[0m  [41mC6[0m  [41mD7[0m
+  [0;30m[47mB4[0m  [0;30m[47mC5[0m  [41mD6[0m  
+[41mB3[0m  [41mC4[0m  [44mD5[0m  [44mE6[0m
+  [41mC3[0m  [41mD4[0m  [44mE5[0m  
+[41mC2[0m  [41mD3[0m  [44mE4[0m  [0;30m[47mF5[0m
+  [44mD2[0m  [44mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [44mF2[0m  [41mG3[0m  
+    [0;30m[47mF1[0m  [0;30m[47mG2[0m    
+      [0;30m[47mG1[0m      
+Mouvement B
+partie 'for' fini
+
+ src  |  dst  |  PointC  |  PointAdv  |  Difference
+D5 | C5 | 4 | 5 | 1
+F4 | F5 | 2 | 5 | 3
+
+TriBulle
+F4 | F5 | 2 | 5 | 3
+
+TriBulle2
+F4 | F5 | 2 | 5 | 3
+F4->F5
+Il y a 4 pion de couleur R jouable
+status : OK partie : N
+      [44mA7[0m      
+    [0;30m[47mA6[0m  [0;30m[47mB7[0m    
+  [0;30m[47mA5[0m  [0;30m[47mB6[0m  [41mC7[0m  
+[41mA4[0m  [41mB5[0m  [41mC6[0m  [41mD7[0m
+  [0;30m[47mB4[0m  [0;30m[47mC5[0m  [41mD6[0m  
+[41mB3[0m  [41mC4[0m  [44mD5[0m  [44mE6[0m
+  [41mC3[0m  [41mD4[0m  [44mE5[0m  
+[41mC2[0m  [41mD3[0m  [44mE4[0m  [44mF5[0m
+  [44mD2[0m  [44mE3[0m  [0;30m[47mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [44mF2[0m  [41mG3[0m  
+    [0;30m[47mF1[0m  [0;30m[47mG2[0m    
+      [0;30m[47mG1[0m      
+Mouvement R
+G3->G2
+Il y a 2 pion de couleur B jouable
+status : OK partie : N
+      [44mA7[0m      
+    [0;30m[47mA6[0m  [0;30m[47mB7[0m    
+  [0;30m[47mA5[0m  [0;30m[47mB6[0m  [41mC7[0m  
+[41mA4[0m  [41mB5[0m  [41mC6[0m  [41mD7[0m
+  [0;30m[47mB4[0m  [0;30m[47mC5[0m  [41mD6[0m  
+[41mB3[0m  [41mC4[0m  [44mD5[0m  [44mE6[0m
+  [41mC3[0m  [41mD4[0m  [44mE5[0m  
+[41mC2[0m  [41mD3[0m  [44mE4[0m  [44mF5[0m
+  [44mD2[0m  [44mE3[0m  [0;30m[47mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
+    [0;30m[47mF1[0m  [41mG2[0m    
+      [0;30m[47mG1[0m      
+Mouvement B
+partie 'for' fini
+
+ src  |  dst  |  PointC  |  PointAdv  |  Difference
+F3 | F4 | 2 | 5 | 3
+D5 | C5 | 3 | 5 | 2
+
+TriBulle
+F3 | F4 | 2 | 5 | 3
+
+TriBulle2
+F3 | F4 | 2 | 5 | 3
+F3->F4
+Il y a 4 pion de couleur R jouable
+status : OK partie : N
+      [44mA7[0m      
+    [0;30m[47mA6[0m  [0;30m[47mB7[0m    
+  [0;30m[47mA5[0m  [0;30m[47mB6[0m  [41mC7[0m  
+[41mA4[0m  [41mB5[0m  [41mC6[0m  [41mD7[0m
+  [0;30m[47mB4[0m  [0;30m[47mC5[0m  [41mD6[0m  
+[41mB3[0m  [41mC4[0m  [44mD5[0m  [44mE6[0m
+  [41mC3[0m  [41mD4[0m  [44mE5[0m  
+[41mC2[0m  [41mD3[0m  [44mE4[0m  [44mF5[0m
+  [44mD2[0m  [44mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [0;30m[47mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
+    [0;30m[47mF1[0m  [41mG2[0m    
+      [0;30m[47mG1[0m      
+Mouvement R
+B5->C5
+Il y a 1 pion de couleur B jouable
+status : OK partie : N
+      [44mA7[0m      
+    [0;30m[47mA6[0m  [0;30m[47mB7[0m    
+  [0;30m[47mA5[0m  [0;30m[47mB6[0m  [41mC7[0m  
+[41mA4[0m  [0;30m[47mB5[0m  [41mC6[0m  [41mD7[0m
+  [0;30m[47mB4[0m  [41mC5[0m  [41mD6[0m  
+[41mB3[0m  [41mC4[0m  [44mD5[0m  [44mE6[0m
+  [41mC3[0m  [41mD4[0m  [44mE5[0m  
+[41mC2[0m  [41mD3[0m  [44mE4[0m  [44mF5[0m
+  [44mD2[0m  [44mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [0;30m[47mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
+    [0;30m[47mF1[0m  [41mG2[0m    
+      [0;30m[47mG1[0m      
+Mouvement B
+partie 'for' fini
+
+ src  |  dst  |  PointC  |  PointAdv  |  Difference
+F2 | F3 | 0 | 2 | 2
+
+TriBulle
+F2 | F3 | 0 | 2 | 2
+
+TriBulle2
+F2 | F3 | 0 | 2 | 2
+F2->F3
+Il y a 2 pion de couleur R jouable
+status : OK partie : N
+      [44mA7[0m      
+    [0;30m[47mA6[0m  [0;30m[47mB7[0m    
+  [0;30m[47mA5[0m  [0;30m[47mB6[0m  [41mC7[0m  
+[41mA4[0m  [0;30m[47mB5[0m  [41mC6[0m  [41mD7[0m
+  [0;30m[47mB4[0m  [41mC5[0m  [41mD6[0m  
+[41mB3[0m  [41mC4[0m  [44mD5[0m  [44mE6[0m
+  [41mC3[0m  [41mD4[0m  [44mE5[0m  
+[41mC2[0m  [41mD3[0m  [44mE4[0m  [44mF5[0m
+  [44mD2[0m  [44mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [0;30m[47mF2[0m  [0;30m[47mG3[0m  
+    [0;30m[47mF1[0m  [41mG2[0m    
+      [0;30m[47mG1[0m      
+Mouvement R
+A4->B4
+status : OK partie : B
+      [44mA7[0m      
+    [0;30m[47mA6[0m  [0;30m[47mB7[0m    
+  [0;30m[47mA5[0m  [0;30m[47mB6[0m  [41mC7[0m  
+[0;30m[47mA4[0m  [0;30m[47mB5[0m  [41mC6[0m  [41mD7[0m
+  [41mB4[0m  [41mC5[0m  [41mD6[0m  
+[41mB3[0m  [41mC4[0m  [44mD5[0m  [44mE6[0m
+  [41mC3[0m  [41mD4[0m  [44mE5[0m  
+[41mC2[0m  [41mD3[0m  [44mE4[0m  [44mF5[0m
+  [44mD2[0m  [44mE3[0m  [44mF4[0m  
+[44mD1[0m  [44mE2[0m  [44mF3[0m  [0;30m[47mG4[0m
+  [44mE1[0m  [0;30m[47mF2[0m  [0;30m[47mG3[0m  
+    [0;30m[47mF1[0m  [41mG2[0m    
+      [0;30m[47mG1[0m      
+Victoire : B (28 coups)

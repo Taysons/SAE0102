@@ -7,7 +7,7 @@ import java.util.Random;
 import javax.lang.model.util.ElementScanner6;
 import javax.swing.Renderer;
 
-public class StuckWin {
+public class StuckWin2 {
 
   static final Scanner input = new Scanner(System.in);
   private static final double BOARD_SIZE = 7;
@@ -159,7 +159,7 @@ public class StuckWin {
     }
 
     char tmp = valeur.charAt(0);
-    char tmp1 = valeur.charAt(1); 
+    char tmp1 = valeur.charAt(1);
     tmp = Character.toUpperCase(tmp);
     String valideL = "ABCDEFG";
     // si le premier charactère est dans le tableau valideL
@@ -433,7 +433,7 @@ public class StuckWin {
     }
 
     test(couleur, Ncouleur, point, pointAdv, TabPointCClone, TabPointCAdvClone, nbrsJetonJouableC, nbrsJetonJouableNonC,
-        infoPosition);
+        infoPosition, 3);
     System.out.println("partie 'for' fini");
     System.out.println("");
     System.out.println(" src  |  dst  |  PointC  |  PointAdv  |  Difference");
@@ -448,7 +448,7 @@ public class StuckWin {
     }
 
     triBulle(nbrsJetonJouableC, nbrsJetonJouableNonC, infoPosition);
-    
+
     System.out.println("");
     System.out.println("TriBulle");
     for (int i = 0; i < infoPosition.size(); i++) {
@@ -461,7 +461,7 @@ public class StuckWin {
     }
 
     triBulle2(nbrsJetonJouableC, nbrsJetonJouableNonC, infoPosition);
-    
+
     System.out.println("");
     System.out.println("TriBulle2");
     for (int i = 0; i < infoPosition.size(); i++) {
@@ -472,7 +472,7 @@ public class StuckWin {
       System.out.print(nbrsJetonJouableNonC.get(i) + " | ");
       System.out.println((nbrsJetonJouableNonC.get(i)) - (nbrsJetonJouableC.get(i)));
     }
-    
+
     int rand = random.nextInt(infoPosition.size());
 
     src = infoPosition.get(rand).charAt(0) + "" + infoPosition.get(rand).charAt(1);
@@ -515,10 +515,8 @@ public class StuckWin {
     }
 
     int val = pointC.get(0);
-    for (int i = taille - 1; i > 0; i--)
-    {
-      if (pointC.get(i) != val)
-      {
+    for (int i = taille - 1; i > 0; i--) {
+      if (pointC.get(i) != val) {
         pointAdv.remove(i);
         pointC.remove(i);
         infoPosition.remove(i);
@@ -540,17 +538,11 @@ public class StuckWin {
     int tmp;
     int limite;
 
-
-    
-
-
-
     for (limite = -1; limite <= taille - 2; limite++) {
 
       for (int i = taille - 1; i > limite + 1; i--) {
 
-        
-        if ((pointC.get(i) - pointAdv.get(i)) < (pointC.get(i-1) - pointAdv.get(i-1))) {
+        if ((pointC.get(i) - pointAdv.get(i)) < (pointC.get(i - 1) - pointAdv.get(i - 1))) {
           tmp = pointC.get(i);
           pointC.set(i, pointC.get(i - 1));
           pointC.set(i - 1, tmp);
@@ -568,12 +560,9 @@ public class StuckWin {
 
     }
 
-
     int val = (pointC.get(0) - pointAdv.get(0));
-    for (int i = taille - 1; i > 0; i--)
-    {
-      if ((pointC.get(i) - pointAdv.get(i)) != val)
-      {
+    for (int i = taille - 1; i > 0; i--) {
+      if ((pointC.get(i) - pointAdv.get(i)) != val) {
         pointAdv.remove(i);
         pointC.remove(i);
         infoPosition.remove(i);
@@ -601,7 +590,10 @@ public class StuckWin {
       String[] TabPointCAdvClone,
       ArrayList<Integer> nbrsJetonJouableC,
       ArrayList<Integer> nbrsJetonJouableNonC,
-      ArrayList<String> infoPosition) {
+      ArrayList<String> infoPosition,
+      int depth) {
+
+    
 
     /// fonction a sortir pour recursivité
     for (int i = 0; i < point.length; i++) {
@@ -613,13 +605,17 @@ public class StuckWin {
 
         if (deplace(couleur, point[i], possible[j], ModeMvt.REAL) == Result.OK) {
 
+          
           nbrsJetonJouableC.add(Integer.valueOf(GetVerifPointTab(point, couleur, ModeMvt.RETOUR)));
           nbrsJetonJouableNonC.add(Integer.valueOf(GetVerifPointTab(pointAdv, Ncouleur, ModeMvt.RETOUR)));
-
+          
           point = TabPointCClone.clone();
           pointAdv = TabPointCAdvClone.clone();
           deplace(couleur, possible[j], point[i], ModeMvt.RETOUR);
           infoPosition.add(point[i] + "" + possible[j]);
+
+         
+
         }
 
       }
@@ -716,7 +712,7 @@ public class StuckWin {
 
   public static void main(String[] args) {
 
-    StuckWin jeu = new StuckWin();
+    StuckWin2 jeu = new StuckWin2();
     jeu.addPosCouleur(jeu.pointR, 'R');
     jeu.addPosCouleur(jeu.pointB, 'B');
     String src = "";
