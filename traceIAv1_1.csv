@@ -11,10 +11,15 @@
   [44mE1[0m  [44mF2[0m  [44mG3[0m  
     [44mF1[0m  [44mG2[0m    
       [44mG1[0m      
-Mouvement B
+Mouvement B -> C'est au Bleu de jouer
 partie 'for' fini
 
  src  |  dst  |  PointC  |  PointAdv  |  Difference
+
+    -> Il va afficher toute les positions actuelles des pions bleu ainsi que 
+      leurs destination possible. Ensuite il va calculer la difference entre 
+      les coups du pion bleu et celle du rouge ainsi que calculer la différence
+
 D1 | C2 | 14 | 13 | -1
 D2 | D3 | 11 | 13 | 2
 D2 | C2 | 12 | 13 | 1
@@ -30,18 +35,25 @@ F4 | E5 | 13 | 12 | -1
 G4 | F5 | 12 | 13 | 1
 
 TriBulle
+    -> L'IA va garder uniquement les lignes ou les mouvement sont les plus 
+    petit dans la colonne PointC qui correspond au pion Bleu
 D2 | D3 | 11 | 13 | 2
 E3 | E4 | 11 | 13 | 2
 E3 | D3 | 11 | 13 | 2
 F4 | E4 | 11 | 13 | 2
 
 TriBulle2
+    -> L'IA va garder uniquement les mouvement qui ont la plus grande différence 
+    et sélectioner aléatoirement l'une des possibilitées
 D2 | D3 | 11 | 13 | 2
 E3 | E4 | 11 | 13 | 2
 E3 | D3 | 11 | 13 | 2
 F4 | E4 | 11 | 13 | 2
 D2->D3
-Il y a 7 pion de couleur R jouable
+    -> L'IA a choisi de déplacer son pion D2 en D3
+
+
+Il y a 7 pion de couleur R jouable -> C'est au Rouge de jouer
 status : OK partie : N
       [41mA7[0m      
     [41mA6[0m  [41mB7[0m    
@@ -57,8 +69,12 @@ status : OK partie : N
     [44mF1[0m  [44mG2[0m    
       [44mG1[0m      
 Mouvement R
+    -> l'IA Rouge joue aléatoirement 
 B5->C4
-Il y a 8 pion de couleur B jouable
+    -> L'IA a chois de dépalcer son pion B5 en C4
+
+
+Il y a 8 pion de couleur B jouable -> C'est au Bleu de jouer
 status : OK partie : N
       [41mA7[0m      
     [41mA6[0m  [41mB7[0m    
@@ -77,6 +93,11 @@ Mouvement B
 partie 'for' fini
 
  src  |  dst  |  PointC  |  PointAdv  |  Difference
+
+-> Il va afficher toute les positions actuelles des pions bleu ainsi que 
+      leurs destination possible. Ensuite il va calculer la difference entre 
+      les coups du pion bleu et celle du rouge ainsi que calculer la différence
+
 D1 | D2 | 12 | 15 | 3
 D1 | C2 | 12 | 15 | 3
 D3 | D4 | 12 | 14 | 2
@@ -92,14 +113,23 @@ F4 | E5 | 13 | 14 | 1
 G4 | F5 | 12 | 15 | 3
 
 TriBulle
+    -> L'IA va garder uniquement les lignes ou les mouvement sont les plus 
+    petit dans la colonne PointC qui correspond au pion Bleu
+
 E1 | D2 | 11 | 15 | 4
 F4 | E4 | 11 | 15 | 4
 
 TriBulle2
+    -> L'IA va garder uniquement les mouvement qui ont la plus grande différence 
+    et sélectioner aléatoirement l'une des possibilitées
+
 E1 | D2 | 11 | 15 | 4
 F4 | E4 | 11 | 15 | 4
 F4->E4
-Il y a 10 pion de couleur R jouable
+    -> L'IA a chois de dépalcer son pion F4 en E4
+
+
+Il y a 10 pion de couleur R jouable -> C'est au Rouge de jouer
 status : OK partie : N
       [41mA7[0m      
     [41mA6[0m  [41mB7[0m    
@@ -114,8 +144,12 @@ status : OK partie : N
   [44mE1[0m  [44mF2[0m  [44mG3[0m  
     [44mF1[0m  [44mG2[0m    
       [44mG1[0m      
-Mouvement R
+Mouvement R  
+  -> L'IA joue aléatoirement
+
 B6->B5
+    -> L'IA a chois de dépalcer son pion B6 en B5
+
 Il y a 9 pion de couleur B jouable
 status : OK partie : N
       [41mA7[0m      
@@ -135,6 +169,11 @@ Mouvement B
 partie 'for' fini
 
  src  |  dst  |  PointC  |  PointAdv  |  Difference
+
+-> L'IA va calculer pour chaque pion de couleur bleu
+      leurs destination possible. Ensuite il va calculer la difference entre 
+      les coups du pion bleu et celle du rouge ainsi que calculer la différence
+
 D1 | D2 | 13 | 15 | 2
 D1 | C2 | 13 | 15 | 2
 D3 | D4 | 12 | 14 | 2
@@ -151,12 +190,21 @@ G4 | F4 | 11 | 15 | 4
 G4 | F5 | 13 | 15 | 2
 
 TriBulle
+-> L'IA va garder uniquement les lignes ou les mouvement sont les plus petit
+ dans la colonne PointC qui correspond au pion Bleu
+
 E4 | D4 | 11 | 13 | 2
 G4 | F4 | 11 | 15 | 4
 
 TriBulle2
+-> L'IA va garder uniquement les mouvement qui ont la plus grande différence 
+et sélectioner aléatoirement l'une des possibilitées
+
 G4 | F4 | 11 | 15 | 4
 G4->F4
+-> L'IA a chois de dépalcer son pion G4 en F4
+
+
 Il y a 10 pion de couleur R jouable
 status : OK partie : N
       [41mA7[0m      
@@ -172,8 +220,13 @@ status : OK partie : N
   [44mE1[0m  [44mF2[0m  [44mG3[0m  
     [44mF1[0m  [44mG2[0m    
       [44mG1[0m      
-Mouvement R
+Mouvement R 
+  -> L'IA joue aléatoirement
+
 D6->E5
+-> L'IA a chois de dépalcer son pion D6 en E5
+
+
 Il y a 8 pion de couleur B jouable
 status : OK partie : N
       [41mA7[0m      
@@ -189,10 +242,15 @@ status : OK partie : N
   [44mE1[0m  [44mF2[0m  [44mG3[0m  
     [44mF1[0m  [44mG2[0m    
       [44mG1[0m      
-Mouvement B
+Mouvement B 
 partie 'for' fini
 
  src  |  dst  |  PointC  |  PointAdv  |  Difference
+
+-> L'IA va calculer pour chaque pion de couleur bleu
+      leurs destination possible. Ensuite il va calculer la difference entre 
+      les coups du pion bleu et celle du rouge ainsi que calculer la différence
+
 D1 | D2 | 10 | 16 | 6
 D1 | C2 | 10 | 16 | 6
 D3 | D4 | 9 | 15 | 6
@@ -206,12 +264,20 @@ G3 | G4 | 11 | 16 | 5
 F4 | F5 | 12 | 16 | 4
 
 TriBulle
+-> L'IA va garder uniquement les lignes ou les mouvement sont les plus petit
+ dans la colonne PointC qui correspond au pion Bleu
+
 D3 | D4 | 9 | 15 | 6
 E1 | D2 | 9 | 16 | 7
 
 TriBulle2
+-> L'IA va garder uniquement le mouvement qui ont la plus grande différence
+
 E1 | D2 | 9 | 16 | 7
 E1->D2
+-> L'IA a chois de dépalcer son pion E1 en D2
+
+
 Il y a 11 pion de couleur R jouable
 status : OK partie : N
       [41mA7[0m      
@@ -227,8 +293,12 @@ status : OK partie : N
   [0;30m[47mE1[0m  [44mF2[0m  [44mG3[0m  
     [44mF1[0m  [44mG2[0m    
       [44mG1[0m      
-Mouvement R
+Mouvement R 
+  -> L'IA joue aléatoirement
 A4->B3
+-> L'IA a chois de dépalcer son pion A4 en B3
+
+
 Il y a 8 pion de couleur B jouable
 status : OK partie : N
       [41mA7[0m      
@@ -248,6 +318,11 @@ Mouvement B
 partie 'for' fini
 
  src  |  dst  |  PointC  |  PointAdv  |  Difference
+
+-> L'IA va calculer pour chaque pion de couleur bleu
+      leurs destination possible. Ensuite il va calculer la difference entre 
+      les coups du pion bleu et celle du rouge ainsi que calculer la différence
+
 D1 | C2 | 10 | 16 | 6
 D3 | D4 | 10 | 16 | 6
 D3 | C3 | 11 | 15 | 4
@@ -261,6 +336,8 @@ G3 | G4 | 11 | 17 | 6
 F4 | F5 | 12 | 17 | 5
 
 TriBulle
+-> L'IA va garder uniquement les lignes ou les mouvement sont les plus petit
+ dans la colonne PointC qui correspond au pion Bleu
 D1 | C2 | 10 | 16 | 6
 D3 | D4 | 10 | 16 | 6
 D2 | C2 | 10 | 16 | 6
@@ -268,11 +345,16 @@ D2 | C3 | 10 | 14 | 4
 E4 | D4 | 10 | 16 | 6
 
 TriBulle2
+-> L'IA va garder uniquement les mouvement qui ont la plus grande différence 
+et sélectioner aléatoirement l'une des possibilitées
 D1 | C2 | 10 | 16 | 6
 D3 | D4 | 10 | 16 | 6
 D2 | C2 | 10 | 16 | 6
 E4 | D4 | 10 | 16 | 6
 D1->C2
+-> L'IA a chois de dépalcer son pion D1 en C2
+
+
 Il y a 12 pion de couleur R jouable
 status : OK partie : N
       [41mA7[0m      
@@ -289,7 +371,12 @@ status : OK partie : N
     [44mF1[0m  [44mG2[0m    
       [44mG1[0m      
 Mouvement R
+-> L'IA va jouer aléatoirement
+
 C5->D4
+-> L'IA a chois de dépalcer son pion C5 en D4
+
+
 Il y a 7 pion de couleur B jouable
 status : OK partie : N
       [41mA7[0m      
@@ -309,6 +396,11 @@ Mouvement B
 partie 'for' fini
 
  src  |  dst  |  PointC  |  PointAdv  |  Difference
+
+-> L'IA va calculer pour chaque pion de couleur bleu
+      leurs destination possible. Ensuite il va calculer la difference entre 
+      les coups du pion bleu et celle du rouge ainsi que calculer la différence
+
 C2 | C3 | 5 | 13 | 8
 D3 | C3 | 7 | 14 | 7
 D2 | C3 | 5 | 12 | 7
@@ -318,12 +410,20 @@ G3 | G4 | 7 | 15 | 8
 F4 | F5 | 8 | 15 | 7
 
 TriBulle
+-> L'IA va garder uniquement les lignes ou les mouvement sont les plus petit
+ dans la colonne PointC qui correspond au pion Bleu
+
 C2 | C3 | 5 | 13 | 8
 D2 | C3 | 5 | 12 | 7
 
 TriBulle2
+-> L'IA va garder uniquement le mouvement qui ont la plus grande différence
+
 C2 | C3 | 5 | 13 | 8
 C2->C3
+-> L'IA a chois de dépalcer son pion C2 en C3
+
+
 Il y a 10 pion de couleur R jouable
 status : OK partie : N
       [41mA7[0m      
@@ -339,8 +439,12 @@ status : OK partie : N
   [0;30m[47mE1[0m  [44mF2[0m  [44mG3[0m  
     [44mF1[0m  [44mG2[0m    
       [44mG1[0m      
-Mouvement R
+Mouvement R 
+  -> L'IA va jouer aléatoirement
 A5->A4
+  -> L'IA a chois de dépalcer son pion A5 en A4
+
+
 Il y a 5 pion de couleur B jouable
 status : OK partie : N
       [41mA7[0m      
@@ -360,6 +464,11 @@ Mouvement B
 partie 'for' fini
 
  src  |  dst  |  PointC  |  PointAdv  |  Difference
+
+-> L'IA va calculer pour chaque pion de couleur bleu
+      leurs destination possible. Ensuite il va calculer la difference entre 
+      les coups du pion bleu et celle du rouge ainsi que calculer la différence
+
 D2 | C2 | 5 | 12 | 7
 F1 | E1 | 5 | 13 | 8
 E4 | D5 | 7 | 14 | 7
@@ -367,14 +476,23 @@ G3 | G4 | 5 | 13 | 8
 F4 | F5 | 6 | 13 | 7
 
 TriBulle
+-> L'IA va garder uniquement les lignes ou les mouvement sont les plus petit
+ dans la colonne PointC qui correspond au pion Bleu
+
 D2 | C2 | 5 | 12 | 7
 F1 | E1 | 5 | 13 | 8
 G3 | G4 | 5 | 13 | 8
 
 TriBulle2
+-> L'IA va garder uniquement les mouvement qui ont la plus grande différence 
+et sélectioner aléatoirement l'une des possibilitées
+
 F1 | E1 | 5 | 13 | 8
 G3 | G4 | 5 | 13 | 8
 G3->G4
+-> L'IA a chois de dépalcer son pion G3 en G4
+
+
 Il y a 9 pion de couleur R jouable
 status : OK partie : N
       [41mA7[0m      
@@ -390,8 +508,12 @@ status : OK partie : N
   [0;30m[47mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
     [44mF1[0m  [44mG2[0m    
       [44mG1[0m      
-Mouvement R
+Mouvement R 
+  -> L'IA va jouer aléatoirement
 B3->C2
+  -> L'IA a chois de dépalcer son pion B3 en C2
+
+
 Il y a 6 pion de couleur B jouable
 status : OK partie : N
       [41mA7[0m      
@@ -411,6 +533,11 @@ Mouvement B
 partie 'for' fini
 
  src  |  dst  |  PointC  |  PointAdv  |  Difference
+
+-> L'IA va calculer pour chaque pion de couleur bleu
+      leurs destination possible. Ensuite il va calculer la difference entre 
+      les coups du pion bleu et celle du rouge ainsi que calculer la différence
+
 C3 | B3 | 7 | 15 | 8
 F1 | E1 | 6 | 15 | 9
 E4 | D5 | 8 | 16 | 8
@@ -419,11 +546,20 @@ G4 | F5 | 4 | 14 | 10
 F4 | F5 | 6 | 15 | 9
 
 TriBulle
+-> L'IA va garder uniquement les lignes ou les mouvement sont les plus petit
+ dans la colonne PointC qui correspond au pion Bleu
+
 G4 | F5 | 4 | 14 | 10
 
 TriBulle2
+-> L'IA va garder uniquement les mouvement qui ont la plus grande différence 
+et sélectioner aléatoirement l'une des possibilitées
+
 G4 | F5 | 4 | 14 | 10
 G4->F5
+-> L'IA a chois de dépalcer son pion G4 en F5
+
+
 Il y a 10 pion de couleur R jouable
 status : OK partie : N
       [41mA7[0m      
@@ -439,8 +575,12 @@ status : OK partie : N
   [0;30m[47mE1[0m  [44mF2[0m  [0;30m[47mG3[0m  
     [44mF1[0m  [44mG2[0m    
       [44mG1[0m      
-Mouvement R
+Mouvement R 
+  -> L'IA va jouer aléatoirement
 D7->D6
+  -> L'IA a chois de dépalcer son pion D7 en D6
+
+
 Il y a 5 pion de couleur B jouable
 status : OK partie : N
       [41mA7[0m      
@@ -460,6 +600,11 @@ Mouvement B
 partie 'for' fini
 
  src  |  dst  |  PointC  |  PointAdv  |  Difference
+
+ -> L'IA va calculer pour chaque pion de couleur bleu
+      leurs destination possible. Ensuite il va calculer la difference entre 
+      les coups du pion bleu et celle du rouge ainsi que calculer la différence
+
 C3 | B3 | 6 | 13 | 7
 F1 | E1 | 5 | 13 | 8
 E4 | D5 | 7 | 13 | 6
@@ -467,15 +612,22 @@ G2 | G3 | 5 | 13 | 8
 F5 | E6 | 5 | 13 | 8
 
 TriBulle
+-> L'IA va garder uniquement les lignes ou les mouvement sont les plus petit
+ dans la colonne PointC qui correspond au pion Bleu
+
 F1 | E1 | 5 | 13 | 8
 G2 | G3 | 5 | 13 | 8
 F5 | E6 | 5 | 13 | 8
 
 TriBulle2
+-> L'IA va garder uniquement les mouvement qui ont la plus grande différence 
+et sélectioner aléatoirement l'une des possibilitées  
 F1 | E1 | 5 | 13 | 8
 G2 | G3 | 5 | 13 | 8
 F5 | E6 | 5 | 13 | 8
 G2->G3
+-> L'IA a chois de dépalcer son pion G2 en G3
+
 Il y a 10 pion de couleur R jouable
 status : OK partie : N
       [41mA7[0m      
@@ -491,8 +643,12 @@ status : OK partie : N
   [0;30m[47mE1[0m  [44mF2[0m  [44mG3[0m  
     [44mF1[0m  [0;30m[47mG2[0m    
       [44mG1[0m      
-Mouvement R
+Mouvement R 
+  -> L'IA va jouer aléatoirement
 C2->D1
+  -> L'IA a chois de dépalcer son pion C2 en D1
+
+
 Il y a 7 pion de couleur B jouable
 status : OK partie : N
       [41mA7[0m      
@@ -512,6 +668,11 @@ Mouvement B
 partie 'for' fini
 
  src  |  dst  |  PointC  |  PointAdv  |  Difference
+
+  -> L'IA va calculer pour chaque pion de couleur bleu
+        leurs destination possible. Ensuite il va calculer la difference entre 
+        les coups du pion bleu et celle du rouge ainsi que calculer la différence
+
 C3 | B3 | 8 | 13 | 5
 D2 | C2 | 7 | 13 | 6
 F1 | E1 | 7 | 12 | 5
@@ -521,13 +682,22 @@ G3 | G4 | 6 | 13 | 7
 F5 | E6 | 7 | 13 | 6
 
 TriBulle
+-> L'IA va garder uniquement les lignes ou les mouvement sont les plus petit
+ dans la colonne PointC qui correspond au pion Bleu
+
 G1 | G2 | 6 | 13 | 7
 G3 | G4 | 6 | 13 | 7
 
 TriBulle2
+-> L'IA va garder uniquement les mouvement qui ont la plus grande différence
+ 
+
 G1 | G2 | 6 | 13 | 7
 G3 | G4 | 6 | 13 | 7
 G1->G2
+-> L'IA a chois de dépalcer son pion G1 en G2
+
+
 Il y a 10 pion de couleur R jouable
 status : OK partie : N
       [41mA7[0m      
@@ -544,7 +714,12 @@ status : OK partie : N
     [44mF1[0m  [44mG2[0m    
       [0;30m[47mG1[0m      
 Mouvement R
+-> L'Ia va jouer aléatoirement
+
 C6->D5
+-> L'IA a chois de dépalcer son pion C6 en D5
+
+
 Il y a 5 pion de couleur B jouable
 status : OK partie : N
       [41mA7[0m      
@@ -564,6 +739,11 @@ Mouvement B
 partie 'for' fini
 
  src  |  dst  |  PointC  |  PointAdv  |  Difference
+
+  -> L'IA va calculer pour chaque pion de couleur bleu
+        leurs destination possible. Ensuite il va calculer la difference entre 
+        les coups du pion bleu et celle du rouge ainsi que calculer la différence
+
 C3 | B3 | 6 | 12 | 6
 D2 | C2 | 5 | 12 | 7
 F1 | E1 | 4 | 11 | 7
@@ -571,11 +751,19 @@ G3 | G4 | 5 | 12 | 7
 F5 | E6 | 5 | 12 | 7
 
 TriBulle
+-> L'IA va garder uniquement les lignes ou les mouvement sont les plus petit
+ dans la colonne PointC qui correspond au pion Bleu
+
 F1 | E1 | 4 | 11 | 7
 
 TriBulle2
+-> L'IA va garder uniquement les mouvement qui ont la plus grande différence
+
 F1 | E1 | 4 | 11 | 7
 F1->E1
+-> L'IA a chois de dépalcer son pion F1 en E1
+
+
 Il y a 8 pion de couleur R jouable
 status : OK partie : N
       [41mA7[0m      
@@ -592,7 +780,12 @@ status : OK partie : N
     [0;30m[47mF1[0m  [44mG2[0m    
       [0;30m[47mG1[0m      
 Mouvement R
+-> L'Ia va jouer aléatoirement
+
 B7->B6
+-> L'IA a chois de dépalcer son pion B7 en B6
+
+
 Il y a 4 pion de couleur B jouable
 status : OK partie : N
       [41mA7[0m      
@@ -612,19 +805,33 @@ Mouvement B
 partie 'for' fini
 
  src  |  dst  |  PointC  |  PointAdv  |  Difference
+
+  -> L'IA va calculer pour chaque pion de couleur bleu
+        leurs destination possible. Ensuite il va calculer la difference entre 
+        les coups du pion bleu et celle du rouge ainsi que calculer la différence
+
 C3 | B3 | 5 | 10 | 5
 D2 | C2 | 5 | 10 | 5
 G3 | G4 | 4 | 10 | 6
 F5 | E6 | 4 | 10 | 6
 
 TriBulle
+-> L'IA va garder uniquement les lignes ou les mouvement sont les plus petit
+ dans la colonne PointC qui correspond au pion Bleu
+
 G3 | G4 | 4 | 10 | 6
 F5 | E6 | 4 | 10 | 6
 
 TriBulle2
+-> L'IA va garder uniquement les mouvement qui ont la plus grande différence
+et sélectioner aléatoirement un mouvement
+
 G3 | G4 | 4 | 10 | 6
 F5 | E6 | 4 | 10 | 6
 F5->E6
+-> L'IA a chois de dépalcer son pion F5 en E6
+
+
 Il y a 8 pion de couleur R jouable
 status : OK partie : N
       [41mA7[0m      
@@ -641,7 +848,11 @@ status : OK partie : N
     [0;30m[47mF1[0m  [44mG2[0m    
       [0;30m[47mG1[0m      
 Mouvement R
+-> L'Ia va jouer aléatoirement
 B6->C5
+-> L'IA a chois de dépalcer son pion B6 en C5
+
+
 Il y a 5 pion de couleur B jouable
 status : OK partie : N
       [41mA7[0m      
@@ -661,6 +872,11 @@ Mouvement B
 partie 'for' fini
 
  src  |  dst  |  PointC  |  PointAdv  |  Difference
+  
+    -> L'IA va calculer pour chaque pion de couleur bleu
+          leurs destination possible. Ensuite il va calculer la difference entre 
+          les coups du pion bleu et celle du rouge ainsi que calculer la différence
+
 C3 | B3 | 6 | 9 | 3
 D2 | C2 | 6 | 9 | 3
 G3 | G4 | 5 | 9 | 4
@@ -668,11 +884,19 @@ E6 | D7 | 4 | 9 | 5
 F4 | F5 | 6 | 9 | 3
 
 TriBulle
+-> L'IA va garder uniquement les lignes ou les mouvement sont les plus petit
+ dans la colonne PointC qui correspond au pion Bleu
+
 E6 | D7 | 4 | 9 | 5
 
 TriBulle2
+-> L'IA va garder uniquement le mouvement qui ont la plus grande différence
+
 E6 | D7 | 4 | 9 | 5
 E6->D7
+-> L'IA a chois de dépalcer son pion E6 en D7
+
+
 Il y a 7 pion de couleur R jouable
 status : OK partie : N
       [41mA7[0m      
@@ -689,7 +913,12 @@ status : OK partie : N
     [0;30m[47mF1[0m  [44mG2[0m    
       [0;30m[47mG1[0m      
 Mouvement R
+-> L'Ia va jouer aléatoirement
+
 A6->B6
+-> L'IA a chois de dépalcer son pion A6 en B6
+
+
 Il y a 4 pion de couleur B jouable
 status : OK partie : N
       [41mA7[0m      
@@ -709,17 +938,30 @@ Mouvement B
 partie 'for' fini
 
  src  |  dst  |  PointC  |  PointAdv  |  Difference
+
+    -> L'IA va calculer pour chaque pion de couleur bleu
+          leurs destination possible. Ensuite il va calculer la difference entre 
+          les coups du pion bleu et celle du rouge ainsi que calculer la différence
+
 C3 | B3 | 5 | 8 | 3
 D2 | C2 | 5 | 8 | 3
 G3 | G4 | 4 | 8 | 4
 F4 | F5 | 5 | 8 | 3
 
 TriBulle
+-> L'IA va garder uniquement les lignes ou les mouvement sont les plus petit
+ dans la colonne PointC qui correspond au pion Bleu
+
 G3 | G4 | 4 | 8 | 4
 
 TriBulle2
+-> L'IA va garder uniquement le mouvement qui ont la plus grande différence
+
 G3 | G4 | 4 | 8 | 4
 G3->G4
+-> L'IA a chois de dépalcer son pion G3 en G4
+
+
 Il y a 7 pion de couleur R jouable
 status : OK partie : N
       [41mA7[0m      
@@ -736,7 +978,11 @@ status : OK partie : N
     [0;30m[47mF1[0m  [44mG2[0m    
       [0;30m[47mG1[0m      
 Mouvement R
+-> L'Ia va jouer aléatoirement
 A7->B7
+-> L'IA a chois de dépalcer son pion A7 en B7
+
+
 Il y a 5 pion de couleur B jouable
 status : OK partie : N
       [0;30m[47mA7[0m      
@@ -756,6 +1002,11 @@ Mouvement B
 partie 'for' fini
 
  src  |  dst  |  PointC  |  PointAdv  |  Difference
+
+    -> L'IA va calculer pour chaque pion de couleur bleu
+          leurs destination possible. Ensuite il va calculer la difference entre 
+          les coups du pion bleu et celle du rouge ainsi que calculer la différence
+
 C3 | B3 | 6 | 7 | 1
 D2 | C2 | 6 | 7 | 1
 G2 | G3 | 4 | 7 | 3
@@ -763,11 +1014,19 @@ G4 | F5 | 3 | 6 | 3
 F4 | F5 | 5 | 7 | 2
 
 TriBulle
+-> L'IA va garder uniquement les lignes ou les mouvement sont les plus petit
+ dans la colonne PointC qui correspond au pion Bleu
+
 G4 | F5 | 3 | 6 | 3
 
 TriBulle2
+-> L'IA va garder uniquement le mouvement qui ont la plus grande différence
+
 G4 | F5 | 3 | 6 | 3
 G4->F5
+-> L'IA a chois de dépalcer son pion G4 en F5
+
+
 Il y a 6 pion de couleur R jouable
 status : OK partie : N
       [0;30m[47mA7[0m      
@@ -784,7 +1043,11 @@ status : OK partie : N
     [0;30m[47mF1[0m  [44mG2[0m    
       [0;30m[47mG1[0m      
 Mouvement R
+-> L'Ia va jouer aléatoirement
 C7->C6
+-> L'IA a chois de dépalcer son pion C7 en C6
+
+
 Il y a 5 pion de couleur B jouable
 status : OK partie : N
       [0;30m[47mA7[0m      
@@ -804,6 +1067,11 @@ Mouvement B
 partie 'for' fini
 
  src  |  dst  |  PointC  |  PointAdv  |  Difference
+
+    -> L'IA va calculer pour chaque pion de couleur bleu
+          leurs destination possible. Ensuite il va calculer la difference entre 
+          les coups du pion bleu et celle du rouge ainsi que calculer la différence
+
 C3 | B3 | 6 | 4 | -2
 D2 | C2 | 6 | 4 | -2
 G2 | G3 | 4 | 4 | 0
@@ -811,12 +1079,20 @@ F5 | E6 | 5 | 4 | -1
 D7 | C7 | 4 | 3 | -1
 
 TriBulle
+-> L'IA va garder uniquement les lignes ou les mouvement sont les plus petit
+ dans la colonne PointC qui correspond au pion Bleu
+
 G2 | G3 | 4 | 4 | 0
 D7 | C7 | 4 | 3 | -1
 
 TriBulle2
+-> L'IA va garder uniquement le mouvement qui ont la plus grande différence
+
 G2 | G3 | 4 | 4 | 0
 G2->G3
+-> L'IA a chois de dépalcer son pion G2 en G3
+
+
 Il y a 4 pion de couleur R jouable
 status : OK partie : N
       [0;30m[47mA7[0m      
@@ -833,7 +1109,11 @@ status : OK partie : N
     [0;30m[47mF1[0m  [0;30m[47mG2[0m    
       [0;30m[47mG1[0m      
 Mouvement R
+-> L'Ia va jouer aléatoirement
 B4->B3
+-> L'IA a chois de dépalcer son pion B4 en B3
+
+
 Il y a 5 pion de couleur B jouable
 status : OK partie : N
       [0;30m[47mA7[0m      
@@ -853,6 +1133,11 @@ Mouvement B
 partie 'for' fini
 
  src  |  dst  |  PointC  |  PointAdv  |  Difference
+
+    -> L'IA va calculer pour chaque pion de couleur bleu
+          leurs destination possible. Ensuite il va calculer la difference entre 
+          les coups du pion bleu et celle du rouge ainsi que calculer la différence
+
 C3 | B4 | 7 | 5 | -2
 D2 | C2 | 6 | 4 | -2
 G3 | G4 | 4 | 5 | 1
@@ -860,12 +1145,21 @@ F5 | E6 | 5 | 5 | 0
 D7 | C7 | 4 | 4 | 0
 
 TriBulle
+-> L'IA va garder uniquement les lignes ou les mouvement sont les plus petit
+ dans la colonne PointC qui correspond au pion Bleu
+
 G3 | G4 | 4 | 5 | 1
 D7 | C7 | 4 | 4 | 0
 
 TriBulle2
+-> L'IA va garder uniquement le mouvement qui ont la plus grande différence
+
 G3 | G4 | 4 | 5 | 1
+
 G3->G4
+-> L'IA a chois de dépalcer son pion G3 en G4
+
+
 Il y a 5 pion de couleur R jouable
 status : OK partie : N
       [0;30m[47mA7[0m      
@@ -882,7 +1176,12 @@ status : OK partie : N
     [0;30m[47mF1[0m  [0;30m[47mG2[0m    
       [0;30m[47mG1[0m      
 Mouvement R
+-> L'Ia va jouer aléatoirement
+
 A4->B4
+-> L'IA a chois de dépalcer son pion A4 en B4
+
+
 Il y a 3 pion de couleur B jouable
 status : OK partie : N
       [0;30m[47mA7[0m      
@@ -902,16 +1201,29 @@ Mouvement B
 partie 'for' fini
 
  src  |  dst  |  PointC  |  PointAdv  |  Difference
+
+    -> L'IA va calculer pour chaque pion de couleur bleu
+          leurs destination possible. Ensuite il va calculer la difference entre 
+          les coups du pion bleu et celle du rouge ainsi que calculer la différence
+
 D2 | C2 | 4 | 2 | -2
 F5 | E6 | 4 | 3 | -1
 D7 | C7 | 2 | 2 | 0
 
 TriBulle
+-> L'IA va garder uniquement les lignes ou les mouvement sont les plus petit
+ dans la colonne PointC qui correspond au pion Bleu
+
 D7 | C7 | 2 | 2 | 0
 
 TriBulle2
+-> L'IA va garder uniquement le mouvement qui ont la plus grande différence
+
 D7 | C7 | 2 | 2 | 0
 D7->C7
+-> L'IA a chois de dépalcer son pion D7 en C7
+
+
 Il y a 2 pion de couleur R jouable
 status : OK partie : N
       [0;30m[47mA7[0m      
@@ -928,7 +1240,11 @@ status : OK partie : N
     [0;30m[47mF1[0m  [0;30m[47mG2[0m    
       [0;30m[47mG1[0m      
 Mouvement R
+-> L'Ia va jouer aléatoirement
 B3->C2
+-> L'IA a chois de dépalcer son pion B3 en C2
+
+
 Il y a 2 pion de couleur B jouable
 status : OK partie : N
       [0;30m[47mA7[0m      
@@ -948,15 +1264,28 @@ Mouvement B
 partie 'for' fini
 
  src  |  dst  |  PointC  |  PointAdv  |  Difference
+
+    -> L'IA va calculer pour chaque pion de couleur bleu
+          leurs destination possible. Ensuite il va calculer la difference entre 
+          les coups du pion bleu et celle du rouge ainsi que calculer la différence
+
 C3 | B3 | 4 | 3 | -1
 F5 | E6 | 3 | 2 | -1
 
 TriBulle
+-> L'IA va garder uniquement les lignes ou les mouvement sont les plus petit
+ dans la colonne PointC qui correspond au pion Bleu
+
 F5 | E6 | 3 | 2 | -1
 
 TriBulle2
+-> L'IA va garder uniquement le mouvement qui ont la plus grande différence
+
 F5 | E6 | 3 | 2 | -1
 F5->E6
+-> L'IA a chois de dépalcer son pion F5 en E6
+
+
 Il y a 2 pion de couleur R jouable
 status : OK partie : N
       [0;30m[47mA7[0m      
@@ -973,7 +1302,11 @@ status : OK partie : N
     [0;30m[47mF1[0m  [0;30m[47mG2[0m    
       [0;30m[47mG1[0m      
 Mouvement R
+-> L'Ia va jouer aléatoirement
 B4->B3
+-> L'IA a chois de dépalcer son pion B4 en B3
+
+
 Il y a 4 pion de couleur B jouable
 status : OK partie : N
       [0;30m[47mA7[0m      
@@ -993,17 +1326,30 @@ Mouvement B
 partie 'for' fini
 
  src  |  dst  |  PointC  |  PointAdv  |  Difference
+
+    -> L'IA va calculer pour chaque pion de couleur bleu
+          leurs destination possible. Ensuite il va calculer la difference entre 
+          les coups du pion bleu et celle du rouge ainsi que calculer la différence
+
 C3 | B4 | 7 | 3 | -4
 G4 | F5 | 2 | 1 | -1
 E6 | D7 | 3 | 3 | 0
 F4 | F5 | 4 | 2 | -2
 
 TriBulle
+-> L'IA va garder uniquement les lignes ou les mouvement sont les plus petit
+ dans la colonne PointC qui correspond au pion Bleu
+
 G4 | F5 | 2 | 1 | -1
 
 TriBulle2
+-> L'IA va garder uniquement le mouvement qui ont la plus grande différence
+
 G4 | F5 | 2 | 1 | -1
 G4->F5
+-> L'IA a chois de dépalcer son pion G4 en F5
+
+
 Il y a 1 pion de couleur R jouable
 status : OK partie : N
       [0;30m[47mA7[0m      
@@ -1020,7 +1366,11 @@ status : OK partie : N
     [0;30m[47mF1[0m  [0;30m[47mG2[0m    
       [0;30m[47mG1[0m      
 Mouvement R
+-> L'Ia va jouer aléatoirement
 B5->B4
+-> L'IA a chois de dépalcer son pion B5 en B4
+
+
 Il y a 1 pion de couleur B jouable
 status : OK partie : N
       [0;30m[47mA7[0m      
@@ -1040,14 +1390,27 @@ Mouvement B
 partie 'for' fini
 
  src  |  dst  |  PointC  |  PointAdv  |  Difference
+
+    -> L'IA va calculer pour chaque pion de couleur bleu
+          leurs destination possible. Ensuite il va calculer la difference entre 
+          les coups du pion bleu et celle du rouge ainsi que calculer la différence
+
 E6 | D7 | 1 | 2 | 1
 
 TriBulle
+-> L'IA va garder uniquement les lignes ou les mouvement sont les plus petit
+ dans la colonne PointC qui correspond au pion Bleu
+
 E6 | D7 | 1 | 2 | 1
 
 TriBulle2
+-> L'IA va garder uniquement le mouvement qui ont la plus grande différence
+
 E6 | D7 | 1 | 2 | 1
 E6->D7
+-> L'IA a chois de dépalcer son pion E6 en D7
+
+
 Il y a 2 pion de couleur R jouable
 status : OK partie : N
       [0;30m[47mA7[0m      
@@ -1064,7 +1427,11 @@ status : OK partie : N
     [0;30m[47mF1[0m  [0;30m[47mG2[0m    
       [0;30m[47mG1[0m      
 Mouvement R
+-> L'Ia va jouer aléatoirement
 B6->B5
+-> L'IA a chois de dépalcer son pion B6 en B5
+
+
 Il y a 1 pion de couleur B jouable
 status : OK partie : N
       [0;30m[47mA7[0m      
@@ -1084,14 +1451,27 @@ Mouvement B
 partie 'for' fini
 
  src  |  dst  |  PointC  |  PointAdv  |  Difference
+
+    -> L'IA va calculer pour chaque pion de couleur bleu
+          leurs destination possible. Ensuite il va calculer la difference entre 
+          les coups du pion bleu et celle du rouge ainsi que calculer la différence
+
 F5 | E6 | 1 | 2 | 1
 
 TriBulle
+-> L'IA va garder uniquement les lignes ou les mouvement sont les plus petit
+ dans la colonne PointC qui correspond au pion Bleu
+
 F5 | E6 | 1 | 2 | 1
 
 TriBulle2
+-> L'IA va garder uniquement le mouvement qui ont la plus grande différence
+
 F5 | E6 | 1 | 2 | 1
 F5->E6
+-> L'IA a chois de dépalcer son pion F5 en E6
+
+
 Il y a 2 pion de couleur R jouable
 status : OK partie : N
       [0;30m[47mA7[0m      
@@ -1108,7 +1488,11 @@ status : OK partie : N
     [0;30m[47mF1[0m  [0;30m[47mG2[0m    
       [0;30m[47mG1[0m      
 Mouvement R
+-> L'Ia va jouer aléatoirement
 E5->F5
+-> L'IA a chois de dépalcer son pion E5 en F5
+
+
 Il y a 2 pion de couleur B jouable
 status : OK partie : N
       [0;30m[47mA7[0m      
@@ -1128,15 +1512,28 @@ Mouvement B
 partie 'for' fini
 
  src  |  dst  |  PointC  |  PointAdv  |  Difference
+
+    -> L'IA va calculer pour chaque pion de couleur bleu
+          leurs destination possible. Ensuite il va calculer la difference entre 
+          les coups du pion bleu et celle du rouge ainsi que calculer la différence
+
 E4 | E5 | 3 | 4 | 1
 F4 | E5 | 1 | 3 | 2
 
 TriBulle
+-> L'IA va garder uniquement les lignes ou les mouvement sont les plus petit
+ dans la colonne PointC qui correspond au pion Bleu
+
 F4 | E5 | 1 | 3 | 2
 
 TriBulle2
+-> L'IA va garder uniquement le mouvement qui ont la plus grande différence
+
 F4 | E5 | 1 | 3 | 2
 F4->E5
+-> L'IA a chois de dépalcer son pion F4 en E5
+
+
 Il y a 2 pion de couleur R jouable
 status : OK partie : N
       [0;30m[47mA7[0m      
@@ -1153,7 +1550,11 @@ status : OK partie : N
     [0;30m[47mF1[0m  [0;30m[47mG2[0m    
       [0;30m[47mG1[0m      
 Mouvement R
+-> L'Ia va jouer aléatoirement
 F5->G4
+-> L'IA a chois de dépalcer son pion F5 en G4
+
+
 Il y a 1 pion de couleur B jouable
 status : OK partie : N
       [0;30m[47mA7[0m      
@@ -1173,14 +1574,27 @@ Mouvement B
 partie 'for' fini
 
  src  |  dst  |  PointC  |  PointAdv  |  Difference
+
+    -> L'IA va calculer pour chaque pion de couleur bleu
+          leurs destination possible. Ensuite il va calculer la difference entre 
+          les coups du pion bleu et celle du rouge ainsi que calculer la différence 
+
 F3 | F4 | 2 | 2 | 0
 
 TriBulle
+-> L'IA va garder uniquement les lignes ou les mouvement sont les plus petit
+ dans la colonne PointC qui correspond au pion Bleu
+
 F3 | F4 | 2 | 2 | 0
 
 TriBulle2
+-> L'IA va garder uniquement le mouvement qui ont la plus grande différence
+
 F3 | F4 | 2 | 2 | 0
 F3->F4
+-> L'IA a chois de dépalcer son pion F3 en F4
+
+
 Il y a 2 pion de couleur R jouable
 status : OK partie : N
       [0;30m[47mA7[0m      
@@ -1197,7 +1611,11 @@ status : OK partie : N
     [0;30m[47mF1[0m  [0;30m[47mG2[0m    
       [0;30m[47mG1[0m      
 Mouvement R
+-> L'Ia va jouer aléatoirement
 G4->G3
+-> L'IA a chois de dépalcer son pion G4 en G3
+
+
 Il y a 2 pion de couleur B jouable
 status : OK partie : N
       [0;30m[47mA7[0m      
@@ -1217,17 +1635,30 @@ Mouvement B
 partie 'for' fini
 
  src  |  dst  |  PointC  |  PointAdv  |  Difference
+
+    -> L'IA va calculer pour chaque pion de couleur bleu
+          leurs destination possible. Ensuite il va calculer la difference entre 
+          les coups du pion bleu et celle du rouge ainsi que calculer la différence
+
 F2 | F3 | 1 | 2 | 1
 F4 | F5 | 1 | 2 | 1
 
 TriBulle
+-> L'IA va garder uniquement les lignes ou les mouvement sont les plus petit
+ dans la colonne PointC qui correspond au pion Bleu
+
 F2 | F3 | 1 | 2 | 1
 F4 | F5 | 1 | 2 | 1
 
 TriBulle2
+-> L'IA va garder uniquement le mouvement qui ont la plus grande différence
+
 F2 | F3 | 1 | 2 | 1
 F4 | F5 | 1 | 2 | 1
 F4->F5
+-> L'IA a chois de dépalcer son pion F4 en F5
+
+
 Il y a 2 pion de couleur R jouable
 status : OK partie : N
       [0;30m[47mA7[0m      
@@ -1244,7 +1675,11 @@ status : OK partie : N
     [0;30m[47mF1[0m  [0;30m[47mG2[0m    
       [0;30m[47mG1[0m      
 Mouvement R
+-> L'Ia va jouer aléatoirement
 G3->G2
+-> L'IA a chois de dépalcer son pion G3 en G2
+
+
 Il y a 1 pion de couleur B jouable
 status : OK partie : N
       [0;30m[47mA7[0m      
@@ -1264,14 +1699,26 @@ Mouvement B
 partie 'for' fini
 
  src  |  dst  |  PointC  |  PointAdv  |  Difference
+  
+      -> L'IA va calculer pour chaque pion de couleur bleu
+            leurs destination possible. Ensuite il va calculer la difference entre 
+            les coups du pion bleu et celle du rouge ainsi que calculer la différence
+
 F2 | F3 | 1 | 2 | 1
 
 TriBulle
+-> L'IA va garder uniquement les lignes ou les mouvement sont les plus petit
+ dans la colonne PointC qui correspond au pion Bleu
 F2 | F3 | 1 | 2 | 1
 
 TriBulle2
+-> L'IA va garder uniquement le mouvement qui ont la plus grande différence
+
 F2 | F3 | 1 | 2 | 1
 F2->F3
+-> L'IA a chois de dépalcer son pion F2 en F3
+
+
 Il y a 2 pion de couleur R jouable
 status : OK partie : N
       [0;30m[47mA7[0m      
@@ -1288,7 +1735,11 @@ status : OK partie : N
     [0;30m[47mF1[0m  [41mG2[0m    
       [0;30m[47mG1[0m      
 Mouvement R
+-> L'Ia va jouer aléatoirement
 G2->G1
+-> L'IA a chois de dépalcer son pion G2 en G1
+
+
 Il y a 1 pion de couleur B jouable
 status : OK partie : N
       [0;30m[47mA7[0m      
@@ -1308,14 +1759,27 @@ Mouvement B
 partie 'for' fini
 
  src  |  dst  |  PointC  |  PointAdv  |  Difference
+
+-> L'IA va calculer pour chaque pion de couleur bleu
+    leurs destination possible. Ensuite il va calculer la difference entre 
+    les coups du pion bleu et celle du rouge ainsi que calculer la différence
+
 F3 | F4 | 0 | 1 | 1
 
 TriBulle
+-> L'IA va garder uniquement les lignes ou les mouvement sont les plus petit
+ dans la colonne PointC qui correspond au pion Bleu
+
 F3 | F4 | 0 | 1 | 1
 
 TriBulle2
+-> L'IA va garder uniquement le mouvement qui ont la plus grande différence
+
 F3 | F4 | 0 | 1 | 1
 F3->F4
+-> L'IA a chois de dépalcer son pion F3 en F4
+
+
 Il y a 1 pion de couleur R jouable
 status : OK partie : N
       [0;30m[47mA7[0m      
@@ -1332,7 +1796,11 @@ status : OK partie : N
     [0;30m[47mF1[0m  [0;30m[47mG2[0m    
       [41mG1[0m      
 Mouvement R
+-> L'Ia va jouer aléatoirement
 B7->B6
+-> L'IA a chois de dépalcer son pion B7 en B6
+
+
 Il y a 1 pion de couleur B jouable
 status : OK partie : N
       [0;30m[47mA7[0m      
@@ -1352,14 +1820,26 @@ Mouvement B
 partie 'for' fini
 
  src  |  dst  |  PointC  |  PointAdv  |  Difference
+
+-> L'IA va calculer pour chaque pion de couleur bleu
+    leurs destination possible. Ensuite il va calculer la difference entre 
+    les coups du pion bleu et celle du rouge ainsi que calculer la différence
+
 C7 | B7 | 2 | 0 | -2
 
 TriBulle
+-> L'IA va garder uniquement les lignes ou les mouvement sont les plus petit
+ dans la colonne PointC qui correspond au pion Bleu
+
 C7 | B7 | 2 | 0 | -2
 
 TriBulle2
+-> L'IA va garder uniquement le mouvement qui ont la plus grande différence
 C7 | B7 | 2 | 0 | -2
 C7->B7
+-> L'IA a chois de dépalcer son pion C7 en B7
+
+
 status : OK partie : R
       [0;30m[47mA7[0m      
     [0;30m[47mA6[0m  [44mB7[0m    
@@ -1375,3 +1855,5 @@ status : OK partie : R
     [0;30m[47mF1[0m  [0;30m[47mG2[0m    
       [41mG1[0m      
 Victoire : R (27 coups)
+  -> Les rouge ont donc gagner en 27 coups, 
+    L'IA aléatoire a donc vaincu l'IA "intelligente"
