@@ -24,24 +24,26 @@ public class StuckWin {
   final int SIZE = 8;
   final char VIDE = '.';
   // 'B'=bleu 'R'=rouge '.'=vide '-'=n'existe pas
+  /*
+   * char[][] state = {
+   * { '-', '-', '-', '-', 'R', 'R', 'R', 'R' },
+   * { '-', '-', '-', '.', 'R', 'R', 'R', 'R' },
+   * { '-', '-', '.', '.', '.', 'R', 'R', 'R' },
+   * { '-', 'B', 'B', '.', '.', '.', 'R', 'R' },
+   * { '-', 'B', 'B', 'B', '.', '.', '.', '-' },
+   * { '-', 'B', 'B', 'B', 'B', '.', '-', '-' },
+   * { '-', 'B', 'B', 'B', 'B', '-', '-', '-' },
+   * };
+   */
   char[][] state = {
-      { '-', '-', '-', '-', 'R', 'R', 'R', 'R' },
+      { '-', '-', '-', '-', 'R', 'R', 'R', '.' },
       { '-', '-', '-', '.', 'R', 'R', 'R', 'R' },
-      { '-', '-', '.', '.', '.', 'R', 'R', 'R' },
-      { '-', 'B', 'B', '.', '.', '.', 'R', 'R' },
-      { '-', 'B', 'B', 'B', '.', '.', '.', '-' },
-      { '-', 'B', 'B', 'B', 'B', '.', '-', '-' },
-      { '-', 'B', 'B', 'B', 'B', '-', '-', '-' },
+      { '-', '-', '.', 'R', '.', 'R', 'R', 'R' },
+      { '-', 'B', 'B', 'B', 'B', '.', 'R', 'R' },
+      { '-', 'B', 'B', '.', '.', 'B', 'B', '-' },
+      { '-', '.', 'B', 'B', 'B', '.', '-', '-' },
+      { '-', '.', '.', 'B', 'B', '-', '-', '-' },
   };
-  // char[][] state = {
-  // { '-', '-', '-', '-', 'R', 'R', 'R', '.' },
-  // { '-', '-', '-', '.', 'R', 'R', 'R', 'R' },
-  // { '-', '-', '.', 'R', '.', 'R', 'R', 'R' },
-  // { '-', 'B', 'B', 'B', 'B', '.', 'R', 'R' },
-  // { '-', 'B', 'B', '.', '.', 'B', 'B', '-' },
-  // { '-', '.', 'B', 'B', 'B', '.', '-', '-' },
-  // { '-', '.', '.', 'B', 'B', '-', '-', '-' },
-  // };
 
   String[][] tableau = {
       { "", "", "", "07", "", "", "" },
@@ -108,6 +110,10 @@ public class StuckWin {
           point[j] = "" + i + k;
           j++;
         }
+        // si on a trouvé 13 pions, on sort de la boucle pour optimiser
+        if (j == 13) {
+          break;
+        }
       }
     }
 
@@ -159,7 +165,7 @@ public class StuckWin {
     }
 
     char tmp = valeur.charAt(0);
-    char tmp1 = valeur.charAt(1); 
+    char tmp1 = valeur.charAt(1);
     tmp = Character.toUpperCase(tmp);
     String valideL = "ABCDEFG";
     // si le premier charactère est dans le tableau valideL
@@ -344,6 +350,7 @@ public class StuckWin {
       id[1] = 0;
       return id;
     }
+    src = tradIdLettre(src);
     id[0] = Character.getNumericValue(src.charAt(0));
     id[1] = Character.getNumericValue(src.charAt(1));
     return id;
@@ -361,35 +368,27 @@ public class StuckWin {
   String[] jouerIAaleatoire(char couleur) {
     String src = "";
     String dst = "";
+    char adv = couleur == 'B' ? 'R' : 'B';
+    String[] posCouleur = new String[13];
+    String[] posAdv = new String[13];
+    addPosCouleur(posCouleur, couleur);
+    addPosCouleur(posAdv, adv);
 
     do {
-      // si la couleur est rouge
-      if (couleur == 'R') {
-        // genere un nombre aleatoire entre 0
-        // et la taille du tableau pointR
-        int rand = random.nextInt(pointR.length);
-        src = pointR[rand];
-        int[] source = { Character.getNumericValue(src.charAt(0)),
-            Character.getNumericValue(src.charAt(1)) };
 
-        String[] posPossible = possibleDests(couleur, source[0],
-            source[1]);
-        // genere un nombre aleatoire entre 0 et la taille du tableau posPossible
-        int rand2 = random.nextInt(posPossible.length);
-        dst = posPossible[rand2];
+      // genere un nombre aleatoire entre 0
+      // et la taille du tableau pointR
+      int rand = random.nextInt(posCouleur.length);
+      src = posCouleur[rand];
+      int[] source = { Character.getNumericValue(src.charAt(0)),
+          Character.getNumericValue(src.charAt(1)) };
 
-      } else if (couleur == 'B') {
-        int rand = random.nextInt(pointB.length);
+      String[] posPossible = possibleDests(couleur, source[0],
+          source[1]);
+      // genere un nombre aleatoire entre 0 et la taille du tableau posPossible
+      int rand2 = random.nextInt(posPossible.length);
+      dst = posPossible[rand2];
 
-        src = pointB[rand];
-        int[] source = { Character.getNumericValue(src.charAt(0)),
-            Character.getNumericValue(src.charAt(1)) };
-
-        String[] posPossible = possibleDests(couleur, source[0],
-            source[1]);
-        int rand2 = random.nextInt(posPossible.length);
-        dst = posPossible[rand2];
-      }
       // tant que le deplacement n'est pas possible
     } while (deplace(couleur, src, dst, ModeMvt.SIMU) != Result.OK);
 
@@ -409,35 +408,37 @@ public class StuckWin {
   String[] jouerIA(char couleur) {
     String src = "";
     String dst = "";
-    ArrayList<Integer> nbrsJetonJouableC = new ArrayList<>();
-    ArrayList<Integer> nbrsJetonJouableNonC = new ArrayList<>();
-    ArrayList<String> infoPosition = new ArrayList<>();
     String[] point;
     String[] pointAdv;
-    String[] TabPointCClone;
-    String[] TabPointCAdvClone;
+
     char Ncouleur;
 
     if (couleur == 'R') {
       Ncouleur = 'B';
       point = pointR;
       pointAdv = pointB;
-      TabPointCClone = point.clone();
-      TabPointCAdvClone = pointAdv.clone();
+
     } else {
       Ncouleur = 'R';
       point = pointB;
       pointAdv = pointR;
-      TabPointCClone = point.clone();
-      TabPointCAdvClone = pointAdv.clone();
+
     }
 
-    test(couleur, Ncouleur, point, pointAdv, TabPointCClone, TabPointCAdvClone, nbrsJetonJouableC, nbrsJetonJouableNonC,
-        infoPosition);
-    System.out.println("partie 'for' fini");
-    System.out.println("");
-    System.out.println(" src  |  dst  |  PointC  |  PointAdv  |  Difference");
+    String[] pos = test(couleur, Ncouleur, point, pointAdv, -1);
 
+    return new String[] { pos[0], pos[1] };
+
+  }
+
+  /**
+   * 
+   * @param infoPosition
+   * @param nbrsJetonJouableC
+   * @param nbrsJetonJouableNonC
+   */
+  void afficherListes(ArrayList<String> infoPosition, ArrayList<Integer> nbrsJetonJouableC,
+      ArrayList<Integer> nbrsJetonJouableNonC) {
     for (int i = 0; i < infoPosition.size(); i++) {
       String src2 = infoPosition.get(i).charAt(0) + "" + infoPosition.get(i).charAt(1);
       String dst2 = infoPosition.get(i).charAt(2) + "" + infoPosition.get(i).charAt(3);
@@ -446,39 +447,6 @@ public class StuckWin {
       System.out.print(nbrsJetonJouableNonC.get(i) + " | ");
       System.out.println((nbrsJetonJouableNonC.get(i)) - (nbrsJetonJouableC.get(i)));
     }
-
-    triBulle(nbrsJetonJouableC, nbrsJetonJouableNonC, infoPosition);
-    
-    System.out.println("");
-    System.out.println("TriBulle");
-    for (int i = 0; i < infoPosition.size(); i++) {
-      String src2 = infoPosition.get(i).charAt(0) + "" + infoPosition.get(i).charAt(1);
-      String dst2 = infoPosition.get(i).charAt(2) + "" + infoPosition.get(i).charAt(3);
-      System.out.print(getIdToLettre(src2) + " | " + getIdToLettre(dst2) + " | ");
-      System.out.print(nbrsJetonJouableC.get(i) + " | ");
-      System.out.print(nbrsJetonJouableNonC.get(i) + " | ");
-      System.out.println((nbrsJetonJouableNonC.get(i)) - (nbrsJetonJouableC.get(i)));
-    }
-
-    triBulle2(nbrsJetonJouableC, nbrsJetonJouableNonC, infoPosition);
-    
-    System.out.println("");
-    System.out.println("TriBulle2");
-    for (int i = 0; i < infoPosition.size(); i++) {
-      String src2 = infoPosition.get(i).charAt(0) + "" + infoPosition.get(i).charAt(1);
-      String dst2 = infoPosition.get(i).charAt(2) + "" + infoPosition.get(i).charAt(3);
-      System.out.print(getIdToLettre(src2) + " | " + getIdToLettre(dst2) + " | ");
-      System.out.print(nbrsJetonJouableC.get(i) + " | ");
-      System.out.print(nbrsJetonJouableNonC.get(i) + " | ");
-      System.out.println((nbrsJetonJouableNonC.get(i)) - (nbrsJetonJouableC.get(i)));
-    }
-    
-    int rand = random.nextInt(infoPosition.size());
-
-    src = infoPosition.get(rand).charAt(0) + "" + infoPosition.get(rand).charAt(1);
-    dst = infoPosition.get(rand).charAt(2) + "" + infoPosition.get(rand).charAt(3);
-    return new String[] { src, dst };
-
   }
 
   /**
@@ -513,12 +481,10 @@ public class StuckWin {
       }
 
     }
-
+    afficherListes(infoPosition, pointC, pointAdv);
     int val = pointC.get(0);
-    for (int i = taille - 1; i > 0; i--)
-    {
-      if (pointC.get(i) != val)
-      {
+    for (int i = taille - 1; i > 0; i--) {
+      if (pointC.get(i) != val) {
         pointAdv.remove(i);
         pointC.remove(i);
         infoPosition.remove(i);
@@ -540,17 +506,11 @@ public class StuckWin {
     int tmp;
     int limite;
 
-
-    
-
-
-
     for (limite = -1; limite <= taille - 2; limite++) {
 
       for (int i = taille - 1; i > limite + 1; i--) {
 
-        
-        if ((pointC.get(i) - pointAdv.get(i)) < (pointC.get(i-1) - pointAdv.get(i-1))) {
+        if ((pointC.get(i) - pointAdv.get(i)) < (pointC.get(i - 1) - pointAdv.get(i - 1))) {
           tmp = pointC.get(i);
           pointC.set(i, pointC.get(i - 1));
           pointC.set(i - 1, tmp);
@@ -568,12 +528,9 @@ public class StuckWin {
 
     }
 
-
     int val = (pointC.get(0) - pointAdv.get(0));
-    for (int i = taille - 1; i > 0; i--)
-    {
-      if ((pointC.get(i) - pointAdv.get(i)) != val)
-      {
+    for (int i = taille - 1; i > 0; i--) {
+      if ((pointC.get(i) - pointAdv.get(i)) != val) {
         pointAdv.remove(i);
         pointC.remove(i);
         infoPosition.remove(i);
@@ -587,22 +544,22 @@ public class StuckWin {
    * @param Ncouleur
    * @param point
    * @param pointAdv
-   * @param TabPointCClone
-   * @param TabPointCAdvClone
    * @param nbrsJetonJouableC
    * @param nbrsJetonJouableNonC
    * @param infoPosition
    */
-  void test(char couleur,
+  String[] test(char couleur,
       char Ncouleur,
       String[] point,
       String[] pointAdv,
-      String[] TabPointCClone,
-      String[] TabPointCAdvClone,
-      ArrayList<Integer> nbrsJetonJouableC,
-      ArrayList<Integer> nbrsJetonJouableNonC,
-      ArrayList<String> infoPosition) {
+      int depth) {
 
+    ArrayList<Integer> nbrsJetonJouableC = new ArrayList<>();
+    ArrayList<Integer> nbrsJetonJouableNonC = new ArrayList<>();
+    ArrayList<String> infoPosition = new ArrayList<>();
+
+    String[] pos = new String[4];
+    String[] origine = new String[4];
     /// fonction a sortir pour recursivité
     for (int i = 0; i < point.length; i++) {
 
@@ -611,20 +568,141 @@ public class StuckWin {
       String[] possible = possibleDests(couleur, id[0], id[1]);
       for (int j = 0; j < possible.length; j++) {
 
+        origine[0] = point[i];
+        origine[1] = possible[j];
+
         if (deplace(couleur, point[i], possible[j], ModeMvt.REAL) == Result.OK) {
+          if (depth > 0) {
 
-          nbrsJetonJouableC.add(Integer.valueOf(GetVerifPointTab(point, couleur, ModeMvt.RETOUR)));
-          nbrsJetonJouableNonC.add(Integer.valueOf(GetVerifPointTab(pointAdv, Ncouleur, ModeMvt.RETOUR)));
+            pos = test(Ncouleur, couleur, pointAdv, point, depth - 1);
 
-          point = TabPointCClone.clone();
-          pointAdv = TabPointCAdvClone.clone();
-          deplace(couleur, possible[j], point[i], ModeMvt.RETOUR);
-          infoPosition.add(point[i] + "" + possible[j]);
+            infoPosition.add(origine[0] + "" + origine[1]);
+            nbrsJetonJouableC.add(Integer.valueOf(pos[2]));
+            nbrsJetonJouableNonC.add(Integer.valueOf(pos[3]));
+            deplace(couleur, origine[1], origine[0], ModeMvt.RETOUR);
+
+          } else {
+            // recupere le nbr de mouvement
+            nbrsJetonJouableC.add(Integer.valueOf(GetVerifPointTab(point, couleur, ModeMvt.SIMU)));
+            nbrsJetonJouableNonC.add(Integer.valueOf(GetVerifPointTab(pointAdv, Ncouleur, ModeMvt.SIMU)));
+            infoPosition.add(origine[0] + "" + origine[1]);
+
+            // deplace en retour le mouvement
+            deplace(couleur, origine[1], origine[0], ModeMvt.RETOUR);
+
+            System.out.println("");
+          }
         }
 
       }
+
     }
+
+    triBulle(nbrsJetonJouableC, nbrsJetonJouableNonC, infoPosition);
+
+    triBulle2(nbrsJetonJouableC, nbrsJetonJouableNonC, infoPosition);
+
+    int rand = random.nextInt(infoPosition.size());
+
+    pos[0] = infoPosition.get(rand).charAt(0) + "" + infoPosition.get(rand).charAt(1);
+    pos[1] = infoPosition.get(rand).charAt(2) + "" + infoPosition.get(rand).charAt(3);
+    pos[2] = String.valueOf(nbrsJetonJouableC.get(rand));
+    pos[3] = String.valueOf(nbrsJetonJouableNonC.get(rand));
+
+    return new String[] { pos[0], pos[1], pos[2], pos[3] };
+
   }
+
+  String[] jouerIA2(char couleur) {
+
+    String[] bestAction = null;
+    int bestEval = -1000000;
+    String[] posCouleur = new String[13];
+    addPosCouleur(posCouleur, couleur);
+    for (String src : posCouleur) {
+      int[] srcID = recupereid(src);
+      String[] dsts = possibleDests(couleur, srcID[0], srcID[1]);
+      for (String dst : dsts) {
+        Result res = deplace(couleur, src, dst, ModeMvt.SIMU);
+        if (res == Result.OK) {
+          deplace(couleur, src, dst, ModeMvt.REAL);
+          int eval = -evaluer(couleur == 'B' ? 'R' : 'B', 4);
+          if (eval > bestEval) {
+            bestEval = eval;
+            bestAction = new String[] { src, dst };
+          }
+          deplace(couleur, dst, src, ModeMvt.RETOUR);
+        }
+      }
+    }
+    return bestAction;
+  }
+
+  int evaluer(char couleur, int depth) {
+
+    char adv = couleur == 'B' ? 'R' : 'B';
+    String[] posCouleur = new String[13];
+    addPosCouleur(posCouleur, couleur);
+    String[] posAdv = new String[13];
+    addPosCouleur(posAdv, adv);
+    int movesCurr = GetVerifPointTab(posCouleur, couleur, null);
+    int movesAdv = GetVerifPointTab(posAdv, adv, null);
+    if (depth == 0 || movesCurr == 0 || movesAdv == 0) {
+      return movesAdv - movesCurr;
+    }
+    int bestEval = -1000000;
+    for (String src : posCouleur) {
+      int[] srcID = recupereid(src);
+      String[] dsts = possibleDests(couleur, srcID[0], srcID[1]);
+      for (String dst : dsts) {
+        Result res = deplace(couleur, src, dst, ModeMvt.SIMU);
+        if (res == Result.OK) {
+          deplace(couleur, src, dst, ModeMvt.REAL);
+          int eval = -evaluer(adv, depth - 1);
+          if (eval > bestEval) {
+            bestEval = eval;
+          }
+          deplace(couleur, dst, src, ModeMvt.RETOUR);
+        }
+      }
+    }
+    return bestEval;
+
+  }
+
+  /*
+   * 
+   * int evaluer(char couleur, int depth, int alpha, int beta) {
+   * 
+   * char adv = couleur == 'B' ? 'R' : 'B';
+   * String[] posCouleur = new String[13];
+   * addPosCouleur(posCouleur, couleur);
+   * String[] posAdv = new String[13];
+   * addPosCouleur(posAdv, adv);
+   * int movesCurr = GetVerifPointTab(posCouleur, couleur, null);
+   * int movesAdv = GetVerifPointTab(posAdv, adv, null);
+   * if (depth == 0 || movesCurr == 0 || movesAdv == 0) {
+   * return movesAdv - movesCurr;
+   * }
+   * for (String src : posCouleur) {
+   * int[] srcID = recupereid(src);
+   * String[] dsts = possibleDests(couleur, srcID[0], srcID[1]);
+   * for (String dst : dsts) {
+   * Result res = deplace(couleur, src, dst, ModeMvt.SIMU);
+   * if (res == Result.OK) {
+   * deplace(couleur, src, dst, ModeMvt.REAL);
+   * alpha = Math.max(alpha, -evaluer(adv, depth - 1, -beta, -alpha));
+   * deplace(couleur, dst, src, ModeMvt.RETOUR);
+   * if (alpha >= beta) {
+   * return alpha;
+   * }
+   * }
+   * }
+   * }
+   * return alpha;
+   * 
+   * }
+   */
 
   /**
    * gère le jeu en fonction du joueur/couleur
@@ -637,16 +715,17 @@ public class StuckWin {
     String dst = "";
     String[] mvtIa;
     switch (couleur) {
-      case 'B':
+      case 'R':
         System.out.println("Mouvement " + couleur);
-        mvtIa = jouerIA(couleur);
+        mvtIa = jouerIA2(couleur);
         src = mvtIa[0];
         dst = mvtIa[1];
         // src = input.next();
         // dst = input.next();
         System.out.println(getIdToLettre(src) + "->" + getIdToLettre(dst));
+        affiche();
         break;
-      case 'R':
+      case 'B':
         System.out.println("Mouvement " + couleur);
         mvtIa = jouerIAaleatoire(couleur);
         src = mvtIa[0];
@@ -701,12 +780,15 @@ public class StuckWin {
    * @return
    */
   char finPartie(char couleur) {
+    char adv = couleur == 'B' ? 'R' : 'B';
+    String[] posCouleur = new String[13];
+    String[] posAdv = new String[13];
+    addPosCouleur(posCouleur, couleur);
+    addPosCouleur(posAdv, adv);
     int indentation = 0;
-    if (couleur == 'R') {
-      indentation = GetVerifPointTab(pointR, couleur, ModeMvt.nbrPionJouable);
-    } else {
-      indentation = GetVerifPointTab(pointB, couleur, ModeMvt.nbrPionJouable);
-    }
+
+    indentation = GetVerifPointTab(posCouleur, couleur, ModeMvt.nbrPionJouable);
+
     if (indentation > 0) {
       System.out.println("Il y a " + indentation + " pion de couleur " + couleur + " jouable");
       return 'N';
@@ -714,50 +796,79 @@ public class StuckWin {
     return couleur;
   }
 
-  public static void main(String[] args) {
-
-    StuckWin jeu = new StuckWin();
-    jeu.addPosCouleur(jeu.pointR, 'R');
-    jeu.addPosCouleur(jeu.pointB, 'B');
-    String src = "";
-    String dest;
-    String[] reponse;
-    Result status;
-    char partie = 'N';
-    char curCouleur = jeu.joueurs[0];
-    char nextCouleur = jeu.joueurs[1];
-    char tmp;
-    int cpt = 0;
-
-    // version console
-    do {
-      // séquence pour Bleu ou rouge
-      jeu.affiche();
-
-      do {
-        status = Result.EXIT;
-        reponse = jeu.jouer(curCouleur);
-
-        src = reponse[0];
-        dest = reponse[1];
-        if ("q".equals(src))
-          return;
-        src = jeu.tradIdLettre(src);
-        dest = jeu.tradIdLettre(dest);
-        status = jeu.deplace(curCouleur, src, dest, ModeMvt.REAL);
-
-        partie = jeu.finPartie(nextCouleur);
-
-        System.out.println("status : " + status + " partie : " + partie);
-      } while (status != Result.OK && partie == 'N');
-
-      tmp = curCouleur;
-      curCouleur = nextCouleur;
-      nextCouleur = tmp;
-      cpt++;
-    } while (partie == 'N'); // tant que la partie n'est pas finie
-    jeu.affiche();
-    System.out.println("Victoire : " + partie + " (" + (cpt / 2) + " coups)");
+  void clearScreen() {
+    System.out.print("\033[H\033[2J");
+    System.out.flush();
   }
 
+  public static void main(String[] args) {
+
+    int nbPartie = 0;
+    int nbPGagneeR = 0;
+    int nbPGagneeB = 0;
+    int nbCoups = 0;
+    while (nbPartie < 500) {
+      System.out.println("Partie " + nbPartie);
+      StuckWin jeu = new StuckWin();
+      jeu.addPosCouleur(jeu.pointR, 'R');
+      jeu.addPosCouleur(jeu.pointB, 'B');
+      String src = "";
+      String dest;
+      String[] reponse;
+      Result status;
+      char partie = 'N';
+      char curCouleur = jeu.joueurs[0];
+      char nextCouleur = jeu.joueurs[1];
+      char tmp;
+      int cpt = 0;
+
+      // version console
+      do {
+        // séquence pour Bleu ou rouge
+        jeu.clearScreen();
+        jeu.affiche();
+
+        do {
+          status = Result.EXIT;
+          System.out.println("partie " + nbPartie);
+          reponse = jeu.jouer(curCouleur);
+
+          src = reponse[0];
+          dest = reponse[1];
+          if ("q".equals(src))
+            return;
+          src = jeu.tradIdLettre(src);
+          dest = jeu.tradIdLettre(dest);
+          status = jeu.deplace(curCouleur, src, dest, ModeMvt.REAL);
+
+          partie = jeu.finPartie(nextCouleur);
+
+          System.out.println("status : " + status + " partie : " + partie);
+        } while (status != Result.OK && partie == 'N');
+
+        tmp = curCouleur;
+        curCouleur = nextCouleur;
+        nextCouleur = tmp;
+        cpt++;
+      } while (partie == 'N'); // tant que la partie n'est pas finie
+      jeu.clearScreen();
+      jeu.affiche();
+      System.out.println("Victoire : " + partie + " (" + (cpt / 2) + " coups)");
+      if (partie == 'R')
+        nbPGagneeR++;
+      else
+        nbPGagneeB++;
+      nbPartie++;
+      if (nbCoups < cpt / 2)
+        nbCoups = cpt / 2;
+
+    }
+
+    System.out.println("Nombre de partie gagnée par rouge : " + nbPGagneeR);
+    System.out.println("Nombre de partie gagnée par bleu : " + nbPGagneeB);
+    System.out.println("Nombre de partie jouée : " + nbPartie);
+    System.out.println("Nombre de coup le plus important : " + nbCoups);
+    System.out.println("moyenne de win rouge : " + (((float) nbPGagneeR / (float) nbPartie) * 100));
+
+  }
 }
