@@ -3,11 +3,52 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Random;
+import java.security.Timestamp;
+import java.sql.Time;
+import java.util.function.Function;
 
 import javax.lang.model.util.ElementScanner6;
 import javax.swing.Renderer;
 
+
+
+
 public class StuckWin {
+
+  
+  int DEPTH = 0;
+
+  // Profiler
+
+  /**
+   * Si clock0 est >0, retourne une chaîne de caractères
+   * représentant la différence de temps depuis clock0.
+   * 
+   * @param clock0 instant initial
+   * @return expression du temps écoulé depuis clock0
+   */
+  public static String timestamp(long clock0) {
+    String result = null;
+
+    if (clock0 > 0) {
+      double elapsed = (System.nanoTime() - clock0) / 1e9;
+      String unit = "s";
+      if (elapsed < 1.0) {
+        elapsed *= 1000.0;
+        unit = "ms";
+      }
+      result = String.format("%.4g%s elapsed", elapsed, unit);
+    }
+    return result;
+  }
+
+  public static Long timestamp() {
+    return System.nanoTime();
+  }
+
+  ArrayList<Long> listTemps = new ArrayList<Long>();
+
+  // Fin Profiler
 
   static final Scanner input = new Scanner(System.in);
   private static final double BOARD_SIZE = 7;
@@ -24,26 +65,26 @@ public class StuckWin {
   final int SIZE = 8;
   final char VIDE = '.';
   // 'B'=bleu 'R'=rouge '.'=vide '-'=n'existe pas
-  /*
-   * char[][] state = {
-   * { '-', '-', '-', '-', 'R', 'R', 'R', 'R' },
-   * { '-', '-', '-', '.', 'R', 'R', 'R', 'R' },
-   * { '-', '-', '.', '.', '.', 'R', 'R', 'R' },
-   * { '-', 'B', 'B', '.', '.', '.', 'R', 'R' },
-   * { '-', 'B', 'B', 'B', '.', '.', '.', '-' },
-   * { '-', 'B', 'B', 'B', 'B', '.', '-', '-' },
-   * { '-', 'B', 'B', 'B', 'B', '-', '-', '-' },
-   * };
-   */
+
   char[][] state = {
-      { '-', '-', '-', '-', 'R', 'R', 'R', '.' },
+      { '-', '-', '-', '-', 'R', 'R', 'R', 'R' },
       { '-', '-', '-', '.', 'R', 'R', 'R', 'R' },
-      { '-', '-', '.', 'R', '.', 'R', 'R', 'R' },
-      { '-', 'B', 'B', 'B', 'B', '.', 'R', 'R' },
-      { '-', 'B', 'B', '.', '.', 'B', 'B', '-' },
-      { '-', '.', 'B', 'B', 'B', '.', '-', '-' },
-      { '-', '.', '.', 'B', 'B', '-', '-', '-' },
+      { '-', '-', '.', '.', '.', 'R', 'R', 'R' },
+      { '-', 'B', 'B', '.', '.', '.', 'R', 'R' },
+      { '-', 'B', 'B', 'B', '.', '.', '.', '-' },
+      { '-', 'B', 'B', 'B', 'B', '.', '-', '-' },
+      { '-', 'B', 'B', 'B', 'B', '-', '-', '-' },
   };
+
+  // char[][] state = {
+  // { '-', '-', '-', '-', 'R', 'R', 'R', '.' },
+  // { '-', '-', '-', '.', 'R', 'R', 'R', 'R' },
+  // { '-', '-', '.', 'R', '.', 'R', 'R', 'R' },
+  // { '-', 'B', 'B', 'B', 'B', '.', 'R', 'R' },
+  // { '-', 'B', 'B', '.', '.', 'B', 'B', '-' },
+  // { '-', '.', 'B', 'B', 'B', '.', '-', '-' },
+  // { '-', '.', '.', 'B', 'B', '-', '-', '-' },
+  // };
 
   String[][] tableau = {
       { "", "", "", "07", "", "", "" },
@@ -323,7 +364,7 @@ public class StuckWin {
    * 
    * @return
    */
-  String[] jouerIAHumain() {
+  String[] jouerHumain() {
 
     String src = input.next();
     String dst = input.next();
@@ -406,8 +447,7 @@ public class StuckWin {
    *         jouer.
    */
   String[] jouerIA(char couleur) {
-    String src = "";
-    String dst = "";
+
     String[] point;
     String[] pointAdv;
 
@@ -590,7 +630,7 @@ public class StuckWin {
             // deplace en retour le mouvement
             deplace(couleur, origine[1], origine[0], ModeMvt.RETOUR);
 
-            System.out.println("");
+            // System.out.println("");
           }
         }
 
@@ -613,96 +653,121 @@ public class StuckWin {
 
   }
 
+  /**
+   * Fonction qui permet de jouer un coup de l'IA 2
+   * 
+   * @param couleur
+   * @return
+   */
   String[] jouerIA2(char couleur) {
-
+    
     String[] bestAction = null;
+    // initialisation de l'IA
     int bestEval = -1000000;
+    // on récupère les positions des pions de la couleur
     String[] posCouleur = new String[13];
     addPosCouleur(posCouleur, couleur);
+    // on parcourt toutes les positions
     for (String src : posCouleur) {
+      
       int[] srcID = recupereid(src);
       String[] dsts = possibleDests(couleur, srcID[0], srcID[1]);
+      // on parcourt toutes les destinations possibles
       for (String dst : dsts) {
+        
+        // on simule le déplacement
         Result res = deplace(couleur, src, dst, ModeMvt.SIMU);
+        // si le déplacement est possible
         if (res == Result.OK) {
+          // on déplace le jeton
           deplace(couleur, src, dst, ModeMvt.REAL);
-          int eval = -evaluer(couleur == 'B' ? 'R' : 'B', 4);
+          // on évalue la position
+          
+          int eval = -evaluer(couleur == 'B' ? 'R' : 'B', DEPTH);
+          // on déplace le jeton en retour
+          deplace(couleur, dst, src, ModeMvt.RETOUR);
+          // si l'évaluation est meilleure
+          
           if (eval > bestEval) {
             bestEval = eval;
             bestAction = new String[] { src, dst };
           }
+          // on déplace le jeton en retour
           deplace(couleur, dst, src, ModeMvt.RETOUR);
         }
       }
     }
+    
     return bestAction;
   }
+  
+  
 
+  /**
+   * Fonction qui permet d'evalue la position de l'IA pour l'IA 2
+   * 
+   * @param couleur
+   * @param depth
+   * @return
+   */
   int evaluer(char couleur, int depth) {
-
+    // commentaire de la fonction evaluer
+    // couleur = couleur de l'IA
+    // depth = profondeur de l'arbre
+    // retourne le nombre de jetons que l'IA peut jouer - le nombre de jetons que
+    // l'adversaire peut jouer
     char adv = couleur == 'B' ? 'R' : 'B';
+    // on récupère les positions des jetons de l'IA et de l'adversaire
     String[] posCouleur = new String[13];
+
     addPosCouleur(posCouleur, couleur);
+    // on récupère les positions des jetons de l'adversaire
     String[] posAdv = new String[13];
     addPosCouleur(posAdv, adv);
+    // on récupère le nombre de jetons que l'IA peut jouer et le nombre de jetons
+    // que l'adversaire peut jouer
     int movesCurr = GetVerifPointTab(posCouleur, couleur, null);
     int movesAdv = GetVerifPointTab(posAdv, adv, null);
+    // si on est à la profondeur 0 ou si l'IA ne peut plus jouer ou si l'adversaire
+    // ne peut plus jouer
     if (depth == 0 || movesCurr == 0 || movesAdv == 0) {
       return movesAdv - movesCurr;
     }
+    // on récupère le nombre de jetons que l'IA peut jouer et le nombre de jetons
+    // que l'adversaire peut jouer
     int bestEval = -1000000;
     for (String src : posCouleur) {
       int[] srcID = recupereid(src);
+      // on récupère les positions possibles pour chaque jeton de l'IA
       String[] dsts = possibleDests(couleur, srcID[0], srcID[1]);
+      // on parcourt les positions possibles pour chaque jeton de l'IA
       for (String dst : dsts) {
+        // on simule le déplacement
         Result res = deplace(couleur, src, dst, ModeMvt.SIMU);
+        // si le déplacement est possible
         if (res == Result.OK) {
+          // on déplace le jeton
           deplace(couleur, src, dst, ModeMvt.REAL);
+          // on récupère le nombre de jetons que l'IA peut jouer et le nombre de jetons
+          // que l'adversaire peut jouer
           int eval = -evaluer(adv, depth - 1);
+          // on récupère le meilleur nombre de jetons que l'IA peut jouer et le meilleur
+          // nombre de jetons que l'adversaire peut jouer
           if (eval > bestEval) {
             bestEval = eval;
           }
+
+          // on déplace le jeton en retour
           deplace(couleur, dst, src, ModeMvt.RETOUR);
         }
       }
     }
+    // on retourne le meilleur nombre de jetons que l'IA peut jouer et le meilleur
+    // nombre de jetons que l'adversaire peut jouer
     return bestEval;
 
   }
 
-  /*
-   * 
-   * int evaluer(char couleur, int depth, int alpha, int beta) {
-   * 
-   * char adv = couleur == 'B' ? 'R' : 'B';
-   * String[] posCouleur = new String[13];
-   * addPosCouleur(posCouleur, couleur);
-   * String[] posAdv = new String[13];
-   * addPosCouleur(posAdv, adv);
-   * int movesCurr = GetVerifPointTab(posCouleur, couleur, null);
-   * int movesAdv = GetVerifPointTab(posAdv, adv, null);
-   * if (depth == 0 || movesCurr == 0 || movesAdv == 0) {
-   * return movesAdv - movesCurr;
-   * }
-   * for (String src : posCouleur) {
-   * int[] srcID = recupereid(src);
-   * String[] dsts = possibleDests(couleur, srcID[0], srcID[1]);
-   * for (String dst : dsts) {
-   * Result res = deplace(couleur, src, dst, ModeMvt.SIMU);
-   * if (res == Result.OK) {
-   * deplace(couleur, src, dst, ModeMvt.REAL);
-   * alpha = Math.max(alpha, -evaluer(adv, depth - 1, -beta, -alpha));
-   * deplace(couleur, dst, src, ModeMvt.RETOUR);
-   * if (alpha >= beta) {
-   * return alpha;
-   * }
-   * }
-   * }
-   * }
-   * return alpha;
-   * 
-   * }
-   */
 
   /**
    * gère le jeu en fonction du joueur/couleur
@@ -716,23 +781,23 @@ public class StuckWin {
     String[] mvtIa;
     switch (couleur) {
       case 'R':
-        System.out.println("Mouvement " + couleur);
+        // System.out.println("Mouvement " + couleur);
         mvtIa = jouerIA2(couleur);
         src = mvtIa[0];
         dst = mvtIa[1];
         // src = input.next();
         // dst = input.next();
-        System.out.println(getIdToLettre(src) + "->" + getIdToLettre(dst));
-        affiche();
+        // System.out.println(getIdToLettre(src) + "->" + getIdToLettre(dst));
+        // affiche();
         break;
       case 'B':
-        System.out.println("Mouvement " + couleur);
+        // System.out.println("Mouvement " + couleur);
         mvtIa = jouerIAaleatoire(couleur);
         src = mvtIa[0];
         dst = mvtIa[1];
         // src = input.next();
         // dst = input.next();
-        System.out.println(getIdToLettre(src) + "->" + getIdToLettre(dst));
+        // System.out.println(getIdToLettre(src) + "->" + getIdToLettre(dst));
         break;
       default:
         break;
@@ -790,7 +855,8 @@ public class StuckWin {
     indentation = GetVerifPointTab(posCouleur, couleur, ModeMvt.nbrPionJouable);
 
     if (indentation > 0) {
-      System.out.println("Il y a " + indentation + " pion de couleur " + couleur + " jouable");
+      // System.out.println("Il y a " + indentation + " pion de couleur " + couleur +
+      // " jouable");
       return 'N';
     }
     return couleur;
@@ -801,74 +867,110 @@ public class StuckWin {
     System.out.flush();
   }
 
+  /* Long moyenneTemps(List<Long> list) {
+    Long moyenne = 0L;
+    for (Long l : list) {
+      moyenne += l;
+    }
+    return ((moyenne / list.size()) / 1000000000);
+  }
+
+  Long totalTemps(List<Long> list) {
+    Long total = 0L;
+    for (Long l : list) {
+      total += l;
+    }
+    return total / 1000000000;
+  } */
+
   public static void main(String[] args) {
+    int depth = 3;
+    int NBRPARTIE = 500;
+    System.out.println("Profondeur : " + depth);
+    System.out.println("Nombre de partie : " + NBRPARTIE);
 
-    int nbPartie = 0;
-    int nbPGagneeR = 0;
-    int nbPGagneeB = 0;
-    int nbCoups = 0;
-    while (nbPartie < 500) {
-      System.out.println("Partie " + nbPartie);
-      StuckWin jeu = new StuckWin();
-      jeu.addPosCouleur(jeu.pointR, 'R');
-      jeu.addPosCouleur(jeu.pointB, 'B');
-      String src = "";
-      String dest;
-      String[] reponse;
-      Result status;
-      char partie = 'N';
-      char curCouleur = jeu.joueurs[0];
-      char nextCouleur = jeu.joueurs[1];
-      char tmp;
-      int cpt = 0;
+    while (true) {
+      System.out.println("");
+      //ArrayList<Long> listTempsTT = new ArrayList<Long>();
+      int nbPartie = 0;
+      int nbPGagneeR = 0;
+      int nbPGagneeB = 0;
+      //long moyenne = 0;
+      //long total = 0;
+      //long MoyenPartie = 0;
+      
+      while (nbPartie < NBRPARTIE) {
+        // if (nbPartie%10 == 0)
+        // System.out.println("Partie " + nbPartie );
+        // System.out.println("Partie " + nbPartie);
+        StuckWin jeu = new StuckWin();
+        jeu.DEPTH = depth;
+        jeu.addPosCouleur(jeu.pointR, 'R');
+        jeu.addPosCouleur(jeu.pointB, 'B');
+        String src = "";
+        String dest;
+        String[] reponse;
+        Result status;
+        char partie = 'N';
+        char curCouleur = jeu.joueurs[0];
+        char nextCouleur = jeu.joueurs[1];
+        char tmp;
+        int cpt = 0;
 
-      // version console
-      do {
-        // séquence pour Bleu ou rouge
-        jeu.clearScreen();
-        jeu.affiche();
-
+        // version console
         do {
-          status = Result.EXIT;
-          System.out.println("partie " + nbPartie);
-          reponse = jeu.jouer(curCouleur);
+          // séquence pour Bleu ou rouge
+          // jeu.clearScreen();
+          // jeu.affiche();
 
-          src = reponse[0];
-          dest = reponse[1];
-          if ("q".equals(src))
-            return;
-          src = jeu.tradIdLettre(src);
-          dest = jeu.tradIdLettre(dest);
-          status = jeu.deplace(curCouleur, src, dest, ModeMvt.REAL);
+          do {
+            status = Result.EXIT;
+            // System.out.println("partie " + nbPartie);
+            reponse = jeu.jouer(curCouleur);
 
-          partie = jeu.finPartie(nextCouleur);
+            src = reponse[0];
+            dest = reponse[1];
+            if ("q".equals(src))
+              return;
+            src = jeu.tradIdLettre(src);
+            dest = jeu.tradIdLettre(dest);
+            status = jeu.deplace(curCouleur, src, dest, ModeMvt.REAL);
 
-          System.out.println("status : " + status + " partie : " + partie);
-        } while (status != Result.OK && partie == 'N');
+            partie = jeu.finPartie(nextCouleur);
 
-        tmp = curCouleur;
-        curCouleur = nextCouleur;
-        nextCouleur = tmp;
-        cpt++;
-      } while (partie == 'N'); // tant que la partie n'est pas finie
-      jeu.clearScreen();
-      jeu.affiche();
-      System.out.println("Victoire : " + partie + " (" + (cpt / 2) + " coups)");
-      if (partie == 'R')
-        nbPGagneeR++;
-      else
-        nbPGagneeB++;
-      nbPartie++;
-      if (nbCoups < cpt / 2)
-        nbCoups = cpt / 2;
+            // System.out.println("status : " + status + " partie : " + partie);
+          } while (status != Result.OK && partie == 'N');
+
+          tmp = curCouleur;
+          curCouleur = nextCouleur;
+          nextCouleur = tmp;
+          cpt++;
+        } while (partie == 'N'); // tant que la partie n'est pas finie
+        // jeu.clearScreen();
+        // jeu.affiche();
+        // System.out.println("Victoire : " + partie + " (" + (cpt / 2) + " coups)");
+
+        if (partie == 'R')
+          nbPGagneeR++;
+        else
+          nbPGagneeB++;
+        nbPartie++;
+
+        //moyenne = jeu.moyenneTemps(jeu.listTemps);
+        //total = jeu.totalTemps(jeu.listTemps);
+        // System.out.println("moyenne temps de jeu de IA2 : " + moyenne + " ns");
+        // System.out.println("total temps de jeu de IA2 : " + total + " ns");
+        //listTempsTT.add(jeu.totalTemps(jeu.listTemps));
+
+        //MoyenPartie += total;
+      }
+
+      System.out.println("Nombre de partie gagnée par rouge : " + nbPGagneeR);
+      System.out.println("Nombre de partie gagnée par bleu : " + nbPGagneeB);
+      System.out.println("Nombre de partie jouée : " + NBRPARTIE);
+      //System.out.println("moyenne temp de calcul de IA2 : " + ((float) MoyenPartie / (float) NBRPARTIE) / 1000000000 + " s");
+      System.out.println("moyenne de win rouge : " + (((float) nbPGagneeR / (float) NBRPARTIE) * 100));
 
     }
-
-    System.out.println("Nombre de partie gagnée par rouge : " + nbPGagneeR);
-    System.out.println("Nombre de partie gagnée par bleu : " + nbPGagneeB);
-    System.out.println("Nombre de partie jouée : " + nbPartie);
-    System.out.println("Nombre de coup le plus important : " + nbCoups);
-    System.out.println("moyenne de win rouge : " + (((float) nbPGagneeR / (float) nbPartie) * 100));
-
   }
 }

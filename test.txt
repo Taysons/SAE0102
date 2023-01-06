@@ -1,0 +1,199 @@
+
+
+VERSION OPTI
+
+
+String[] jouerIA2(char couleur) {
+
+    String[] bestAction = null;
+    int bestEval = -1000000;
+    String[] posCouleur = new String[13];
+    addPosCouleur(posCouleur, couleur);
+    for (String src : posCouleur) {
+      int[] srcID = recupereid(src);
+      String[] dsts = possibleDests(couleur, srcID[0], srcID[1]);
+      for (String dst : dsts) {
+        Result res = deplace(couleur, src, dst, ModeMvt.SIMU);
+        if (res == Result.OK) {
+          deplace(couleur, src, dst, ModeMvt.REAL);
+          int eval = -evaluer(couleur == 'B' ? 'R' : 'B', 3);
+          if (eval > bestEval) {
+            bestEval = eval;
+            bestAction = new String[] { src, dst };
+          }
+          deplace(couleur, dst, src, ModeMvt.RETOUR);
+        }
+      }
+    }
+    return bestAction;
+  }
+
+  int evaluer(char couleur, int depth) {
+
+    char adv = couleur == 'B' ? 'R' : 'B';
+    String[] posCouleur = new String[13];
+    addPosCouleur(posCouleur, couleur);
+    String[] posAdv = new String[13];
+    addPosCouleur(posAdv, adv);
+    int movesCurr = GetVerifPointTab(posCouleur, couleur, null);
+    int movesAdv = GetVerifPointTab(posAdv, adv, null);
+    if (depth == 0 || movesCurr == 0 || movesAdv == 0) {
+      return movesAdv - movesCurr;
+    }
+    int bestEval = -1000000;
+    for (String src : posCouleur) {
+      int[] srcID = recupereid(src);
+      String[] dsts = possibleDests(couleur, srcID[0], srcID[1]);
+      for (String dst : dsts) {
+        Result res = deplace(couleur, src, dst, ModeMvt.SIMU);
+        if (res == Result.OK) {
+          deplace(couleur, src, dst, ModeMvt.REAL);
+          int eval = -evaluer(adv, depth - 1);
+          if (eval > bestEval) {
+            bestEval = eval;
+          }
+          deplace(couleur, dst, src, ModeMvt.RETOUR);
+        }
+      }
+    }
+    return bestEval;
+
+  }
+  
+  
+  
+  
+  
+  
+  
+  VERSION NON OPTIMISE
+  
+  String[] jouerIA2(char couleur) {
+
+    String[] bestAction = null;
+    int bestEval = -1000000;
+    
+    for (int i = 0; i < BOARD_SIZE; i++) {
+      for (int j = 0; j < SIZE; j++) {
+        if (state[i][j] == couleur) {
+          String src = "" + (char) ('A' + i) + (char) ('0' + j);
+          int[] srcID = recupereid(src);
+          String[] dsts = possibleDests(couleur, srcID[0], srcID[1]);
+          for (String dst : dsts) {
+            Result res = deplace(couleur, src, dst, ModeMvt.SIMU);
+            if (res == Result.OK) {
+              deplace(couleur, src, dst, ModeMvt.REAL);
+              int eval = -evaluer(couleur == 'B' ? 'R' : 'B', 3);
+              if (eval > bestEval) {
+                bestEval = eval;
+                bestAction = new String[] { src, dst };
+              }
+              deplace(couleur, dst, src, ModeMvt.RETOUR);
+            }
+          }
+        }
+      }
+    }
+    return bestAction;
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+  int evaluer(char couleur, int depth) {
+
+    char adv = couleur == 'B' ? 'R' : 'B';
+    String[] posCouleur = new String[13];
+    String[] posAdv = new String[13];
+    addPosCouleur(posCouleur, couleur);
+    addPosCouleur(posAdv, adv);
+    int movesCurr = 0;
+    int movesAdv = 0;
+    for (int i = 0; i < BOARD_SIZE; i++) {
+      for (int j = 0; j < SIZE; j++) {
+        if (state[i][j] == couleur) {
+
+          movesCurr += GetVerifPointTab(posCouleur, couleur, null);
+        } else if (state[i][j] == adv) {
+
+          movesAdv += GetVerifPointTab(posAdv, adv, null);
+        }
+      }
+    }
+    if (depth == 0 || movesCurr == 0 || movesAdv == 0) {
+      return movesAdv - movesCurr;
+    }
+    int bestEval = -1000000;
+    for (int i = 0; i < BOARD_SIZE; i++) {
+      for (int j = 0; j < SIZE; j++) {
+        if (state[i][j] == couleur) {
+          String src = "" + (char) ('A' + i) + (char) ('0' + j);
+          int[] srcID = recupereid(src);
+          String[] dsts = possibleDests(couleur, srcID[0], srcID[1]);
+          for (String dst : dsts) {
+            Result res = deplace(couleur, src, dst, ModeMvt.SIMU);
+            if (res == Result.OK) {
+              deplace(couleur, src, dst, ModeMvt.REAL);
+              int eval = -evaluer(adv, depth - 1);
+              if (eval > bestEval) {
+                bestEval = eval;
+              }
+              deplace(couleur, dst, src, ModeMvt.RETOUR);
+            }
+          }
+        }
+      }
+    }
+    return bestEval;
+
+  }
+  
+  
+  
+  
+  NOUVELLE VERSION
+  
+  
+  Je peux optimiser la fonction evaluer en utilisant l'alpha-bêta pruning, une technique de recherche en arbre qui consiste à élaguer les branches inutiles de l'arbre de recherche. Cela permet de réduire le temps de calcul de la fonction en ne parcourant pas tous les chemins de l'arbre, mais seulement ceux qui sont pertinents pour l'évaluation.
+
+Voici une version optimisée de la fonction evaluer avec l'alpha-bêta pruning :
+
+Copy code
+int evaluer(char couleur, int depth, int alpha, int beta) {
+
+  char adv = couleur == 'B' ? 'R' : 'B';
+  String[] posCouleur = new String[13];
+  addPosCouleur(posCouleur, couleur);
+  String[] posAdv = new String[13];
+  addPosCouleur(posAdv, adv);
+  int movesCurr = GetVerifPointTab(posCouleur, couleur, null);
+  int movesAdv = GetVerifPointTab(posAdv, adv, null);
+  if (depth == 0 || movesCurr == 0 || movesAdv == 0) {
+    return movesAdv - movesCurr;
+  }
+  for (String src : posCouleur) {
+    int[] srcID = recupereid(src);
+    String[] dsts = possibleDests(couleur, srcID[0], srcID[1]);
+    for (String dst : dsts) {
+      Result res = deplace(couleur, src, dst, ModeMvt.SIMU);
+      if (res == Result.OK) {
+        deplace(couleur, src, dst, ModeMvt.REAL);
+        alpha = Math.max(alpha, -evaluer(adv, depth - 1, -beta, -alpha));
+        deplace(couleur, dst, src, ModeMvt.RETOUR);
+        if (alpha >= beta) {
+          return alpha;
+        }
+      }
+    }
+  }
+  return alpha;
+
+}

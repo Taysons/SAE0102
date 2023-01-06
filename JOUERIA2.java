@@ -1,3 +1,14 @@
+
+/**
+ * JOUERIA2
+ */
+public class JOUERIA2 {
+
+  
+
+
+
+
 String[] jouerIA2TIT(char couleur) {
 
   String[] bestAction = null;
@@ -216,3 +227,4 @@ int GetVerifPointTabTIT(String[] tab, char couleur, ModeMvt mode) {
     id[1] = Character.getNumericValue(src.charAt(1));
     return id;
   }
+}
