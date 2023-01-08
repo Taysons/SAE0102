@@ -3,6 +3,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.sql.rowset.serial.SerialStruct;
+
 
 public final class Arbre {
   String src;
@@ -20,11 +22,17 @@ public final class Arbre {
    * @param gagne
    */
   public Arbre(String src, String dst, char couleur, boolean gagne) {
+    
+    
+    
     this.src = src;
     this.dst = dst;
     this.couleur = couleur;
     this.gagne = gagne;
     this.fils = new ArrayList<>();
+    
+
+
   }
   /**
    * 
@@ -53,7 +61,7 @@ public final class Arbre {
     for (int i = 0; i < niveau; i++) {
       fw.write("  ");
     }
-    fw.write(src + " " + dst + " " + eval + " " + gagne + "\n");
+    fw.write(src + " " + dst + " " + couleur + " " + gagne + "\n");
     for (Arbre fils : fils) {
       fils.ecritFichier(fw, niveau + 1);
     }
